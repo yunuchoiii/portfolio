@@ -38,7 +38,7 @@ body {
   background: rgb(var(--bg-circle-2-rgb));
   width: 200px;
   height: 200px;
-  top: 37%;
+  top: 30%;
   right: 10%;
 }
 
@@ -46,8 +46,57 @@ body {
   background: rgb(var(--bg-circle-3-rgb));
   width: 180px;
   height: 180px;
-  left: 30%;
+  left: 40%;
   bottom: 3%;
+}
+
+@keyframes moveCircle1 {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(70px, 100px);
+  }
+}
+
+@keyframes moveCircle2 {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-50px, 130px);
+  }
+}
+
+@keyframes moveCircle3 {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-160px, -100px);
+  }
+}
+
+.bg-circle-1 {
+  animation: moveCircle1 6s ease-in-out infinite;
+}
+
+.bg-circle-2 {
+  animation: moveCircle2 8s ease-in-out infinite;
+}
+
+.bg-circle-3 {
+  animation: moveCircle3 10s ease-in-out infinite;
+}
+
+
+.scroll-container {
+  overflow: auto;
+  scroll-snap-type: y mandatory;
+}
+
+.scroll-area {
+  scroll-snap-align: start;
 }
 
 @layer utilities {
