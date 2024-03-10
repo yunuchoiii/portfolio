@@ -1,6 +1,7 @@
 import { DetailedHTMLProps, HTMLAttributes } from "react";
 import About from "../_components/About/About";
 import Home from "../_components/Home/Home";
+import Skills from "../_components/Skills/Skills";
 
 export default function Main() {
 
@@ -19,9 +20,9 @@ export default function Main() {
         {...props}
       >
         <div className="w-full h-full flex items-center justify-center">
-          <div className="max-w-[1100px]">
+          <div className="w-[1112px]">
             {title && (
-              <div className="Montserrat 2xl:text-3xl text-2xl font-semibold">
+              <div className="Montserrat 2xl:text-3xl text-2xl font-semibold mb-[50px]">
                 {title}
               </div>
             )}
@@ -39,6 +40,9 @@ export default function Main() {
       </Page>
       <Page id="About" title="About">
         <About/>
+      </Page>
+      <Page id="Skills" title="Skills">
+        <Skills/>
       </Page>
     </div>
   );

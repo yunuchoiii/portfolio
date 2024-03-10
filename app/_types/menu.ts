@@ -1,5 +1,5 @@
 export interface IMenu {
-  id: number;
+  index: number;
   title: string;
   korName: string;
   engName: string;
