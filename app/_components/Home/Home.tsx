@@ -1,18 +1,30 @@
+'use client'
+
 const Home = () => {
+
+  const handleButton = (sectionId:string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
   
   interface buttonProps {
     title: string
     className: string
+    onClick: () => void
   }
 
   const buttonList:buttonProps[] = [
     {
       title: "more",
-      className: "bg-gradient-to-r from-blue-4 to-blue-2 text-[#F2FAFF] dark:text-[#172026]"
+      className: "bg-gradient-to-r from-blue-4 to-blue-2 text-[#F2FAFF] dark:text-[#172026]",
+      onClick: () => handleButton('About')
     },
     {
       title: "contact",
-      className: "text-blue-4 border-2 border-blue-4"
+      className: "text-blue-4 border-2 border-blue-4",
+      onClick: () => handleButton('Contact')
     },
   ]
 
@@ -34,6 +46,7 @@ const Home = () => {
           return <button
             key={`main-button-item-${index}`}
             className={`px-[30px] py-2 rounded-full 2xl:text-xl text-lg font-semibold tracking-tighter uppercase mr-5 button-hover-shadow transition-shadow ${item.className}`}
+            onClick={item.onClick}
           >
             {item.title}
           </button>
