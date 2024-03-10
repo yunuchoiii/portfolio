@@ -33,7 +33,7 @@ const Home = () => {
         {buttonList.map((item, index) => {
           return <button
             key={`main-button-item-${index}`}
-            className={`px-[30px] py-2 rounded-full 2xl:text-xl text-lg font-semibold tracking-tighter uppercase mr-5 ${item.className}`}
+            className={`px-[30px] py-2 rounded-full 2xl:text-xl text-lg font-semibold tracking-tighter uppercase mr-5 button-hover-shadow transition-shadow ${item.className}`}
           >
             {item.title}
           </button>
