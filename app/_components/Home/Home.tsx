@@ -1,5 +1,7 @@
 'use client'
 
+import { HEADER_HEIGHT } from "@/app/_constants";
+
 const Home = () => {
 
   const handleButton = (sectionId:string) => {
@@ -28,16 +30,21 @@ const Home = () => {
     },
   ]
 
-  return <div className="flex items-center justify-between Montserrat">
-    <div className="mr-[100px] tracking-tight">
-      <div className="2xl:text-[40px] text-3xl font-bold mb-5">
+  return <div 
+    className="flex items-center justify-center Montserrat h-screen"
+    style={{
+      marginTop: `-${HEADER_HEIGHT}px`
+    }}
+  >
+    <div className="tracking-tight mr-[5vw]">
+      <div className="2xl:text-[40px] xl:text-3xl lg:text-2xl md:text-xl font-bold mb-5">
         Hello. I am <br/>
       </div>
-      <div className="2xl:text-[96px] text-[70px] font-bold leading-[90%] mb-12">
+      <div className="2xl:text-[96px] xl:text-[70px] lg:text-[55px] md-text-[40px] font-bold leading-[90%] mb-12">
         <span className="text-blue-4">Front</span>end<br/>
         Developer
       </div>
-      <div className="2xl:text-xl text-lg mb-[30px]">
+      <div className="2xl:text-xl xl:text-lg lg:text-md md:text-base mb-[30px]">
         안녕하세요. <br/>
         프론트엔드 개발자 최서원입니다.
       </div>
@@ -45,7 +52,7 @@ const Home = () => {
         {buttonList.map((item, index) => {
           return <button
             key={`main-button-item-${index}`}
-            className={`px-[30px] py-2 rounded-full 2xl:text-xl text-lg font-semibold tracking-tighter uppercase mr-5 button-hover-shadow transition-shadow ${item.className}`}
+            className={`px-[30px] py-2 rounded-full 2xl:text-xl xl:text-lg lg:text-md md:text-base font-semibold tracking-tighter uppercase mr-5 button-hover-shadow transition-shadow ${item.className}`}
             onClick={item.onClick}
           >
             {item.title}

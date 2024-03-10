@@ -2,6 +2,7 @@ import { DetailedHTMLProps, HTMLAttributes } from "react";
 import About from "../_components/About/About";
 import Home from "../_components/Home/Home";
 import Skills from "../_components/Skills/Skills";
+import { HEADER_HEIGHT } from "../_constants";
 
 export default function Main() {
 
@@ -16,13 +17,14 @@ export default function Main() {
     return (
       <div 
         id={id}
-        className="h-full min-h-screen scroll-area"
+        className="min-h-screen scroll-area"
+        style={{paddingTop: HEADER_HEIGHT}}
         {...props}
       >
         <div className="w-full h-full flex items-center justify-center">
-          <div className="w-[1112px]">
+          <div className="2xl:w-[1336px] xl:w-[1080px] lg:w-[824px] md:w-[568px]">
             {title && (
-              <div className="Montserrat 2xl:text-3xl text-2xl font-semibold mb-[50px]">
+              <div className="Montserrat 2xl:text-3xl xl:text-2xl lg:text-xl md:text-lg font-semibold mb-[50px]">
                 {title}
               </div>
             )}

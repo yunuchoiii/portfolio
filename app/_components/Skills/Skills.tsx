@@ -1,5 +1,6 @@
 'use client';
 
+import { HEADER_HEIGHT } from "@/app/_constants";
 import useFirestore from "@/app/_hooks/useFirestore";
 import { ISkill, ISkillGroup } from "@/app/_types/skills";
 import { useEffect, useState } from "react";
@@ -14,41 +15,48 @@ const Skills = () => {
 
   const handleSkill = (skill: ISkill) => {
     if (skill.id !== selectedSkill?.id) {
-      setIsAnimating(true); // 애니메이션 시작
+      setIsAnimating(true);
       setTimeout(() => {
         setSelectedSkill(skill);
-      }, selectedSkill ? 500 : 0); // 박스가 완전히 닫히는 시간에 맞춰 selectedSkill을 변경합니다.
+      }, selectedSkill ? 500 : 0);
     }
   };
 
   useEffect(() => {
     if (selectedSkill) {
-      // selectedSkill이 설정되면 애니메이션을 완료합니다.
       setTimeout(() => {
         setIsAnimating(false);
-      }, 300); // 박스가 다시 열리는 데 걸리는 시간
+      }, 100);
     }
   }, [selectedSkill]);
 
-  return <div className="w-full h-full flex items-end justify-between">
+  const lightTitleList = ["JavaScript"]
+  const darkTitleList = ["Next.js", "GitHub", "TypeScript"]
+
+  return <div 
+    className="w-full h-full flex justify-center"
+    style={{
+      paddingBottom: HEADER_HEIGHT
+    }}
+  >
     <div className="flex-1">
       {(skillGroupList as ISkillGroup[]).sort((a, b) => a.id - b.id).map(group => {
         const children = (skillList as ISkill[])
           .filter(i => i.parent_id === group.id)
           .sort((a, b) => a.id - b.id);
         return <div key={`skill-group-${group.id}`} className="mt-[50px] first:mt-0">
-          <div className="Montserrat 2xl:text-2xl text-xl font-semibold tracking-tighter">
+          <div className="Montserrat 2xl:text-xl xl:text-lg lg:text-md md:text-base font-semibold tracking-tighter">
             {group.title}
           </div>
           <div className="flex flex-wrap">
             {children.map(i => (
               <button
                 key={`skill-item-${i.id}`}
-                className="skill-button relative w-[200px] h-[50px] flex items-center mr-[50px] mt-[30px]"
+                className="skill-button relative xl:w-[200px] xl:h-[50px] w-[170px] h-[40px] flex items-center xl:mr-[50px] mr-[40px] mt-[30px]"
                 onClick={()=>handleSkill(i)}
               >
                 <div 
-                  className="skill-logo w-[50px] h-[50px] rounded-[10px] p-[10px] absolute transition-all"
+                  className="skill-logo xl:w-[50px] xl:h-[50px] w-[40px] h-[40px] rounded-[10px] p-[10px] absolute transition-all"
                   style={{background: i.background}}
                 >
                   <img 
@@ -62,9 +70,9 @@ const Skills = () => {
                 </div>
                 <div 
                 className={`
-                  Montserrat 2xl:text-xl text-lg relative left-[70px] 
-                  ${i.title === "JavaScript" && 'skill-light'} 
-                  ${(i.title === "Next.js" || i.title === "GitHub") && 'skill-dark'}
+                  Montserrat 2xl:text-xl xl:text-lg lg:text-md md:text-base relative xl:left-[70px] left-[60px]
+                  ${lightTitleList.includes(i.title) && 'skill-light'} 
+                  ${darkTitleList.includes(i.title) && 'skill-dark'}
                 `}
                 >
                   {i.title}
@@ -75,9 +83,12 @@ const Skills = () => {
         </div>
       })}
     </div>
-    <div className="w-[313px] h-[534px]">
+    <div 
+      className="w-[30%] min-w-[240px] max-h-[550px] sticky top-24"
+      style={{height: `calc(100vh - ${HEADER_HEIGHT * 2}px)`}}
+    >
       <div 
-        className="w-full h-full bg-blue-4 bg-opacity-15 rounded-[30px] overflow-hidden transition-[width] duration-500"
+        className="w-full h-full bg-blue-4 bg-opacity-15 xl:rounded-[20px] rounded-[15px] overflow-hidden transition-[width] duration-500"
         style={{
           width: isAnimating || !selectedSkill ? 0 : '100%',
         }}
@@ -85,7 +96,7 @@ const Skills = () => {
         <div className="m-5">
           <div className="flex items-center">
             <div
-              className="skill-logo w-[50px] h-[50px] rounded-[10px] p-[10px] shrink-0"
+              className="skill-logo xl:w-[50px] xl:h-[50px] w-[40px] h-[40px] rounded-[10px] p-[10px] shrink-0"
               style={{background: selectedSkill?.background}}
             >
               <img 
@@ -97,7 +108,7 @@ const Skills = () => {
                 }}
               />
             </div>
-            <div className="Montserrat 2xl:text-xl text-lg ml-5 whitespace-nowrap" >
+            <div className="Montserrat 2xl:text-xl xl:text-lg lg:text-md md:text-base ml-5 whitespace-nowrap" >
               {selectedSkill?.title}
             </div>
           </div>
