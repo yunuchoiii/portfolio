@@ -41,7 +41,7 @@ const Header = () => {
 
   return <div
     id="header"
-    className={`fixed top-0 w-screen flex items-center justify-between px-[50px] Montserrat tracking-tighter font-light z-50`}
+    className={`fixed top-0 w-screen flex items-center justify-between px-[50px] Montserrat tracking-tighter font-light z-50 backdrop-blur`}
     style={{height: HEADER_HEIGHT}}
   >
     <div id="logo" className="2xl:text-2xl text-xl">
@@ -53,15 +53,15 @@ const Header = () => {
       </span>
     </div>
     <div className="w-1/3 min-w-96 flex items-center justify-between 2xl:text-xl text-lg">
-      {MENU_MAP.map(i => (
-        <button
+      {MENU_MAP.map(i => {
+        return <button
           key={`menu-item-${i.index}`}
-          className={`opacity-50 hover:opacity-100 transition-opacity tracking-tighter ${i.title === activeSection && 'opacity-100'}`}
+          className={`${i.title == activeSection ? 'opacity-100' : 'opacity-50'} hover:opacity-100 transition-opacity tracking-tighter`}
           onClick={()=>handleMenuClick(i.title)}
         >
           {i.title}
         </button>
-      ))}
+      })}
     </div>
     <div className="flex items-center">
       <IconButton
