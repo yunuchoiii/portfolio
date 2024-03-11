@@ -10,7 +10,7 @@ const Skills = () => {
   const [selectedSkill, setSelectedSkill] = useState<ISkill | null>(null)
   const [isAnimating, setIsAnimating] = useState(false);
 
-  const { data: skillGroupList } = useFirestore('skill_list');
+  const { data: skillGroupList } = useFirestore('skill_group');
   const { data: skillList } = useFirestore('skill');
 
   const handleSkill = (skill: ISkill) => {
