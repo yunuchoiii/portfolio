@@ -35,9 +35,6 @@ const Skills = () => {
 
   return <div 
     className="w-full h-full flex justify-center"
-    style={{
-      paddingBottom: HEADER_HEIGHT
-    }}
   >
     <div className="flex-1">
       {(skillGroupList as ISkillGroup[]).sort((a, b) => a.id - b.id).map(group => {
@@ -84,14 +81,12 @@ const Skills = () => {
       })}
     </div>
     <div 
-      className="w-[30%] min-w-[240px] max-h-[550px] sticky top-24"
+      className="w-[30%] min-w-[270px] max-w-[330px] max-h-[580px] sticky top-24"
       style={{height: `calc(100vh - ${HEADER_HEIGHT * 2}px)`}}
     >
       <div 
         className="w-full h-full bg-blue-4 bg-opacity-15 xl:rounded-[20px] rounded-[15px] overflow-hidden transition-[width] duration-500"
-        style={{
-          width: isAnimating || !selectedSkill ? 0 : '100%',
-        }}
+        style={{width: isAnimating || !selectedSkill ? 0 : '100%'}}
       >
         <div className="m-5">
           <div className="flex items-center">

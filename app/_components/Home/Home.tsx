@@ -1,6 +1,5 @@
 'use client'
 
-import { HEADER_HEIGHT } from "@/app/_constants";
 
 const Home = () => {
 
@@ -30,12 +29,7 @@ const Home = () => {
     },
   ]
 
-  return <div 
-    className="flex items-center justify-center Montserrat h-screen"
-    style={{
-      marginTop: `-${HEADER_HEIGHT}px`
-    }}
-  >
+  return <div className="flex items-center justify-center Montserrat h-screen">
     <div className="tracking-tight mr-[5vw]">
       <div className="2xl:text-[40px] xl:text-3xl lg:text-2xl md:text-xl font-bold mb-5">
         Hello. I am <br/>
