@@ -21,7 +21,7 @@ const FullPage = ({id, title, children, longPage, props}:PageProps) => {
       {...props}
     >
       <div className="w-full h-full flex items-center justify-center">
-        <div className="2xl:w-[1336px] xl:w-[1080px] lg:w-[824px] md:w-[568px]">
+        <div className="2xl:w-[1296px] xl:w-[1080px] lg:w-[864px] md:w-[648px] sm:w-[560px]">
           {title && (
             <div className="Montserrat 2xl:text-3xl xl:text-2xl lg:text-xl md:text-lg font-semibold mb-[50px]">
               {title}

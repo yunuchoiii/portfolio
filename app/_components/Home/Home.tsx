@@ -34,7 +34,7 @@ const Home = () => {
       <div className="2xl:text-[40px] xl:text-3xl lg:text-2xl md:text-xl font-bold mb-5">
         Hello. I am <br/>
       </div>
-      <div className="2xl:text-[96px] xl:text-[70px] lg:text-[55px] md-text-[40px] font-bold leading-[90%] mb-12">
+      <div className="2xl:text-[96px] xl:text-[70px] lg:text-[55px] md:text-[40px] font-bold leading-[90%] mb-12">
         <span className="text-blue-4">Front</span>end<br/>
         Developer
       </div>

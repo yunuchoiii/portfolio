@@ -33,10 +33,8 @@ const Skills = () => {
   const lightTitleList = ["JavaScript"]
   const darkTitleList = ["Next.js", "GitHub", "TypeScript"]
 
-  return <div 
-    className="w-full h-full flex justify-center"
-  >
-    <div className="flex-1">
+  return <div className="w-full h-full flex justify-center">
+    <div className="flex-1 mr-5">
       {(skillGroupList as ISkillGroup[]).sort((a, b) => a.id - b.id).map(group => {
         const children = (skillList as ISkill[])
           .filter(i => i.parent_id === group.id)
@@ -45,11 +43,11 @@ const Skills = () => {
           <div className="Montserrat 2xl:text-xl xl:text-lg lg:text-md md:text-base font-semibold tracking-tighter">
             {group.title}
           </div>
-          <div className="flex flex-wrap">
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
             {children.map(i => (
               <button
                 key={`skill-item-${i.id}`}
-                className="skill-button relative xl:w-[200px] xl:h-[50px] w-[170px] h-[40px] flex items-center xl:mr-[50px] mr-[40px] mt-[30px]"
+                className="skill-button relative xl:w-[200px] xl:h-[50px] w-[170px] h-[40px] flex items-center mt-[30px]"
                 onClick={()=>handleSkill(i)}
               >
                 <div 
