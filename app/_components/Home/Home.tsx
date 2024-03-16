@@ -31,14 +31,14 @@ const Home = () => {
 
   return <div className="flex items-center justify-center sm:flex-row flex-col-reverse Montserrat h-screen">
     <div className="tracking-tight sm:mr-[5vw] mr-0 sm:mt-0 mt-10">
-      <div className="2xl:text-[40px] xl:text-3xl lg:text-2xl text-xl font-bold md:mb-5 mb-3">
+      <div className="2xl:text-[40px] xl:text-3xl lg:text-2xl text-xl font-bold lg:mb-5 md:mb-4 mb-3">
         Hello. I am <br/>
       </div>
-      <div className="2xl:text-[96px] xl:text-[70px] lg:text-[55px] text-[40px] font-bold leading-[90%] md:mb-12 mb-8">
+      <div className="2xl:text-[96px] xl:text-[70px] lg:text-[55px] text-[40px] font-bold leading-[90%] lg:mb-12 md:mb-10 mb-8">
         <span className="text-blue-4">Front</span>end<br/>
         Developer
       </div>
-      <div className="2xl:text-xl xl:text-lg lg:text-md text-base md:mb-[30px] mb-5">
+      <div className="2xl:text-xl xl:text-lg lg:text-md text-base lg:mb-[30px] md:mb-6 mb-5">
         안녕하세요. <br/>
         프론트엔드 개발자 최서원입니다.
       </div>
@@ -46,7 +46,7 @@ const Home = () => {
         {buttonList.map((item, index) => {
           return <button
             key={`main-button-item-${index}`}
-            className={`px-[30px] py-2 rounded-full 2xl:text-xl xl:text-lg lg:text-md text-base font-semibold tracking-tighter uppercase mr-5 last:mr-0 button-hover-shadow transition-shadow ${item.className}`}
+            className={`md:px-7 md:py-2 px-5 py-1 rounded-full 2xl:text-xl xl:text-lg lg:text-md md:text-base text-sm font-semibold tracking-tighter uppercase mr-5 last:mr-0 button-hover-shadow transition-shadow ${item.className}`}
             onClick={item.onClick}
           >
             {item.title}
@@ -54,7 +54,7 @@ const Home = () => {
         })}
       </div>
     </div>
-    <div className="md:w-[40%] sm:w-[50%] w-[95%] max-w-[400px] after:pb-[100%] relative after:block">
+    <div className="md:w-[40%] sm:w-[50%] w-[250px] after:pb-[100%] relative after:block">
       <div className="absolute w-full h-full rounded-full border-[1px] border-blue-4 p-[4%]">
         <img src="/images/main/main-img.png" className="w-full h-full rounded-full"/>
       </div>

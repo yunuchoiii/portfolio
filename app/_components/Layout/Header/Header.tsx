@@ -33,8 +33,8 @@ const Header = () => {
     };
   }, []);
 
-  // useEffect(()=>{console.log(showMenu)}, [showMenu])
-  useEffect(()=>{console.log(activeSection)}, [activeSection])
+  useEffect(()=>{console.log(showMenu)}, [showMenu])
+  // useEffect(()=>{console.log(activeSection)}, [activeSection])
 
   const handleMenuClick = (sectionId: string) => {
     const section = document.getElementById(sectionId);
@@ -71,8 +71,7 @@ const Header = () => {
         />
       </button>
       <div 
-        className={`absolute flex flex-col right-0 top-10 transition-opacity text-right bg-white bg-opacity-40 dark:bg-opacity-15 backdrop-blur-lg px-9 pt-6 pb-7 rounded-3xl box-shadow-1 ${showMenu ? 'fade-in-right' : 'fade-out-right -z-50'}`}
-        style={{top: HEADER_HEIGHT}}
+        className={`sm:w-[250px] w-[calc(100vw-60px)] absolute flex flex-col right-0 top-16 transition-opacity text-right bg-white bg-opacity-40 dark:bg-opacity-15 backdrop-blur-lg px-9 pt-6 pb-7 rounded-3xl box-shadow-1 ${showMenu ? 'fade-in-right' : 'fade-out-right'}`}
       >
         {MENU_MAP.map(i => {
           return <button
