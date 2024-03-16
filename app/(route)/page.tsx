@@ -6,7 +6,7 @@ import Skills from "../_components/Skills/Skills";
 export default function Main() {
 
   return (
-    <div className="relative scroll-container h-screen">
+    <div className="relative scroll-container h-screen overflow-x-hidden">
       <FullPage id="Home">
         <Home/>
       </FullPage>
