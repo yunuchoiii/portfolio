@@ -111,7 +111,7 @@ const Skills = () => {
       style={{height: `calc(100vh - ${HEADER_HEIGHT * 2}px)`}}
     >
       <div 
-        className="w-full h-full bg-blue-4 bg-opacity-15 xl:rounded-[20px] rounded-[15px] overflow-hidden transition-[width] duration-500 overflow-y-scroll"
+        className="w-full h-full bg-blue-4 bg-opacity-15 xl:rounded-[20px] rounded-[15px] overflow-hidden transition-[width] duration-500 overflow-y-scroll hide-scroll-bar"
         style={{width: isAnimating || !selectedSkill ? 0 : '100%'}}
       >
         <SkillProjectBox 

@@ -71,7 +71,7 @@ const Header = () => {
         />
       </button>
       <div 
-        className={`sm:w-[250px] w-[calc(100vw-120px)] absolute flex flex-col right-[30px] top-16 transition-opacity text-right bg-white bg-opacity-40 dark:bg-opacity-15 backdrop-blur-lg px-9 pt-6 pb-7 rounded-3xl box-shadow-1 ${showMenu ? 'fade-in-right' : 'fade-out-right'}`}
+        className={`sm:w-[250px] w-[calc(100vw-120px)] absolute flex flex-col right-[37.5px] top-16 transition-opacity text-right bg-white bg-opacity-40 dark:bg-opacity-15 backdrop-blur-lg px-9 pt-6 pb-7 rounded-3xl box-shadow-1 ${showMenu ? 'fade-in-right' : 'fade-out-right'}`}
       >
         {MENU_MAP.map(i => {
           return <button
