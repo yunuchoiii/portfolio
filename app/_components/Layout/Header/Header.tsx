@@ -10,7 +10,7 @@ import DarkMode from "./DarkMode";
 const Header = () => {
 
   const [activeSection, setActiveSection] = useState('');
-  const [showMenu, setShowMenu] = useState<boolean>(false)
+  const [showMenu, setShowMenu] = useState(false)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -33,7 +33,7 @@ const Header = () => {
     };
   }, []);
 
-  useEffect(()=>{console.log(showMenu)}, [showMenu])
+  // useEffect(()=>{console.log(showMenu)}, [showMenu])
   // useEffect(()=>{console.log(activeSection)}, [activeSection])
 
   const handleMenuClick = (sectionId: string) => {
@@ -71,7 +71,7 @@ const Header = () => {
         />
       </button>
       <div 
-        className={`sm:w-[250px] w-[calc(100vw-60px)] absolute flex flex-col right-0 top-16 transition-opacity text-right bg-white bg-opacity-40 dark:bg-opacity-15 backdrop-blur-lg px-9 pt-6 pb-7 rounded-3xl box-shadow-1 ${showMenu ? 'fade-in-right' : 'fade-out-right'}`}
+        className={`sm:w-[250px] w-[calc(100vw-120px)] absolute flex flex-col right-[30px] top-16 transition-opacity text-right bg-white bg-opacity-40 dark:bg-opacity-15 backdrop-blur-lg px-9 pt-6 pb-7 rounded-3xl box-shadow-1 ${showMenu ? 'fade-in-right' : 'fade-out-right'}`}
       >
         {MENU_MAP.map(i => {
           return <button

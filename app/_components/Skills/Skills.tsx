@@ -18,7 +18,7 @@ const Skills = () => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-  
+
   const [selectedSkill, setSelectedSkill] = useState<ISkill | null>(null)
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -43,7 +43,7 @@ const Skills = () => {
   }, [selectedSkill]);
 
   const lightTitleList = ["JavaScript"]
-  const darkTitleList = ["Next.js", "GitHub", "TypeScript"]
+  const darkTitleList = ["Next.js", "GitHub", "TypeScript", "Recoil"]
 
   const ProjectBox = ({skillItem}:ProjectBoxProps) => {
     const skill = skillItem || selectedSkill

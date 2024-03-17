@@ -21,6 +21,10 @@ body {
   background: rgb(var(--background-rgb));
 }
 
+#header {
+  background: linear-gradient(to bottom, rgb(var(--background-rgb)), rgba(var(--background-rgb), 0.75), transparent);
+}
+
 .bg-circle-1, .bg-circle-2, .bg-circle-3 {
   position: absolute;
   border-radius: 200px;
@@ -29,7 +33,7 @@ body {
   background: rgb(var(--bg-circle-1-rgb));
   width: 12vw;
   height: 12vw;
-  top: 5%;
+  top: 20%;
   left: 7%;
   animation: moveCircle1 6s ease-in-out infinite;
 }
@@ -45,7 +49,7 @@ body {
   background: rgb(var(--bg-circle-3-rgb));
   width: 15vw;
   height: 15vw;
-  left: 40%;
+  left: 45%;
   bottom: 3%;
   animation: moveCircle3 8s ease-in-out infinite;
 }
@@ -71,7 +75,7 @@ body {
     transform: translate(0, 0);
   }
   50% {
-    transform: translate(-160px, -100px);
+    transform: translate(-160px, -80px);
   }
 }
 
