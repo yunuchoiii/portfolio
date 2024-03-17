@@ -1,0 +1,47 @@
+import { IProject } from "@/app/_types/project"
+import { ISkill } from "@/app/_types/skills"
+import SkillLogo from "./SkillLogo"
+
+interface ProjectBoxProps {
+  skillItem: ISkill
+  projectList?: IProject[]
+  isAnimating?: boolean
+}
+
+const SkillProjectBox = ({skillItem, projectList, isAnimating}:ProjectBoxProps) => {
+  const skill = skillItem
+
+  return <div className="m-5">
+    <div className="flex items-center">
+      <SkillLogo skill={skill!}/>
+      <div className="Montserrat 2xl:text-xl xl:text-lg lg:text-md md:text-base ml-5 whitespace-nowrap" >
+        {skill?.title}
+      </div>
+    </div>
+    <div className="w-full h-[5px] rounded-md bg-blue-2 mt-5 mb-[30px] overflow-hidden">
+      <div 
+        className="h-full rounded-md bg-blue-4 bg-opacity-80"
+        style={{
+          width: `${skill?.grade}%`
+        }}
+      />
+    </div>
+    {projectList && <div>
+      {projectList.map(p => {
+        return <button
+          key={`project-item-${p.id}`}
+          className="w-full h-[60px] bg-blue-1 bg-opacity-15 hover:bg-opacity-30 transition-all duration-300 rounded-2xl mb-2.5 px-5 flex items-center justify-between"
+          style={{opacity: isAnimating ? 0 : 100}}
+        >
+          <span className="xl:text-base text-sm whitespace-nowrap">{p.kor_name}</span>
+          <img 
+            src="/images/icons/right-arrow.png" 
+            className="h-4 dark:invert"
+          />
+        </button>
+      })}
+    </div>}
+  </div>
+}
+
+export default SkillProjectBox

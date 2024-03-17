@@ -1,6 +1,5 @@
 'use client'
 
-
 const Home = () => {
 
   const handleButton = (sectionId:string) => {

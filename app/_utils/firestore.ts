@@ -1,8 +1,7 @@
 import { addDoc, collection } from "firebase/firestore";
-import { useCallback } from "react";
 import fireStore from "../_commons/libraries/firestore";
 
-const addDataToFirestore = useCallback(async (collectionName:string, dataArray:[]) => {
+export const addDataToFirestore = async (collectionName:string, dataArray: any[]) => {
   const collectionRef = collection(fireStore, collectionName);
   const promises = dataArray?.map(i => addDoc(collectionRef, i));
   try {
@@ -11,4 +10,4 @@ const addDataToFirestore = useCallback(async (collectionName:string, dataArray:[
   } catch (error) {
     console.error('Error adding skills to Firestore:', error);
   }
-}, [])
+}

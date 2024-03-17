@@ -2,12 +2,10 @@
 
 import { HEADER_HEIGHT } from "@/app/_constants";
 import useFirestore from "@/app/_hooks/useFirestore";
+import { IProject } from "@/app/_types/project";
 import { ISkill, ISkillGroup } from "@/app/_types/skills";
 import { useEffect, useState } from "react";
-
-interface ProjectBoxProps {
-  skillItem?: ISkill
-}
+import SkillProjectBox from "./SkillProjectBox";
 
 const Skills = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -24,6 +22,11 @@ const Skills = () => {
 
   const { data: skillGroupList } = useFirestore('skill_group');
   const { data: skillList } = useFirestore('skill');
+  const { data: projectList } = useFirestore('project');
+
+  const projectListBySkillId = (skillId:number) => {
+    return (projectList as IProject[]).filter(i => i.skill_id_list.includes(skillId)).sort((a,b) => a.id - b.id)
+  }
 
   const handleSkill = (skill: ISkill) => {
     if (skill.id !== selectedSkill?.id) {
@@ -45,38 +48,6 @@ const Skills = () => {
   const lightTitleList = ["JavaScript"]
   const darkTitleList = ["Next.js", "GitHub", "TypeScript", "Recoil"]
 
-  const ProjectBox = ({skillItem}:ProjectBoxProps) => {
-    const skill = skillItem || selectedSkill
-    return <div className="m-5">
-      <div className="flex items-center">
-        <div
-          className="skill-logo xl:w-[50px] xl:h-[50px] w-[40px] h-[40px] rounded-[10px] p-[10px] shrink-0"
-          style={{background: skill?.background}}
-        >
-          <img 
-            src={skill?.img}
-            alt={skill?.title}
-            className="h-full"
-            style={{
-              filter: skill?.background === "#000" ? "invert(1)" : "none"
-            }}
-          />
-        </div>
-        <div className="Montserrat 2xl:text-xl xl:text-lg lg:text-md md:text-base ml-5 whitespace-nowrap" >
-          {skill?.title}
-        </div>
-      </div>
-      <div className="w-full h-[5px] rounded-md bg-blue-2 mt-5 mb-[30px] overflow-hidden">
-        <div 
-          className="h-full rounded-md bg-blue-4 bg-opacity-80"
-          style={{
-            width: `${skill?.grade}%`
-          }}
-        />
-      </div>
-    </div>
-  }
-
   return <div className="w-full h-full flex justify-center">
     <div className="flex-1 sm:mr-5 mr-0">
       {(skillGroupList as ISkillGroup[]).sort((a, b) => a.id - b.id).map(group => {
@@ -89,6 +60,7 @@ const Skills = () => {
           </div>
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
             {children.map(i => {
+              const project_count = projectListBySkillId(i?.id).length
               return <div
                 key={`skill-item-${i.id}`}
               >
@@ -122,11 +94,11 @@ const Skills = () => {
                 <div 
                   className="sm:hidden block w-full bg-blue-4 bg-opacity-15 xl:rounded-[20px] rounded-[15px] overflow-hidden transition-all duration-500"
                   style={{
-                    height: i.id === selectedSkill?.id ? "105px" : "0px",
+                    height: i.id === selectedSkill?.id ? 125 + (70 * project_count) : "0px",
                     marginTop: i.id === selectedSkill?.id ? 20 : 0
                   }}
                 >
-                  <ProjectBox skillItem={i}/>
+                  <SkillProjectBox skillItem={i} projectList={projectListBySkillId(i.id)}/>
                 </div>
               </div>
             })}
@@ -139,10 +111,14 @@ const Skills = () => {
       style={{height: `calc(100vh - ${HEADER_HEIGHT * 2}px)`}}
     >
       <div 
-        className="w-full h-full bg-blue-4 bg-opacity-15 xl:rounded-[20px] rounded-[15px] overflow-hidden transition-[width] duration-500"
+        className="w-full h-full bg-blue-4 bg-opacity-15 xl:rounded-[20px] rounded-[15px] overflow-hidden transition-[width] duration-500 overflow-y-scroll"
         style={{width: isAnimating || !selectedSkill ? 0 : '100%'}}
       >
-        <ProjectBox/>
+        <SkillProjectBox 
+          skillItem={selectedSkill as ISkill} 
+          projectList={projectListBySkillId(selectedSkill?.id as number)}
+          isAnimating={isAnimating}
+        />
       </div>
     </div>
   </div>
