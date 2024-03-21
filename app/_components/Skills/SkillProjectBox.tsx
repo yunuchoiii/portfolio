@@ -1,15 +1,27 @@
 import { IProject } from "@/app/_types/project"
 import { ISkill } from "@/app/_types/skills"
+import { Dispatch, SetStateAction } from "react"
 import SkillLogo from "./SkillLogo"
 
 interface ProjectBoxProps {
   skillItem: ISkill
   projectList?: IProject[]
   isAnimating?: boolean
+  setSelectedWorkId: Dispatch<SetStateAction<number>>
 }
 
-const SkillProjectBox = ({skillItem, projectList, isAnimating}:ProjectBoxProps) => {
+const SkillProjectBox = ({skillItem, projectList, isAnimating, setSelectedWorkId}:ProjectBoxProps) => {
   const skill = skillItem
+
+  const handleProject = (id:number) => {
+    const section = document.getElementById("Works");
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+    setTimeout(()=>{
+      setSelectedWorkId(id)
+    }, 1000)
+  }
 
   return <div className="m-5">
     <div className="flex items-center">
@@ -32,6 +44,7 @@ const SkillProjectBox = ({skillItem, projectList, isAnimating}:ProjectBoxProps) 
           key={`project-item-${p.id}`}
           className="w-full h-[60px] bg-blue-1 bg-opacity-15 hover:bg-opacity-30 transition-all duration-300 rounded-2xl mb-2.5 px-5 flex items-center justify-between"
           style={{opacity: isAnimating ? 0 : 100}}
+          onClick={()=>handleProject(p.id)}
         >
           <span className="xl:text-base text-sm whitespace-nowrap">{p.kor_name}</span>
           <img 

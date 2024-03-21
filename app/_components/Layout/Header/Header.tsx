@@ -91,7 +91,7 @@ const Header = () => {
 
   return <div
     id="header"
-    className={`fixed top-0 w-screen flex items-center justify-between md:px-[50px] px-[30px] Montserrat tracking-tighter font-light z-50`}
+    className={`fixed top-0 w-screen flex items-center justify-between lg:px-[50px] px-[30px] Montserrat tracking-tighter font-light z-50`}
     style={{height: HEADER_HEIGHT}}
   >
     <div id="logo" className="2xl:text-2xl text-xl">
