@@ -1,16 +1,15 @@
 import { IProject } from "@/app/_types/project"
 import { ISkill } from "@/app/_types/skills"
-import { Dispatch, SetStateAction } from "react"
 import SkillLogo from "./SkillLogo"
 
 interface ProjectBoxProps {
   skillItem: ISkill
   projectList?: IProject[]
   isAnimating?: boolean
-  setSelectedWorkId: Dispatch<SetStateAction<number>>
+  handleWorkButton: (id: number) => void
 }
 
-const SkillProjectBox = ({skillItem, projectList, isAnimating, setSelectedWorkId}:ProjectBoxProps) => {
+const SkillProjectBox = ({skillItem, projectList, isAnimating, handleWorkButton}:ProjectBoxProps) => {
   const skill = skillItem
 
   const handleProject = (id:number) => {
@@ -19,7 +18,7 @@ const SkillProjectBox = ({skillItem, projectList, isAnimating, setSelectedWorkId
       section.scrollIntoView({ behavior: 'smooth' });
     }
     setTimeout(()=>{
-      setSelectedWorkId(id)
+      handleWorkButton(id)
     }, 1000)
   }
 

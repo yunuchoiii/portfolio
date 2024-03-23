@@ -4,14 +4,14 @@ import { HEADER_HEIGHT } from "@/app/_constants";
 import useFirestore from "@/app/_hooks/useFirestore";
 import { IProject } from "@/app/_types/project";
 import { ISkill, ISkillGroup } from "@/app/_types/skills";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import SkillProjectBox from "./SkillProjectBox";
 
 interface SkillsProps {
-  setSelectedWorkId: Dispatch<SetStateAction<number>>
+  handleWorkButton: (id: number) => void
 }
 
-const Skills = ({setSelectedWorkId}:SkillsProps) => {
+const Skills = ({handleWorkButton}:SkillsProps) => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -105,7 +105,7 @@ const Skills = ({setSelectedWorkId}:SkillsProps) => {
                   <SkillProjectBox 
                     skillItem={i} 
                     projectList={projectListBySkillId(i.id)}
-                    setSelectedWorkId={setSelectedWorkId}
+                    handleWorkButton={handleWorkButton}
                   />
                 </div>
               </div>
@@ -126,7 +126,7 @@ const Skills = ({setSelectedWorkId}:SkillsProps) => {
           skillItem={selectedSkill as ISkill} 
           projectList={projectListBySkillId(selectedSkill?.id as number)}
           isAnimating={isAnimating}
-          setSelectedWorkId={setSelectedWorkId}
+          handleWorkButton={handleWorkButton}
         />
       </div>
     </div>

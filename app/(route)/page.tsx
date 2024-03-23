@@ -10,6 +10,16 @@ import Works from "../_components/Works/Works";
 export default function Main() {
 
   const [selectedWorkId, setSelectedWorkId] = useState<number>(-1)
+  const [isWorkAnimating, setIsWorkAnimating] = useState<boolean>(false)
+
+  const handleWorkButton = (id:number) => {
+    setSelectedWorkId(id)
+    setIsWorkAnimating(true)
+
+    setTimeout(()=>{
+      setIsWorkAnimating(false)
+    }, 500)
+  }
 
   return (
     <div className="relative scroll-container-y h-screen overflow-x-hidden">
@@ -21,13 +31,15 @@ export default function Main() {
       </FullPage>
       <FullPage id="Skills" title="Skills" longPage>
         <Skills
-          setSelectedWorkId={setSelectedWorkId}
+          handleWorkButton={handleWorkButton}
         />
       </FullPage>
       <FullPage id="Works" title="Works">
         <Works
           selectedWorkId={selectedWorkId}
           setSelectedWorkId={setSelectedWorkId}
+          isWorkAnimating={isWorkAnimating}
+          handleWorkButton={handleWorkButton}
         />
       </FullPage>
     </div>

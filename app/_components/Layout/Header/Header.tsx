@@ -3,11 +3,13 @@
 import { HEADER_HEIGHT } from "@/app/_constants";
 import { CONTACT_INFO } from "@/app/_constants/contact";
 import { MENU_MAP } from "@/app/_constants/menu";
+import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import IconButton from "../../Button/IconButton";
 import DarkMode from "./DarkMode";
 
 const Header = () => {
+  const router = useRouter()
 
   const [activeSection, setActiveSection] = useState('');
   const [showMenu, setShowMenu] = useState(false)
@@ -32,9 +34,6 @@ const Header = () => {
       observer.disconnect();
     };
   }, []);
-
-  // useEffect(()=>{console.log(showMenu)}, [showMenu])
-  // useEffect(()=>{console.log(activeSection)}, [activeSection])
 
   const handleMenuClick = (sectionId: string) => {
     const section = document.getElementById(sectionId);
@@ -94,14 +93,18 @@ const Header = () => {
     className={`fixed top-0 w-screen flex items-center justify-between lg:px-[50px] px-[30px] Montserrat tracking-tighter font-light z-50`}
     style={{height: HEADER_HEIGHT}}
   >
-    <div id="logo" className="2xl:text-2xl text-xl">
+    <button 
+      id="logo" 
+      className="2xl:text-2xl text-xl"
+      onClick={()=>router.refresh()}
+    >
       <span>
         Seowon Choi
       </span>
       <span className="font-black text-blue-1">
         &nbsp;.
       </span>
-    </div>
+    </button>
     <div className="hidden md:flex w-1/3 min-w-96 items-center justify-between 2xl:text-xl text-lg">
       {MENU_MAP.map(i => {
         return <button
