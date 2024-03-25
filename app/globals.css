@@ -118,7 +118,6 @@ body {
   }
 }
 
-
 @keyframes moveCircle1 {
   0%, 100% {
     transform: translate(0, 0);

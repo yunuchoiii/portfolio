@@ -1,6 +1,7 @@
 import { IProject } from "@/app/_types/project"
 import { Dispatch, SetStateAction } from "react"
 import IconButton from "../Button/IconButton"
+import ImageGallery from "../ImageGallery/ImageGallery"
 
 interface WorkDetailProps {
   item: IProject
@@ -20,11 +21,14 @@ const WorkDetail = ({item, setSelectedWorkId, show}:WorkDetailProps) => {
         <img src="/images/icons/right-arrow.png" className="w-7 rotate-180"/>
       </IconButton>
     </div>
-    <div className="w-full h-full py-[8vh] px-[5vw] flex flex-col">
-      <div className="text-xl Montserrat">
-        {item.kor_name || item.eng_name}
+    <div className="w-full h-full 2xl:p-[3vw] p-[4vw] flex">
+      <div className="lg:w-2/5 sm:w-1/2 h-full">
+        <ImageGallery 
+          logo={item.logo_img} 
+          imageList={item.img_list}
+        />
       </div>
-      <div className="flex-1"></div>
+      <div className="sm:w-3/5 h-full"></div>
     </div>
   </div>
 }
