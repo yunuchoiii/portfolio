@@ -1,4 +1,7 @@
+import { fullScreenState } from "@/app/_store/fullScreen";
 import { useEffect, useRef, useState } from "react";
+import { useRecoilState } from "recoil";
+import FullScreenView from "./FullScreenView";
 
 interface ImageGalleryProps {
   logo?: string
@@ -7,11 +10,15 @@ interface ImageGalleryProps {
 
 const ImageGallery = ({logo, imageList}:ImageGalleryProps) => {
 
+  const [fullScreen, setFullScreen] = useRecoilState(fullScreenState)
+
   const [selectedIndex, setSelectedIndex] = useState<number>(-1);
-  const [expandImg, setExpandImg] = useState<boolean>(false);
 
   const handleExpand = () => {
-    setExpandImg(!expandImg)
+    setFullScreen(prev => ({
+      ...prev,
+      open: !prev.open,
+    }))
   }
 
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -76,7 +83,10 @@ const ImageGallery = ({logo, imageList}:ImageGalleryProps) => {
           minusImageIndex();
           break;
         case "Escape":
-          setExpandImg(false);
+          setFullScreen(prev => ({
+            ...prev,
+            open: false,
+          }))
         default:
           break;
       }
@@ -89,15 +99,30 @@ const ImageGallery = ({logo, imageList}:ImageGalleryProps) => {
     };
   }, [plusImageIndex, minusImageIndex]);
 
-  return imageList?.length !== 0 && <div className="w-full h-full flex flex-col">
-    <div className="flex-1 max-h-[calc(100%-60px)] bg-blue-1 bg-opacity-30 rounded-[10px] flex justify-center items-center p-2.5 min-h-0">
+
+  useEffect(()=>{
+    setFullScreen(prev => ({
+      ...prev,
+      component: () => {
+      return <FullScreenView
+        handleExpand={handleExpand}
+        minusImageIndex={minusImageIndex}
+        plusImageIndex={plusImageIndex}
+        imageList={imageList}
+        selectedIndex={selectedIndex}
+      />},
+    }))
+  }, [imageList, selectedIndex])
+
+  return <div className="w-full h-full flex flex-col">
+    <div className="flex-1 bg-blue-1 bg-opacity-30 rounded-[10px] flex justify-center items-center p-2.5 min-h-0">
       {selectedIndex !== -1 ? 
       <button onClick={handleExpand} className="w-full h-full">
         <img src={imageList![selectedIndex]} className="w-full h-full object-contain"/>
       </button> :
-      <img src={logo} className="max-h-10 max-w-[80%]"/>}
+      <img src={logo} className="max-h-[20%] max-w-[80%]"/>}
     </div>
-    <div className="relative mt-2.5 px-[10%]">
+    {imageList?.length !== 0 && <div className="relative mt-2.5 px-[10%]">
       {imageList!.length > 4 && <>
         <button 
           className={`absolute -translate-y-1/2 top-[50%] left-0 transition-opacity duration-300 ${isLeftDisabled && "opacity-30"}`}
@@ -129,7 +154,7 @@ const ImageGallery = ({logo, imageList}:ImageGalleryProps) => {
             const isSelected = (imageList![selectedIndex] === item)
             return <button 
               key={`img-preview-${index}`} 
-              className={`w-[24%] mr-[1%] last:mr-0 flex-shrink-0 scroll-area rounded-[5px] after:pb-[100%] relative after:block overflow-hidden hover:brightness-90 border-2 ${isSelected ? "border-blue-1" : "border-transparent"}`}
+              className={`w-[24%] mr-[1%] last:mr-0 flex-shrink-0 scroll-area rounded-[5px] after:pb-[100%] relative after:block overflow-hidden hover:brightness-90 transition-all border-2 ${isSelected ? "border-blue-1" : "border-transparent"}`}
               onClick={()=>setSelectedIndex(index)}
             >
               <img src={item} className="w-full h-full object-cover absolute" />
@@ -137,34 +162,6 @@ const ImageGallery = ({logo, imageList}:ImageGalleryProps) => {
           })
         }
       </div>
-    </div>
-    {expandImg && <div
-      className={`fixed w-full h-full top-0 left-0 z-[100] bg-black bg-opacity-50 backdrop-blur-lg flex items-center justify-center transition-all duration-300`}
-    >
-      <button onClick={handleExpand}>
-        <img src="/images/icons/plus.png" className="w-5 absolute top-8 right-8 rotate-45 dark:invert" />
-      </button>
-      <button 
-        disabled={selectedIndex === 0}
-        onClick={minusImageIndex}
-        className={`${selectedIndex === 0 && "opacity-30"} transition-opacity duration-300`}
-      >
-        <img 
-          src="/images/icons/right-arrow-2.png" 
-          className={`h-7 dark:invert rotate-180`}
-        />
-      </button>
-      <img src={imageList![selectedIndex]} className="w-10/12 h-5/6 object-contain mx-5"/>
-      <button 
-        disabled={selectedIndex + 1 === imageList!.length}
-        onClick={plusImageIndex}
-        className={`${selectedIndex + 1 === imageList!.length && "opacity-30"} transition-opacity duration-300`}
-      >
-        <img 
-          src="/images/icons/right-arrow-2.png" 
-          className={`h-7 dark:invert`}
-        />
-      </button>
     </div>}
   </div>
 }
