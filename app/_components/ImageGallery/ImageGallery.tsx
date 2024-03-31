@@ -1,6 +1,6 @@
 import { fullScreenState } from "@/app/_store/fullScreen";
 import { useEffect, useRef, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import FullScreenView from "./FullScreenView";
 
 interface ImageGalleryProps {
@@ -10,7 +10,7 @@ interface ImageGalleryProps {
 
 const ImageGallery = ({logo, imageList}:ImageGalleryProps) => {
 
-  const [fullScreen, setFullScreen] = useRecoilState(fullScreenState)
+  const setFullScreen = useSetRecoilState(fullScreenState)
 
   const [selectedIndex, setSelectedIndex] = useState<number>(-1);
 
