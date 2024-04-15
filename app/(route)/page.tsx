@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import About from "../_components/About/About";
+import Contact from "../_components/Contact/Contact";
 import Home from "../_components/Home/Home";
 import FullPage from "../_components/Layout/Page/FullPage";
 import Skills from "../_components/Skills/Skills";
@@ -41,6 +42,9 @@ export default function Main() {
           isWorkAnimating={isWorkAnimating}
           handleWorkButton={handleWorkButton}
         />
+      </FullPage>
+      <FullPage id="Contact">
+        <Contact/>
       </FullPage>
     </div>
   );

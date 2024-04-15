@@ -93,6 +93,7 @@ body {
   }
   #Skills .skill-button:hover .skill-logo {
     width: 100%;
+    transition: width 0.3s ease;
   }
   #Skills .skill-button .skill-light, .skill-dark {
     transition: color 0.1s ease;
