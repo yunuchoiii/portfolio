@@ -40,7 +40,7 @@ const Contact = () => {
 
   return <>
     <div className="flex justify-center">
-      <div className="flex items-center h-[75vh] w-full">
+      <div className="flex items-center h-[75vh] max-h-[628px] w-full">
         <div className="relative w-[37%] min-w-[260px] h-full rounded-[20px] bg-gradient-to-br from-[#77C9CE] to-[#326366] overflow-hidden">
           <div className="w-[14vw] h-[14vw] rounded-full bg-blue-2 absolute left-[10%]"/>
           <div className="w-[17vw] h-[17vw] rounded-full bg-blue-2 absolute top-[30%] right-[10%]"/>
@@ -51,7 +51,7 @@ const Contact = () => {
             <div>
               {contactInfoList.map((info, index) => (
                 <div key={`info-item-${index}`} className="flex item-center 2xl:mb-[30px] xl:mb-6 lg:mb-5 md:mb-4 sm:mb-3 mb-2">
-                  <img src={info.icon} className="2xl:w-[30px] xl:w-6 lg:w-5 w-4 2xl:h-[30px] xl:h-6 h-5 mr-2.5"/>
+                  <img src={info.icon} className="2xl:w-[30px] xl:w-6 lg:w-5 w-4 2xl:h-[30px] xl:h-6 h-5 mr-5"/>
                   <span className="2xl:text-lg xl:text-base text-sm text-white tracking-wide">
                     {info.label}
                   </span>
@@ -107,7 +107,7 @@ const Contact = () => {
                 className={`group 2xl:w-[60px] xl:w-14 lg:w-[52px] md:w-12 sm:w-11 w-10 hover:w-[200px] 2xl:h-[60px] xl:h-14 lg:h-[52px] md:h-12 sm:h-11 h-10 bg-blue-2 hover:brightness-105 transition-all duration-200 rounded-full flex items-center justify-center button-shadow hover:px-4`}
               >
                 <img src="/images/icons/send.png" className="h-1/2 invert -rotate-45 mb-1 ml-1"/>
-                <span className="group-hover:w-28 w-0 overflow-hidden transition-all whitespace-nowrap">이메일 보내기</span>
+                <span className="group-hover:w-28 w-0 overflow-hidden transition-all whitespace-nowrap text-white">이메일 보내기</span>
               </button>
             </form>
           </div>

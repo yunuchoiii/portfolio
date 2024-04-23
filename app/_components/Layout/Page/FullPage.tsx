@@ -10,17 +10,49 @@ interface PageProps {
 }
 
 const FullPage = ({id, title, children, longPage, props}:PageProps) => {
+  // const ref = useRef<HTMLDivElement>(null);
+
+  // useEffect(() => {
+  //   const observer = new IntersectionObserver(
+  //     (entries) => {
+  //       entries.forEach(entry => {
+  //         if (entry.isIntersecting) {
+  //           entry.target.classList.add('fade-in');
+  //           observer.unobserve(entry.target);
+  //         }
+  //       });
+  //     },
+  //     {
+  //       threshold: 0.1
+  //     }
+  //   );
+
+  //   const current = ref.current;
+  //   if (current && id !== "Home") {
+  //     observer.observe(current);
+  //   }
+
+  //   return () => {
+  //     if (current) {
+  //       observer.disconnect();
+  //     }
+  //   };
+  // }, []);
+
   return (
     <div 
       id={id}
-      className={`min-h-screen scroll-area ${!longPage && 'h-full'}`}
+      className={`min-h-screen scroll-area ${!longPage && 'h-full'} ${id == "Home" && "fade-in"}`}
       style={{
         paddingTop: longPage ? HEADER_HEIGHT + 30 : HEADER_HEIGHT/2, 
         paddingBottom: longPage ? HEADER_HEIGHT : 0
       }}
       {...props}
     >
-      <div className="w-full h-full flex items-center justify-center">
+      <div 
+        // ref={ref} 
+        className="w-full h-full flex items-center justify-center"
+      >
         <div className="2xl:w-[1296px] xl:w-[1080px] lg:w-[864px] md:w-[648px] sm:w-[560px] w-[calc(100%-60px)]">
           {title && (
             <div className="Montserrat 2xl:text-3xl xl:text-2xl text-xl font-semibold mb-[50px]">
