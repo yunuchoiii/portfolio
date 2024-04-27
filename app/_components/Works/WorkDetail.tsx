@@ -1,4 +1,6 @@
+import useFirestore from "@/app/_hooks/useFirestore"
 import { IProject } from "@/app/_types/project"
+import { ISkill } from "@/app/_types/skills"
 import { Dispatch, SetStateAction } from "react"
 import IconButton from "../Button/IconButton"
 import ImageGallery from "../ImageGallery/ImageGallery"
@@ -11,18 +13,29 @@ interface WorkDetailProps {
 
 const WorkDetail = ({item, setSelectedWorkId, show}:WorkDetailProps) => {
 
+  const { data: skillList } = useFirestore('skill');
+
+  const usedSkills = (skillList as ISkill[])
+    .filter(s => item.skill_id_list.includes(s.id))
+    .sort((a,b) => a.id - b.id)
+  
+  const lightTitleList = ["JavaScript"]
+  const darkTitleList = ["Next.js", "GitHub", "TypeScript", "Recoil"]
+
   const handleBack = () => {
     setSelectedWorkId(-1)
   }
 
   const DetailSection = ({ 
     title, 
-    content 
+    content,
+    skills,
   }: {
     title: string
-    content: string | string[] | undefined
+    content?: string | string[] | undefined
+    skills?: ISkill[]
   }) => {
-    return content && (
+    return (content || skills) && (
       <div className="mb-4 last:mb-0">
         <div className="text-base mb-1 font-bold">{title}</div>
         {Array.isArray(content) ? (
@@ -38,6 +51,32 @@ const WorkDetail = ({item, setSelectedWorkId, show}:WorkDetailProps) => {
           </ul>
         ) : (
           <div className="text-sm">{content}</div>
+        )}
+        {skills && (
+          <div className="flex flex-wrap">
+            {skills.map((skill, i) => (
+              <div
+                key={`used-skill-${i}`}
+                className="py-1 px-2 mr-1 rounded-md flex items-center relative"
+                style={{background: skill.background}}
+              >
+                <img 
+                  src={skill.img} 
+                  className="h-4 mr-2" 
+                  style={{filter: skill?.background === "#000" ? "invert(1)" : "none"}}
+                />
+                <div 
+                  className={`
+                    text-sm 
+                    ${lightTitleList.includes(skill.title) && 'text-black'} 
+                    ${darkTitleList.includes(skill.title) && 'text-white'}
+                  `}
+                >
+                  {skill.title}
+                </div>
+              </div>
+            ))}
+          </div>
         )}
       </div>
     );
@@ -71,6 +110,7 @@ const WorkDetail = ({item, setSelectedWorkId, show}:WorkDetailProps) => {
         <DetailSection title="역할" content={item.role_introduction} />
         <DetailSection title="구현 기능" content={item.features} />
         <DetailSection title="성과" content={item.results} />
+        <DetailSection title="사용 기술" skills={usedSkills} />
       </div>
     </div>
   </div>
