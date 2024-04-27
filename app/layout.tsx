@@ -5,6 +5,7 @@ import FullScreen from "./_components/Layout/FullScreen/FullScreen";
 import Header from "./_components/Layout/Header/Header";
 import RecoilRootProvider from "./_components/Recoil/RecoilRootProvider";
 import Providers from "./_theme/Providers";
+import "./animation.css";
 import "./font.css";
 import "./globals.css";
 
