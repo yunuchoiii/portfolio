@@ -39,7 +39,7 @@ const SkillProjectBox = ({skillItem, projectList, isAnimating, handleWorkButton}
     </div>
     {projectList && <div>
       {projectList.map(p => {
-        return <button
+        return p.show_yn != false && <button
           key={`project-item-${p.id}`}
           className="w-full h-[60px] bg-blue-1 bg-opacity-15 hover:bg-opacity-30 transition-all duration-300 rounded-2xl mb-2.5 px-5 flex items-center justify-between"
           style={{opacity: isAnimating ? 0 : 100}}
