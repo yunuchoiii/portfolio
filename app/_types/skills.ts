@@ -10,4 +10,5 @@ export interface ISkill {
   img: string
   background: string
   grade: number
+  show_yn?: boolean
 }

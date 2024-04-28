@@ -10,7 +10,7 @@ interface WorkButtonProps {
 const WorkButton = ({item, isSelected, selectedWorkId, onClick}:WorkButtonProps) => {
   
   return <div 
-    className={`w-[calc(100%-5px)] flex items-center justify-center transition-opacity duration-500 bg-opacity-15 ${isSelected ? "fade-out" : "fade-in"}`}
+    className={`w-[calc(100%-5px)] flex items-center justify-center transition-opacity duration-500 bg-opacity-15 cursor-pointer ${isSelected ? "fade-out" : "fade-in"}`}
     onClick={onClick}
   > 
     <img src={item.banner_img} className="w-full h-full object-cover"/>

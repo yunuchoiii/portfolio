@@ -78,7 +78,7 @@ const Skills = ({handleWorkButton}:SkillsProps) => {
           <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
             {children.map(i => {
               const project_count = projectListBySkillId(i?.id).length
-              return <div
+              return i.show_yn != false && <div
                 key={`skill-item-${i.id}`}
               >
                 <button

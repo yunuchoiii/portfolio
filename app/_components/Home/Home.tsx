@@ -1,5 +1,7 @@
 'use client'
 
+import { useIntersectionObserver } from "@uidotdev/usehooks";
+
 const Home = () => {
 
   const handleButton = (sectionId:string) => {
@@ -28,12 +30,18 @@ const Home = () => {
     },
   ]
 
-  return <div className="flex items-center justify-center sm:flex-row flex-col-reverse Montserrat h-screen">
+  const [ref, entry] = useIntersectionObserver({
+    threshold: 0.1,
+    root: null,
+    rootMargin: "0px",
+  });
+
+  return <div ref={ref} className="flex items-center justify-center sm:flex-row flex-col-reverse Montserrat h-screen">
     <div className="tracking-tight sm:mr-[5vw] mr-0 sm:mt-0 mt-10">
       <div className="2xl:text-[40px] xl:text-3xl lg:text-2xl text-xl font-bold lg:mb-5 md:mb-4 mb-3">
         Hello. I am <br/>
       </div>
-      <div className="2xl:text-[96px] xl:text-[70px] lg:text-[55px] text-[40px] font-bold leading-[90%] lg:mb-12 md:mb-10 mb-8">
+      <div className={`2xl:text-[96px] xl:text-[70px] lg:text-[55px] text-[40px] font-bold leading-[90%] lg:mb-12 md:mb-10 mb-8 ${entry?.intersectionRatio ? "text-focus-in" : "opacity-0"}`}>
         <span className="text-blue-4">Front</span>end<br/>
         Developer
       </div>
