@@ -4,6 +4,7 @@ import { HEADER_HEIGHT } from "@/app/_constants";
 import useFirestore from "@/app/_hooks/useFirestore";
 import { IProject } from "@/app/_types/project";
 import { ISkill, ISkillGroup } from "@/app/_types/skills";
+import { useIntersectionObserver } from "@uidotdev/usehooks";
 import { useEffect, useState } from "react";
 import SkillProjectBox from "./SkillProjectBox";
 
@@ -52,13 +53,25 @@ const Skills = ({handleWorkButton}:SkillsProps) => {
   const lightTitleList = ["JavaScript"]
   const darkTitleList = ["Next.js", "GitHub", "TypeScript", "Recoil"]
 
+  const [ref, entry] = useIntersectionObserver({
+    threshold: 0.1,
+    root: null,
+    rootMargin: "0px",
+  });
+
   return <div className="w-full h-full flex justify-center">
-    <div className="flex-1 sm:mr-5 mr-0">
-      {(skillGroupList as ISkillGroup[]).sort((a, b) => a.id - b.id).map(group => {
+    <div ref={ref} className="flex-1 sm:mr-5 mr-0">
+      {(skillGroupList as ISkillGroup[]).sort((a, b) => a.id - b.id).map((group, index) => {
         const children = (skillList as ISkill[])
           .filter(i => i.parent_id === group.id)
           .sort((a, b) => a.id - b.id);
-        return <div key={`skill-group-${group.id}`} className="mt-[50px] first:mt-0">
+        return <div 
+          key={`skill-group-${group.id}`} 
+          className={`mt-[50px] first:mt-0 ${entry?.intersectionRatio ? "fade-in-right" : "opacity-0"}`}
+          style={{
+            animationDelay: `${0.5 + 0.5 * index}s`
+          }}
+        >
           <div className="Montserrat 2xl:text-xl xl:text-lg lg:text-md md:text-base font-semibold tracking-tighter">
             {group.title}
           </div>

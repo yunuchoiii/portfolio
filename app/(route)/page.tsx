@@ -27,7 +27,7 @@ export default function Main() {
       <FullPage id="Home">
         <Home/>
       </FullPage>
-      <FullPage id="About" title="About" longPage>
+      <FullPage id="About" longPage>
         <About/>
       </FullPage>
       <FullPage id="Skills" title="Skills" longPage>

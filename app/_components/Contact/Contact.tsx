@@ -1,6 +1,7 @@
 'use client'
 
 import useFirestore from "@/app/_hooks/useFirestore";
+import { useIntersectionObserver } from "@uidotdev/usehooks";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 interface EmailFormTypes {
@@ -38,10 +39,16 @@ const Contact = () => {
     console.log(data);
   };
 
+  const [ref, entry] = useIntersectionObserver({
+    threshold: 0.1,
+    root: null,
+    rootMargin: "0px",
+  });
+
   return <>
-    <div className="flex justify-center">
-      <div className="flex items-center h-[75vh] max-h-[628px] w-full">
-        <div className="relative w-[37%] min-w-[260px] h-full rounded-[20px] bg-gradient-to-br from-[#77C9CE] to-[#326366] overflow-hidden">
+    <div ref={ref} className="flex justify-center">
+      <div className="flex items-center h-[70vh] max-h-[628px] w-[90%] overflow-hidden">
+        <div className="relative z-10 w-[37%] min-w-[260px] h-full rounded-[20px] bg-gradient-to-br from-[#77C9CE] to-[#326366] overflow-hidden">
           <div className="w-[14vw] h-[14vw] rounded-full bg-blue-2 absolute left-[10%]"/>
           <div className="w-[17vw] h-[17vw] rounded-full bg-blue-2 absolute top-[30%] right-[10%]"/>
           <div className="w-full h-full absolute top-0 left-0 bg-white bg-opacity-5 backdrop-blur-[60px] px-[14%] py-[10%]">
@@ -68,12 +75,15 @@ const Contact = () => {
             </div>
           </div>
         </div>
-        <div className="flex-1 h-[90%] bg-blue-3 bg-opacity-90 rounded-tr-2xl rounded-br-2xl 2xl:p-10 xl:p-9 lg:p-8 md:p-8 sm:p-7 p-6">
+        <div 
+          className={`flex-1 h-[90%] bg-blue-3 bg-opacity-80 rounded-tr-2xl rounded-br-2xl 2xl:p-10 xl:p-9 lg:p-8 md:p-8 sm:p-7 p-6 ${entry?.intersectionRatio ? "fade-in-left" : "opacity-0"}`} 
+          style={{animationDelay: "0.5s"}}
+        >
           <div className="flex justify-center flex-col h-full">
             <div className="Montserrat text-white 2xl:text-3xl xl:text-2xl text-xl xl:mb-1 md:mb-0.5 mb-0">
               Send Email .
             </div>
-            <div className="2xl:text-base xl:text-sm text-xs text text-white xl:mb-7 md:mb-6 mb-5">
+            <div className="2xl:text-base xl:text-sm text-xs text text-white xl:mb-5 md:mb-4 mb-3">
               궁금한 점이나 제안할 사항이 있다면 메일을 보내주세요!
             </div>
             <form onSubmit={handleSubmit(onValid)} className="relative flex flex-col items-end">
@@ -104,7 +114,7 @@ const Contact = () => {
               />
               <button
                 type="submit"
-                className={`group 2xl:w-[60px] xl:w-14 lg:w-[52px] md:w-12 sm:w-11 w-10 hover:w-[200px] 2xl:h-[60px] xl:h-14 lg:h-[52px] md:h-12 sm:h-11 h-10 bg-blue-2 hover:brightness-105 transition-all duration-200 rounded-full flex items-center justify-center button-shadow hover:px-4`}
+                className={`group 2xl:w-[52px] xl:w-12 lg:w-11 md:w-10 sm:w-9 w-8 hover:w-[200px] 2xl:h-[52px] xl:h-12 lg:h-11 md:h-10 sm:h-9 h-8 bg-blue-2 hover:brightness-105 transition-all duration-200 rounded-full flex items-center justify-center button-shadow hover:px-0`}
               >
                 <img src="/images/icons/send.png" className="h-1/2 invert -rotate-45 mb-1 ml-1"/>
                 <span className="group-hover:w-28 w-0 overflow-hidden transition-all whitespace-nowrap text-white">이메일 보내기</span>
@@ -118,7 +128,7 @@ const Contact = () => {
       {`
         .form-input {
           flex-shrink: 0;
-          height: 34px;
+          height: 30px;
           margin-bottom: 12px;
           background: rgba(255, 255, 255, 0.2);
           color: #FFF;
@@ -130,8 +140,8 @@ const Contact = () => {
         }
         @media (min-width: 768px) {
           .form-input {
-            height: 38px;
-            margin-bottom: 10px;
+            height: 34px;
+            margin-bottom: 6px;
           }
           .form-input, textarea.form-input {
             padding-left: 10px;
@@ -139,8 +149,8 @@ const Contact = () => {
         }
         @media (min-width: 1024px) {
           .form-input {
-            height: 42px;
-            margin-bottom: 12px;
+            height: 38px;
+            margin-bottom: 10px;
           }
           .form-input, textarea.form-input {
             padding-left: 12px;
@@ -149,8 +159,8 @@ const Contact = () => {
         }
         @media (min-width: 1280px) {
           .form-input {
-            height: 46px;
-            margin-bottom: 16px;
+            height: 42px;
+            margin-bottom: 14px;
           }
           .form-input, textarea.form-input {
             padding-left: 14px;
@@ -159,8 +169,8 @@ const Contact = () => {
         }
         @media (min-width: 1536px) {
           .form-input {
-            height: 50px;
-            margin-bottom: 20px;
+            height: 46px;
+            margin-bottom: 18px;
           }
           .form-input, textarea.form-input {
             padding-left: 16px;
