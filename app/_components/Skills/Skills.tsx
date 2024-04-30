@@ -34,7 +34,7 @@ const Skills = ({handleWorkButton}:SkillsProps) => {
   }
 
   const handleSkill = (skill: ISkill) => {
-    if (skill.id !== selectedSkill?.id) {
+    if (skill.id !== selectedSkill?.id && skill.parent_id !== 2) {
       setIsAnimating(true);
       setTimeout(() => {
         setSelectedSkill(skill);

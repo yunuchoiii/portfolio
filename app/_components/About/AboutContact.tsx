@@ -43,7 +43,7 @@ const AboutContact = () => {
   return <div 
     ref={ref} 
     className={`w-full h-28 flex items-center justify-between relative mb-16 border-[1px] border-blue-1 blue-shadow-2 rounded-[30px] px-6 py-4 ${entry?.intersectionRatio ? "fade-in" : "opacity-0"}`}
-    style={{animationDelay: "1s"}}
+    style={{animationDelay: "0.9s"}}
   >
     <AboutContactSection>
       <div className="flex flex-col justify-center w-full">
@@ -65,7 +65,7 @@ const AboutContact = () => {
       <div className="flex justify-between w-1/2 ">
         {contactLinkList.map((link, index) => {
           return <IconButton key={`info-link-${index}`}>
-            <a href={link.link}>
+            <a href={link.link} target="_blank">
               <img src={link.icon} />
             </a>
           </IconButton>
