@@ -28,10 +28,7 @@ function DarkMode({}: IDarkMode) {
   const currentTheme = theme === "system" ? systemTheme : theme;
 
   return <button
-    className="relative w-[75px] h-[30px] rounded-full border-[3px] border-blue-1 flex items-center"
-    style={{
-      boxShadow: '0px 0px 24px 1px rgba(18, 151, 159, 0.70), 0px 0px 24px 2px rgba(18, 151, 159, 0.70) inset'
-    }}
+    className="relative w-[75px] h-[30px] rounded-full border-[3px] border-blue-1 flex items-center blue-shadow-1"
     onClick={onClick}
   >
     <div

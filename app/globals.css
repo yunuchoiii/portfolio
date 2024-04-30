@@ -80,6 +80,12 @@ body {
 .box-shadow-2 {
   box-shadow: 0px 4px 16px 8px rgba(0,0,0,0.05);
 }
+.blue-shadow-1 {
+  box-shadow: 0px 0px 24px 1px rgba(18, 151, 159, 0.70), 0px 0px 24px 2px rgba(18, 151, 159, 0.70) inset;
+}
+.blue-shadow-2 {
+  box-shadow: 0px 0px 12px 1px rgba(18, 151, 159, 0.30), 0px 0px 12px 2px rgba(18, 151, 159, 0.30) inset;
+}
 
 @layer utilities {
   .text-balance {
