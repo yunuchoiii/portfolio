@@ -1,5 +1,3 @@
-import { useIntersectionObserver } from "@uidotdev/usehooks";
-
 interface IAboutListItem {
   id: number;
   icon: string;
@@ -7,7 +5,7 @@ interface IAboutListItem {
   content: string;
 }
 
-const AboutList = () => {
+const AboutList = ({entry}:{entry: IntersectionObserverEntry | null}) => {
 
   const list:IAboutListItem[] = [
     {
@@ -31,14 +29,8 @@ const AboutList = () => {
   ]
 
   const ListItem = ({item}:{item:IAboutListItem}) => {
-    const [ref, entry] = useIntersectionObserver({
-      threshold: 0.1,
-      root: null,
-      rootMargin: "0px",
-    });
 
     return <div
-      ref={ref}
       className={`w-[27%] after:pb-[100%] relative after:block ${entry?.intersectionRatio ? "fade-in-bottom" : "opacity-0"}`}
       style={{
         animationDelay: `${2 + 0.3 * item.id}s`

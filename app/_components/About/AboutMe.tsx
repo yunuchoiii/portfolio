@@ -1,13 +1,6 @@
-import { useIntersectionObserver } from "@uidotdev/usehooks";
+const AboutMe = ({entry}:{entry: IntersectionObserverEntry | null}) => {
 
-const AboutMe = () => {
-  const [ref, entry] = useIntersectionObserver({
-    threshold: 0.1,
-    root: null,
-    rootMargin: "0px",
-  });
-
-  return <div ref={ref} className="w-full h-full flex items-center justify-between relative mb-16">
+  return <div className="w-full h-full flex items-center justify-between relative mb-16">
     <div className="w-3/12">
       <div 
         className={`Montserrat font-bold tracking-tight 2xl:text-7xl xl:text-6xl lg:text-5xl md:text-4xl sm:text-3xl text-2xl ${entry?.intersectionRatio ? "tracking-in-expand" : "opacity-0"}`}

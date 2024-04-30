@@ -1,8 +1,7 @@
 import useFirestore from "@/app/_hooks/useFirestore";
-import { useIntersectionObserver } from "@uidotdev/usehooks";
 import IconButton from "../Button/IconButton";
 
-const AboutContact = () => {
+const AboutContact = ({entry}:{entry: IntersectionObserverEntry | null}) => {
 
   const { data:contactLinkList } = useFirestore('contact_link');
 
@@ -34,16 +33,9 @@ const AboutContact = () => {
     </div>
   }
 
-  const [ref, entry] = useIntersectionObserver({
-    threshold: 0.1,
-    root: null,
-    rootMargin: "0px",
-  });
-
   return <div 
-    ref={ref} 
     className={`w-full h-28 flex items-center justify-between relative mb-16 border-[1px] border-blue-1 blue-shadow-2 rounded-[30px] px-6 py-4 ${entry?.intersectionRatio ? "fade-in" : "opacity-0"}`}
-    style={{animationDelay: "0.9s"}}
+    style={{animationDelay: "1s"}}
   >
     <AboutContactSection>
       <div className="flex flex-col justify-center w-full">
