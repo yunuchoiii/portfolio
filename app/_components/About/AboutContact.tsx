@@ -50,11 +50,11 @@ const AboutContact = () => {
         {contactInfoList.map((info, index) => (
           <div 
             key={`info-item-${index}`}
-            className="flex items-center w-fit rounded-md px-2 py-1 mb-1 last:mb-0 hover:bg-blue-4 hover:bg-opacity-20 transition-all cursor-pointer"
+            className="flex items-center w-fit rounded-lg px-2 py-1 mb-1 last:mb-0 hover:bg-blue-4 hover:bg-opacity-20 transition-all cursor-pointer"
             onClick={()=>copyToClipboard(info.label)}
           >
-            <img src={info.icon} className="2xl:w-6 lg:w-5 w-4 2xl:h-6 lg:h-5 h-4 mr-3"/>
-            <span className="2xl:text-lg xl:text-base text-sm text-white tracking-wide Montserrat">
+            <img src={info.icon} className="2xl:w-6 lg:w-5 w-4 2xl:h-6 lg:h-5 h-4 mr-3 invert dark:invert-0"/>
+            <span className="2xl:text-lg xl:text-base text-sm tracking-wide Montserrat">
               {info.label}
             </span>
           </div>
