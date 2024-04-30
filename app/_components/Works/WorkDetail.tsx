@@ -88,7 +88,7 @@ const WorkDetail = ({item, setSelectedWorkId, show}:WorkDetailProps) => {
   };
   
 
-  return <div className={`absolute w-full h-full bg-blue-1 bg-opacity-30 overflow-y-scroll ${show ? "fade-in" : "fade-out"}`}>
+  return <div className={`absolute w-full h-full bg-blue-1 bg-opacity-30 overflow-y-scroll hide-scroll-bar ${show ? "fade-in" : "fade-out"}`}>
     <div className="absolute top-[2vw] right-[2vw] dark:invert-0">
       <IconButton onClick={handleBack}>
         <img src="/images/icons/right-arrow.png" className="w-7 rotate-180"/>
@@ -102,7 +102,7 @@ const WorkDetail = ({item, setSelectedWorkId, show}:WorkDetailProps) => {
         />
       </div>
       <div className="h-full w-[1px] bg-[#333] dark:bg-white bg-opacity-30 dark:bg-opacity-30 mx-10 sm:block hidden"></div>
-      <div className="sm:flex-1 sm:h-full flex-shrink-0 overflow-y-scroll scroll-smooth sm:mt-0 mt-5">
+      <div className="sm:flex-1 sm:h-full flex-shrink-0 overflow-y-scroll hide-scroll-bar scroll-smooth sm:mt-0 mt-5">
         <div className="text-lg font-bold mb-5 Montserrat flex items-center">
           {item.kor_name || item.eng_name}
           {item.deployed_link && <a href={item.deployed_link} target="_blank">
