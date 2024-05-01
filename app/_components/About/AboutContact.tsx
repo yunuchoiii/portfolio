@@ -7,19 +7,7 @@ const AboutContact = ({entry}:{entry: IntersectionObserverEntry | null}) => {
   const setSnackbarState = useSetRecoilState(snackbarStateAtom)
 
   const { data:contactLinkList } = useFirestore('contact_link');
-
-  const contactInfoList = [
-    {
-      "id": "hYmXrPqZBvEDQSYG2L05",
-      "icon": "/images/icons/mail.png",
-      "label": "chltjdnjs529@gmail.com",
-    },
-    {
-      "id": "YlCOg0sSgzTqLALKtGWi",
-      "icon": "/images/icons/phone.png",
-      "label": "010-4118-8180",
-    },
-  ]
+  const { data:contactInfoList } = useFirestore('contact_info');
 
   const copyToClipboard = (text:string) => {
     navigator.clipboard.writeText(text).then(() => {
@@ -45,10 +33,10 @@ const AboutContact = ({entry}:{entry: IntersectionObserverEntry | null}) => {
   >
     <AboutContactSection>
       <div className="flex flex-col justify-center w-full">
-        {contactInfoList.map((info, index) => (
-          <div 
+        {contactInfoList.sort((a,b) => a.sort - b.sort).map((info, index) => {
+          return info.sort !== 2 && <div 
             key={`info-item-${index}`}
-            className="flex items-center w-fit rounded-lg px-2 py-1 mb-1 last:mb-0 hover:bg-blue-4 hover:bg-opacity-20 transition-all cursor-pointer"
+            className="flex items-center w-fit rounded-lg px-2 py-1 mb-1 last:mb-0 hover:bg-blue-4 hover:bg-opacity-20 cursor-pointer transition-[background-color]"
             onClick={()=>copyToClipboard(info.label)}
           >
             <img src={info.icon} className="2xl:w-6 lg:w-5 w-4 2xl:h-6 lg:h-5 h-4 mr-3 invert dark:invert-0"/>
@@ -56,7 +44,7 @@ const AboutContact = ({entry}:{entry: IntersectionObserverEntry | null}) => {
               {info.label}
             </span>
           </div>
-        ))}
+        })}
       </div>
     </AboutContactSection>
     <AboutContactSection>

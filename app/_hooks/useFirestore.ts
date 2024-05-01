@@ -16,6 +16,7 @@ function useFirestore(collectionName: string) {
         setData(documents);
       } catch (err) {
         setError(err as Error);
+        location.reload();
       } finally {
         setLoading(false);
       }

@@ -17,24 +17,7 @@ const Contact = () => {
   const setSnackbarState = useSetRecoilState(snackbarStateAtom)
 
   const { data:contactLinkList } = useFirestore('contact_link');
-
-  const contactInfoList = [
-    {
-      "id": "hYmXrPqZBvEDQSYG2L05",
-      "icon": "/images/icons/mail.png",
-      "label": "chltjdnjs529@gmail.com",
-    },
-    {
-      "id": "YlCOg0sSgzTqLALKtGWi",
-      "icon": "/images/icons/phone.png",
-      "label": "010-4118-8180",
-    },
-    {
-      "id": "h2nvzxpq0AdsDQbz9nEW",
-      "icon": "/images/icons/location.png",
-      "label": "서울특별시 노원구",
-    }
-  ]
+  const { data:contactInfoList } = useFirestore('contact_info');
 
   const {register, handleSubmit, formState: { errors }} = useForm<EmailFormTypes>()
 
@@ -70,7 +53,7 @@ const Contact = () => {
               Contact .
             </div>
             <div>
-              {contactInfoList.map((info, index) => (
+              {contactInfoList.sort((a,b) => a.sort - b.sort).map((info, index) => (
                 <div 
                   key={`info-item-${index}`} 
                   className="flex items-center 2xl:mb-4 xl:mb-3 lg:mb-2 md:mb-1 mb-0"
