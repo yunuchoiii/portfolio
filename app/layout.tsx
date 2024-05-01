@@ -4,6 +4,7 @@ import Background from "./_components/Layout/Background";
 import FullScreen from "./_components/Layout/FullScreen/FullScreen";
 import Header from "./_components/Layout/Header/Header";
 import RecoilRootProvider from "./_components/Recoil/RecoilRootProvider";
+import Snackbar from "./_components/Snackbar/Snackbar";
 import Providers from "./_theme/Providers";
 import "./animation.css";
 import "./font.css";
@@ -30,6 +31,7 @@ export default function RootLayout({
             <Header/>
             {children}
             <FullScreen/>
+            <Snackbar/>
           </RecoilRootProvider>
         </Providers>
       </body>

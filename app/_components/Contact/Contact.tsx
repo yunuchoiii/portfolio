@@ -1,8 +1,10 @@
 'use client'
 
 import useFirestore from "@/app/_hooks/useFirestore";
+import { snackbarStateAtom } from "@/app/_store/snackbar";
 import { useIntersectionObserver } from "@uidotdev/usehooks";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useSetRecoilState } from "recoil";
 
 interface EmailFormTypes {
   name: string
@@ -12,6 +14,7 @@ interface EmailFormTypes {
 }
 
 const Contact = () => {
+  const setSnackbarState = useSetRecoilState(snackbarStateAtom)
 
   const { data:contactLinkList } = useFirestore('contact_link');
 
@@ -45,6 +48,17 @@ const Contact = () => {
     rootMargin: "0px",
   });
 
+  const copyToClipboard = (text:string) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setSnackbarState({
+        open: true,
+        message: "클립보드에 복사되었습니다"
+      })
+    }).catch(err => {
+      console.error('복사 실패:', err);
+    });
+  };
+
   return <>
     <div ref={ref} className="flex justify-center">
       <div className="flex items-center h-[70vh] max-h-[628px] w-[90%] overflow-hidden">
@@ -57,11 +71,17 @@ const Contact = () => {
             </div>
             <div>
               {contactInfoList.map((info, index) => (
-                <div key={`info-item-${index}`} className="flex item-center 2xl:mb-[30px] xl:mb-6 lg:mb-5 md:mb-4 sm:mb-3 mb-2">
-                  <img src={info.icon} className="2xl:w-[30px] xl:w-6 lg:w-5 w-4 2xl:h-[30px] xl:h-6 h-5 mr-5"/>
-                  <span className="2xl:text-lg xl:text-base text-sm text-white tracking-wide">
+                <div 
+                  key={`info-item-${index}`} 
+                  className="flex items-center 2xl:mb-4 xl:mb-3 lg:mb-2 md:mb-1 mb-0"
+                >
+                  <img src={info.icon} className="2xl:w-[30px] xl:w-6 lg:w-5 w-4 2xl:h-[30px] xl:h-6 h-5 mr-2.5"/>
+                  <button 
+                    className="2xl:text-lg xl:text-base text-sm text-white tracking-wide px-2.5 py-1.5 rounded-md hover:bg-blue-4 hover:bg-opacity-20 transition-all"
+                    onClick={()=>copyToClipboard(info.label)}
+                  >
                     {info.label}
-                  </span>
+                  </button>
                 </div>
               ))}
             </div>

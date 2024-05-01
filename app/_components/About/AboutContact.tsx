@@ -1,7 +1,10 @@
 import useFirestore from "@/app/_hooks/useFirestore";
+import { snackbarStateAtom } from "@/app/_store/snackbar";
+import { useSetRecoilState } from "recoil";
 import IconButton from "../Button/IconButton";
 
 const AboutContact = ({entry}:{entry: IntersectionObserverEntry | null}) => {
+  const setSnackbarState = useSetRecoilState(snackbarStateAtom)
 
   const { data:contactLinkList } = useFirestore('contact_link');
 
@@ -20,7 +23,10 @@ const AboutContact = ({entry}:{entry: IntersectionObserverEntry | null}) => {
 
   const copyToClipboard = (text:string) => {
     navigator.clipboard.writeText(text).then(() => {
-      alert('클립보드에 복사되었습니다: ' + text);
+      setSnackbarState({
+        open: true,
+        message: "클립보드에 복사되었습니다"
+      })
     }).catch(err => {
       console.error('복사 실패:', err);
     });
