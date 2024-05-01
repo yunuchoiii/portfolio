@@ -3,15 +3,17 @@
 import { HEADER_HEIGHT, SIDEBAR_WIDTH } from "@/app/_constants";
 import { CONTACT_INFO } from "@/app/_constants/contact";
 import { MENU_MAP } from "@/app/_constants/menu";
+import { activeSectionAtom } from "@/app/_store/activeSection";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
+import { useRecoilState } from "recoil";
 import IconButton from "../../Button/IconButton";
 import DarkMode from "./DarkMode";
 
 const Header = () => {
   const router = useRouter()
 
-  const [activeSection, setActiveSection] = useState('');
+  const [activeSection, setActiveSection] = useRecoilState(activeSectionAtom);
   const [showMenu, setShowMenu] = useState(false)
 
   useEffect(() => {
@@ -109,11 +111,11 @@ const Header = () => {
         &nbsp;.
       </span>
     </button>
-    <div className="hidden md:flex w-1/3 min-w-96 items-center justify-between 2xl:text-xl text-lg">
+    <div className="hidden md:flex w-1/3 min-w-96 items-center justify-between 2xl:text-lg text-base">
       {MENU_MAP.map(i => {
         return <button
           key={`menu-item-${i.index}`}
-          className={`${i.title == activeSection ? 'opacity-100' : 'opacity-50'} hover:opacity-100 transition-opacity tracking-tighter`}
+          className={`${i.title == activeSection ? 'opacity-100 border-blue-1' : 'opacity-50 border-transparent'} hover:opacity-100 transition-all tracking-tighter h-10 px-1 border-b-2`}
           onClick={()=>handleMenuClick(i.title)}
         >
           {i.title}

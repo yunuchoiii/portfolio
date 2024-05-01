@@ -4,4 +4,5 @@ export interface IMenu {
   korName: string;
   engName: string;
   children?: IMenu[]
+  iconClassName?: string
 }

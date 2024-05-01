@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import Background from "./_components/Layout/Background";
 import FullScreen from "./_components/Layout/FullScreen/FullScreen";
 import Header from "./_components/Layout/Header/Header";
@@ -25,6 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Script src="https://kit.fontawesome.com/6ae2024ce6.js" crossOrigin="anonymous"/>
       <body className={inter.className}>
         <Providers>
           <RecoilRootProvider>
