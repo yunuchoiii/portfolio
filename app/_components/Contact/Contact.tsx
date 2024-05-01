@@ -58,7 +58,9 @@ const Contact = () => {
                   key={`info-item-${index}`} 
                   className="flex items-center 2xl:mb-4 xl:mb-3 lg:mb-2 md:mb-1 mb-0"
                 >
-                  <img src={info.icon} className="2xl:w-[30px] xl:w-6 lg:w-5 w-4 2xl:h-[30px] xl:h-6 h-5 mr-2.5"/>
+                  <div className="w-5 text-center mr-2">
+                    <i className={`${info.icon} 2xl:text-2xl xl:text-xl text-lg`}></i>
+                  </div>
                   <button 
                     className="2xl:text-lg xl:text-base text-sm text-white tracking-wide px-2.5 py-1.5 rounded-md hover:bg-blue-4 hover:bg-opacity-20 transition-all"
                     onClick={()=>copyToClipboard(info.label)}
@@ -79,7 +81,7 @@ const Contact = () => {
           </div>
         </div>
         <div 
-          className={`flex-1 h-[90%] bg-blue-3 bg-opacity-80 rounded-tr-2xl rounded-br-2xl 2xl:p-10 xl:p-9 lg:p-8 md:p-8 sm:p-7 p-6 ${entry?.intersectionRatio ? "fade-in-left" : "opacity-0"}`} 
+          className={`flex-1 h-[90%] bg-blue-3 bg-opacity-90 rounded-tr-2xl rounded-br-2xl 2xl:p-10 xl:p-9 lg:p-8 md:p-8 sm:p-7 p-6 ${entry?.intersectionRatio ? "fade-in-left" : "opacity-0"}`} 
           style={{animationDelay: "0.5s"}}
         >
           <div className="flex justify-center flex-col h-full">
@@ -117,9 +119,9 @@ const Contact = () => {
               />
               <button
                 type="submit"
-                className={`group 2xl:w-[52px] xl:w-12 lg:w-11 md:w-10 sm:w-9 w-8 hover:w-[200px] 2xl:h-[52px] xl:h-12 lg:h-11 md:h-10 sm:h-9 h-8 bg-blue-2 hover:brightness-105 transition-all duration-200 rounded-full flex items-center justify-center button-shadow hover:px-0`}
+                className={`group 2xl:w-[52px] xl:w-12 lg:w-11 md:w-10 sm:w-9 w-8 hover:w-[166px] 2xl:h-[52px] xl:h-12 lg:h-11 md:h-10 sm:h-9 h-8 bg-blue-2 hover:brightness-105 transition-all duration-200 rounded-full flex items-center justify-center button-shadow hover:px-0`}
               >
-                <img src="/images/icons/send.png" className="h-1/2 invert -rotate-45 mb-1 ml-1"/>
+                <i className="fa-solid fa-paper-plane text-lg text-white"></i>
                 <span className="group-hover:w-28 w-0 overflow-hidden transition-all whitespace-nowrap text-white">이메일 보내기</span>
               </button>
             </form>

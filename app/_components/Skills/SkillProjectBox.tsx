@@ -46,10 +46,7 @@ const SkillProjectBox = ({skillItem, projectList, isAnimating, handleWorkButton}
           onClick={()=>handleProject(p.id)}
         >
           <span className="xl:text-base text-sm whitespace-nowrap">{p.kor_name}</span>
-          <img 
-            src="/images/icons/right-arrow.png" 
-            className="h-4 dark:invert"
-          />
+          <i className="fa-solid fa-arrow-right"></i>
         </button>
       })}
     </div>}

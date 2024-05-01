@@ -23,23 +23,18 @@ const FullScreenView = ({
     <button
       disabled={selectedIndex === 0}
       onClick={minusImageIndex}
-      className={`${selectedIndex === 0 && "opacity-30"} transition-opacity duration-300`}
+      className={`${selectedIndex === 0 && "opacity-30"} 
+      transition-opacity duration-300  p-5`}
     >
-      <img 
-        src="/images/icons/right-arrow-2.png" 
-        className={`h-7 dark:invert rotate-180`}
-      />
+      <i className="fa-solid fa-chevron-left text-2xl"></i>
     </button>
     <img src={imageList![selectedIndex]} className="w-10/12 h-5/6 object-contain mx-5"/>
     <button 
       disabled={selectedIndex + 1 === imageList!.length}
       onClick={plusImageIndex}
-      className={`${selectedIndex + 1 === imageList!.length && "opacity-30"} transition-opacity duration-300`}
+      className={`${selectedIndex + 1 === imageList!.length && "opacity-30"} transition-opacity duration-300 p-5`}
     >
-      <img 
-        src="/images/icons/right-arrow-2.png" 
-        className={`h-7 dark:invert`}
-      />
+      <i className="fa-solid fa-chevron-right text-2xl"></i>
     </button>
   </div>
 }

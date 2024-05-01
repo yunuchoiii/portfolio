@@ -89,9 +89,9 @@ const WorkDetail = ({item, setSelectedWorkId, show}:WorkDetailProps) => {
   
 
   return <div className={`absolute w-full h-full bg-blue-1 bg-opacity-30 overflow-y-scroll hide-scroll-bar ${show ? "fade-in" : "fade-out"}`}>
-    <div className="absolute top-[2vw] right-[2vw] dark:invert-0">
+    <div className="absolute top-[2vw] right-[2vw]">
       <IconButton onClick={handleBack}>
-        <img src="/images/icons/right-arrow.png" className="w-7 rotate-180"/>
+        <i className="fa-solid fa-arrow-left text-2xl invert-0 dark:invert"></i>
       </IconButton>
     </div>
     <div className="w-full h-full 2xl:p-[3vw] p-[4vw] flex sm:flex-row flex-col">

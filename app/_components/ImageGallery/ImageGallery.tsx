@@ -125,24 +125,18 @@ const ImageGallery = ({logo, imageList}:ImageGalleryProps) => {
     {imageList?.length !== 0 && <div className="relative mt-2.5 px-[10%]">
       {imageList!.length > 4 && <>
         <button 
-          className={`absolute -translate-y-1/2 top-[50%] left-0 transition-opacity duration-300 ${isLeftDisabled && "opacity-30"}`}
+          className={`absolute -translate-y-1/2 top-[50%] left-0 transition-opacity duration-300 p-2 ${isLeftDisabled && "opacity-30"}`}
           disabled={isLeftDisabled}
           onClick={()=>scrollImages('left')}
         >
-          <img 
-            src="/images/icons/right-arrow-2.png" 
-            className={`h-5 dark:invert rotate-180`}
-          />
+          <i className="fa-solid fa-chevron-left"></i>
         </button>
         <button 
-          className={`absolute -translate-y-1/2 top-[50%] right-0 transition-opacity duration-300 ${isRightDisabled && "opacity-30"}`}
+          className={`absolute -translate-y-1/2 top-[50%] right-0 transition-opacity duration-300 p-2 ${isRightDisabled && "opacity-30"}`}
           disabled={isRightDisabled}
           onClick={()=>scrollImages('right')}
         >
-          <img 
-            src="/images/icons/right-arrow-2.png" 
-            className={`h-5 dark:invert`}
-          />
+          <i className="fa-solid fa-chevron-right"></i>
         </button>
       </>}
       <div 

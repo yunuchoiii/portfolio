@@ -20,6 +20,17 @@ const AboutContact = ({entry}:{entry: IntersectionObserverEntry | null}) => {
     });
   };
 
+  const resumeButtons = [
+    {
+      href: "https://my.surfit.io/w/1787096965",
+      icon: "fa-link",
+    },
+    {
+      href: "https://1drv.ms/b/s!AvXh3xzvn6bxjfMDyo3W14z2cZcRJw?e=9T4pWm",
+      icon: "fa-cloud-arrow-down",
+    }
+  ];
+
   const AboutContactSection = ({children, last}:{children?:any, last?:boolean}) => {
     return <div className="relative w-1/3 h-full flex items-center justify-center">
       {children}
@@ -39,7 +50,7 @@ const AboutContact = ({entry}:{entry: IntersectionObserverEntry | null}) => {
             className="flex items-center w-fit rounded-lg px-2 py-1 mb-1 last:mb-0 hover:bg-blue-4 hover:bg-opacity-20 cursor-pointer transition-[background-color]"
             onClick={()=>copyToClipboard(info.label)}
           >
-            <img src={info.icon} className="2xl:w-6 lg:w-5 w-4 2xl:h-6 lg:h-5 h-4 mr-3 invert dark:invert-0"/>
+            <i className={`${info.icon} mr-3 2xl:text-xl xl:text-lg text-base`}></i>
             <span className="2xl:text-lg xl:text-base text-sm tracking-wide Montserrat">
               {info.label}
             </span>
@@ -63,17 +74,17 @@ const AboutContact = ({entry}:{entry: IntersectionObserverEntry | null}) => {
         <div className="2xl:text-xl lg:text-lg text-base tracking-tighter Montserrat">
           RESUME
         </div>
-        <div className="w-[85px] flex justify-between">
-          <IconButton>
-            <a href="https://my.surfit.io/w/1787096965" target="_blank">
-              <img src="/images/icons/link.png" />
+        <div className="w-[100px] flex justify-between">
+          {resumeButtons.map((button, index) => (
+            <a 
+              key={`resume-button-${index}`}
+              href={button.href}
+              target="_blank"
+              className="w-10 h-10 p-2 rounded-full hover:bg-blue-1 hover:bg-opacity-30 transition-all flex items-center justify-center"
+            >
+              <i className={`fa-solid ${button.icon} text-xl`}></i>
             </a>
-          </IconButton>
-          <IconButton>
-            <a href="https://1drv.ms/b/s!AvXh3xzvn6bxjfMDyo3W14z2cZcRJw?e=9T4pWm" target="_blank">
-              <img src="/images/icons/download.png" />
-            </a>
-          </IconButton>
+          ))}
         </div>
       </div>
     </AboutContactSection>
