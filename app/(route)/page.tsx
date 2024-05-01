@@ -7,6 +7,7 @@ import Home from "../_components/Home/Home";
 import FullPage from "../_components/Layout/Page/FullPage";
 import Skills from "../_components/Skills/Skills";
 import Works from "../_components/Works/Works";
+import { SIDEBAR_WIDTH } from "../_constants";
 
 export default function Main() {
 
@@ -23,7 +24,10 @@ export default function Main() {
   }
 
   return (
-    <div className="relative scroll-container-y h-screen overflow-x-hidden">
+    <div 
+      className="relative scroll-container-y h-screen overflow-x-hidden"
+      style={{paddingLeft: SIDEBAR_WIDTH}}
+    >
       <FullPage id="Home">
         <Home/>
       </FullPage>

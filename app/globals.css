@@ -21,9 +21,9 @@ body {
   background: rgb(var(--background-rgb));
 }
 
-#header {
+/* #header {
   background: linear-gradient(to bottom, rgb(var(--background-rgb)), rgba(var(--background-rgb), 0.75), transparent);
-}
+} */
 
 .bg-circle-1, .bg-circle-2, .bg-circle-3 {
   position: absolute;

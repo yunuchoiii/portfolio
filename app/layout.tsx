@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import Background from "./_components/Layout/Background";
 import FullScreen from "./_components/Layout/FullScreen/FullScreen";
 import Header from "./_components/Layout/Header/Header";
+import Sidebar from "./_components/Layout/Sidebar.tsx/Sidebar";
 import RecoilRootProvider from "./_components/Recoil/RecoilRootProvider";
 import Snackbar from "./_components/Snackbar/Snackbar";
 import Providers from "./_theme/Providers";
@@ -29,6 +30,7 @@ export default function RootLayout({
           <RecoilRootProvider>
             <Background/>
             <Header/>
+            <Sidebar/>
             {children}
             <FullScreen/>
             <Snackbar/>

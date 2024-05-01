@@ -1,6 +1,6 @@
 'use client';
 
-import { HEADER_HEIGHT } from "@/app/_constants";
+import { HEADER_HEIGHT, SIDEBAR_WIDTH } from "@/app/_constants";
 import { CONTACT_INFO } from "@/app/_constants/contact";
 import { MENU_MAP } from "@/app/_constants/menu";
 import { useRouter } from "next/navigation";
@@ -90,8 +90,12 @@ const Header = () => {
 
   return <div
     id="header"
-    className={`fixed top-0 w-screen flex items-center justify-between lg:px-[50px] px-[30px] Montserrat tracking-tighter font-light z-30`}
-    style={{height: HEADER_HEIGHT}}
+    className={`fixed top-0 flex items-center justify-between lg:px-[40px] px-[30px] Montserrat tracking-tighter font-light z-30 backdrop-blur-md`}
+    style={{
+      width: `calc(100vw - ${SIDEBAR_WIDTH}px)`,
+      height: HEADER_HEIGHT,
+      marginLeft: SIDEBAR_WIDTH,
+    }}
   >
     <button 
       id="logo" 
@@ -116,9 +120,9 @@ const Header = () => {
         </button>
       })}
     </div>
-    <div className="md:flex hidden">
+    {/* <div className="md:flex hidden">
       <RightButtonsGroup/>
-    </div>
+    </div> */}
     <div className="md:hidden flex relative">
       <MobileMenu/>
     </div>

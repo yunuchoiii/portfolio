@@ -28,19 +28,19 @@ function DarkMode({}: IDarkMode) {
   const currentTheme = theme === "system" ? systemTheme : theme;
 
   return <button
-    className="relative w-[75px] h-[30px] rounded-full border-[3px] border-blue-1 flex items-center blue-shadow-1"
+    className="relative h-[75px] w-[31px] rounded-full border-[3px] border-blue-1 flex items-center blue-shadow-1"
     onClick={onClick}
   >
     <div
-      className="w-[43.5px] h-[22px] rounded-full bg-blue-2 absolute z-0 transition-all"
+      className="h-[41px] w-[22px] rounded-full bg-blue-2 absolute z-0 transition-all left-[1.5px]"
       style={{
-        left: theme === "light" ? '1px' : '24px',
+        top: theme === "light" ? '1.5px' : '26.5px',
       }}
     ></div>
-    <div className="w-full flex items-center justify-between relative z-10">
-      <img src="/images/header/darkmode_sun.png" className="w-[18px] h-[18px] ml-1"></img>
-      <div className="w-1 h-1 rounded-sm bg-[#FFFDFD]"></div>
-      <img src="/images/header/darkmode_moon.png" className="w-[18px] h-[18px] mr-1"></img>
+    <div className="w-full flex flex-col items-center justify-between relative z-10">
+      <img src="/images/header/darkmode_sun.png" className="w-[18px] h-[18px] mb-2.5"></img>
+      <div className="w-1 h-1 rounded-md bg-[#FFFDFD]"></div>
+      <img src="/images/header/darkmode_moon.png" className="w-[18px] h-[18px] mt-2.5"></img>
     </div>
   </button>;
 }
