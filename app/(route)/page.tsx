@@ -1,5 +1,6 @@
 'use client';
 
+import { useWindowSize } from "@uidotdev/usehooks";
 import { useState } from "react";
 import About from "../_components/About/About";
 import Contact from "../_components/Contact/Contact";
@@ -10,6 +11,9 @@ import Works from "../_components/Works/Works";
 import { SIDEBAR_WIDTH } from "../_constants";
 
 export default function Main() {
+
+  const windowSize = useWindowSize()
+  const isMobile = windowSize.width! <= 640
 
   const [selectedWorkId, setSelectedWorkId] = useState<number>(-1)
   const [isWorkAnimating, setIsWorkAnimating] = useState<boolean>(false)
@@ -26,7 +30,7 @@ export default function Main() {
   return (
     <div 
       className="relative scroll-container-y h-screen overflow-x-hidden"
-      style={{paddingLeft: SIDEBAR_WIDTH}}
+      style={{paddingLeft: isMobile ? 0 : SIDEBAR_WIDTH}}
     >
       <FullPage id="Home">
         <Home/>

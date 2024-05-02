@@ -4,6 +4,7 @@ import { HEADER_HEIGHT, SIDEBAR_WIDTH } from "@/app/_constants";
 import { CONTACT_INFO } from "@/app/_constants/contact";
 import { MENU_MAP } from "@/app/_constants/menu";
 import { activeSectionAtom } from "@/app/_store/activeSection";
+import { useWindowSize } from "@uidotdev/usehooks";
 import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
@@ -12,6 +13,9 @@ import DarkMode from "./DarkMode";
 
 const Header = () => {
   const router = useRouter()
+
+  const windowSize = useWindowSize()
+  const isMobile = windowSize.width! <= 640
 
   const [activeSection, setActiveSection] = useRecoilState(activeSectionAtom);
   const [showMenu, setShowMenu] = useState(false)
@@ -92,11 +96,11 @@ const Header = () => {
 
   return <div
     id="header"
-    className={`fixed top-0 flex items-center justify-between lg:px-[40px] px-[30px] Montserrat tracking-tighter font-light z-30 backdrop-blur-md`}
+    className={`fixed top-0 flex items-center justify-between lg:px-[40px] px-[30px] Montserrat tracking-tighter font-light z-30`}
     style={{
-      width: `calc(100vw - ${SIDEBAR_WIDTH}px)`,
       height: HEADER_HEIGHT,
-      marginLeft: SIDEBAR_WIDTH,
+      width: isMobile ? "100vw" : `calc(100vw - ${SIDEBAR_WIDTH}px)`,
+      marginLeft: isMobile ? 0 : SIDEBAR_WIDTH,
     }}
   >
     <button 

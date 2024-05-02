@@ -19,7 +19,7 @@ const Sidebar = () => {
   };
 
   return <div 
-    className="fixed z-50 h-screen border-r border-blue-1 flex flex-col items-center justify-between pb-8"
+    className="hidden sm:flex flex-col items-center justify-between fixed z-50 h-screen border-r border-blue-1 pb-8"
     style={{width:SIDEBAR_WIDTH}}
   >
     <div
