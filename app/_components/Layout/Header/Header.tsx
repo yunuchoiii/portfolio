@@ -53,14 +53,16 @@ const Header = () => {
     return <div className="flex items-center justify-center">
       <IconButton
         props={{
-          className: "mr-7"
+          className: "mr-10"
         }}
       >
         <a href={CONTACT_INFO.github.src} target="_blank">
           <img src="/images/icons/github.png" className="opacity-75"/>
         </a>
       </IconButton>
-      <DarkMode/>
+      <div className="-rotate-90">
+        <DarkMode/>
+      </div>
     </div>
   }
 
@@ -81,7 +83,7 @@ const Header = () => {
         {MENU_MAP.map(i => {
           return <button
             key={`mobile-menu-item-${i.index}`}
-            className={`hover:opacity-100 transition-opacity tracking-tighter text-lg mb-5`}
+            className={`py-2.5 bg-transparent active:scale-90 active:bg-black dark:active:bg-white active:bg-opacity-10 dark:active:bg-opacity-15 rounded-lg transition-all tracking-tighter text-lg`}
             onClick={()=>handleMenuClick(i.title)}
           >
             {i.title}
