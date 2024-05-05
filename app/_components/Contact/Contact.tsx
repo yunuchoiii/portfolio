@@ -2,7 +2,7 @@
 
 import useFirestore from "@/app/_hooks/useFirestore";
 import { snackbarStateAtom } from "@/app/_store/snackbar";
-import { useIntersectionObserver } from "@uidotdev/usehooks";
+import { useIntersectionObserver, useWindowSize } from "@uidotdev/usehooks";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useSetRecoilState } from "recoil";
 
@@ -15,6 +15,9 @@ interface EmailFormTypes {
 
 const Contact = () => {
   const setSnackbarState = useSetRecoilState(snackbarStateAtom)
+
+  const windowSize = useWindowSize()
+  const isMobile = windowSize.width! <= 768
 
   const { data:contactLinkList } = useFirestore('contact_link');
   const { data:contactInfoList } = useFirestore('contact_info');
@@ -44,11 +47,11 @@ const Contact = () => {
 
   return <>
     <div ref={ref} className="flex justify-center">
-      <div className="flex items-center h-[70vh] max-h-[628px] w-[90%] overflow-hidden">
-        <div className="relative z-10 w-[37%] min-w-[260px] h-full rounded-[20px] bg-gradient-to-br from-[#77C9CE] to-[#326366] overflow-hidden">
+      <div className="flex items-center md:flex-row flex-col md:h-[70vh] md:max-h-[628px] h-auto sm:w-[90%] w-full">
+        <div className="relative z-10 md:w-[37%] w-full min-w-[260px] md:h-full rounded-[20px] bg-gradient-to-br from-[#77C9CE] to-[#326366] overflow-hidden flex-shrink-0">
           <div className="w-[14vw] h-[14vw] rounded-full bg-blue-2 absolute left-[10%]"/>
           <div className="w-[17vw] h-[17vw] rounded-full bg-blue-2 absolute top-[30%] right-[10%]"/>
-          <div className="w-full h-full absolute top-0 left-0 bg-white bg-opacity-5 backdrop-blur-[60px] px-[14%] py-[10%]">
+          <div className="w-full h-full relative top-0 left-0 bg-white bg-opacity-5 backdrop-blur-[60px] px-[14%] py-[10%]">
             <div className="2xl:text-5xl xl:text-4xl text-3xl font-semibold Montserrat tracking-tighter text-white 2xl:mb-[74px] xl:mb-16 lg:mb-14 md:mb-12 mb-10">
               Contact .
             </div>
@@ -81,7 +84,7 @@ const Contact = () => {
           </div>
         </div>
         <div 
-          className={`flex-1 h-[90%] bg-blue-3 bg-opacity-90 rounded-tr-2xl rounded-br-2xl 2xl:p-10 xl:p-9 lg:p-8 md:p-8 sm:p-7 p-6 ${entry?.intersectionRatio ? "fade-in-left" : "opacity-0"}`} 
+          className={`md:flex-1 w-[90%] md:h-[90%] bg-blue-3 bg-opacity-90 md:rounded-tr-2xl rounded-br-2xl md:rounded-bl-none rounded-bl-2xl 2xl:p-10 xl:p-9 lg:p-8 sm:p-8 md:p-7 px-6 py-8 ${entry?.intersectionRatio ? (isMobile ? "fade-in-top" : "fade-in-left") : "opacity-0"}`} 
           style={{animationDelay: "0.5s"}}
         >
           <div className="flex justify-center flex-col h-full">
@@ -119,10 +122,10 @@ const Contact = () => {
               />
               <button
                 type="submit"
-                className={`group 2xl:w-[52px] xl:w-12 lg:w-11 md:w-10 sm:w-9 w-8 hover:w-[166px] 2xl:h-[52px] xl:h-12 lg:h-11 md:h-10 sm:h-9 h-8 bg-blue-2 hover:brightness-105 transition-all duration-200 rounded-full flex items-center justify-center button-shadow hover:px-0`}
+                className={`group 2xl:w-[52px] xl:w-12 lg:w-11 w-10 md:hover:w-[166px] 2xl:h-[52px] xl:h-12 lg:h-11 h-10 bg-blue-2 md:hover:brightness-105 active:brightness-105  transition-all duration-200 rounded-full flex items-center justify-center button-shadow hover:px-0 mt-2`}
               >
-                <i className="fa-solid fa-paper-plane text-lg text-white"></i>
-                <span className="group-hover:w-28 w-0 overflow-hidden transition-all whitespace-nowrap text-white">이메일 보내기</span>
+                <i className="fa-solid fa-paper-plane md:text-lg text-base text-white"></i>
+                <span className="md:group-hover:w-28 w-0 overflow-hidden transition-all whitespace-nowrap text-white">이메일 보내기</span>
               </button>
             </form>
           </div>
@@ -133,7 +136,7 @@ const Contact = () => {
       {`
         .form-input {
           flex-shrink: 0;
-          height: 30px;
+          height: 34px;
           margin-bottom: 12px;
           background: rgba(255, 255, 255, 0.2);
           color: #FFF;
@@ -145,8 +148,8 @@ const Contact = () => {
         }
         @media (min-width: 768px) {
           .form-input {
-            height: 34px;
-            margin-bottom: 6px;
+            height: 36px;
+            margin-bottom: 8px;
           }
           .form-input, textarea.form-input {
             padding-left: 10px;

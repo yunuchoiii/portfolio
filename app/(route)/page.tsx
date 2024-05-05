@@ -13,7 +13,7 @@ import { SIDEBAR_WIDTH } from "../_constants";
 export default function Main() {
 
   const windowSize = useWindowSize()
-  const isMobile = windowSize.width! <= 640
+  const isMobile = windowSize.width! <= 768
 
   const [selectedWorkId, setSelectedWorkId] = useState<number>(-1)
   const [isWorkAnimating, setIsWorkAnimating] = useState<boolean>(false)
@@ -51,7 +51,7 @@ export default function Main() {
           handleWorkButton={handleWorkButton}
         />
       </FullPage>
-      <FullPage id="Contact">
+      <FullPage id="Contact" longPage={isMobile}>
         <Contact/>
       </FullPage>
     </div>

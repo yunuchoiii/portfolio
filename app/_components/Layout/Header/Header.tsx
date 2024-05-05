@@ -15,7 +15,7 @@ const Header = () => {
   const router = useRouter()
 
   const windowSize = useWindowSize()
-  const isMobile = windowSize.width! <= 640
+  const isMobile = windowSize.width! <= 768
 
   const [activeSection, setActiveSection] = useRecoilState(activeSectionAtom);
   const [showMenu, setShowMenu] = useState(false)

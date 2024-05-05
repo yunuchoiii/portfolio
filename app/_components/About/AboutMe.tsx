@@ -1,9 +1,9 @@
 const AboutMe = ({entry}:{entry: IntersectionObserverEntry | null}) => {
 
-  return <div className="w-full h-full flex items-center justify-between relative mb-16">
-    <div className="w-3/12">
+  return <div className="w-full h-full flex lg:flex-row flex-col xl:items-center items-start justify-between relative mb-16">
+    <div className="lg:w-3/12">
       <div 
-        className={`Montserrat font-bold tracking-tight 2xl:text-7xl xl:text-6xl lg:text-5xl md:text-4xl sm:text-3xl text-2xl ${entry?.intersectionRatio ? "tracking-in-expand" : "opacity-0"}`}
+        className={`Montserrat font-bold tracking-tight 2xl:text-7xl xl:text-6xl text-5xl ${entry?.intersectionRatio ? "tracking-in-expand" : "opacity-0"}`}
       >
         About <br/>
         Me <b className="text-blue-1">.</b>
@@ -11,7 +11,7 @@ const AboutMe = ({entry}:{entry: IntersectionObserverEntry | null}) => {
     </div>
     <div 
       className={`
-        w-8/12 2xl:text-lg xl:text-md lg:text-base text-sm
+        lg:w-8/12 2xl:text-lg xl:text-md lg:text-base text-sm mt-8 lg:mt-0
         ${entry?.intersectionRatio ? "fade-in" : "opacity-0"}
       `}
       style={{

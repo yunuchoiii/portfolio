@@ -28,23 +28,23 @@ const AboutList = ({entry}:{entry: IntersectionObserverEntry | null}) => {
     },
   ]
 
-  return <div className="w-full h-full flex items-center justify-between relative">
+  return <div className="w-full h-full flex lg:flex-row flex-col items-center justify-between relative">
     {list.map(item => (
       <div
         key={`about-list-item-${item.id}`}
-        className={`w-[27%] after:pb-[100%] relative after:block ${entry?.intersectionRatio ? "fade-in-bottom" : "opacity-0"}`}
+        className={`lg:w-[27%] w-full xl:after:pb-[100%] lg:after:pb-[130%] md:after:pb-[27%] relative after:block lg:mb-0 mb-8 ${entry?.intersectionRatio ? "fade-in-bottom" : "opacity-0"}`}
         style={{
           animationDelay: `${2 + 0.3 * item.id}s`
         }}
       >
-        <div className="absolute w-full h-full rounded-[30px] bg-gradient-to-br from-[rgba(52,194,203,0.2)] to-[rgba(18,151,159,0.2)] from p-6">
+        <div className="md:absolute relative w-full h-full rounded-[30px] bg-gradient-to-br from-[rgba(52,194,203,0.2)] to-[rgba(18,151,159,0.2)] from p-6">
           <div className="flex items-center">
-            <div className="w-1/4 after:pb-[100%] relative after:block flex-shrink-0">
+            <div className="lg:w-1/4 w-[60px] after:pb-[100%] relative after:block flex-shrink-0">
               <div className="absolute w-full h-full rounded-full bg-blue-1 dark:bg-blue-4 bg-opacity-20 dark:bg-opacity-20 flex items-center justify-center">
                 <img src={item.icon} className="w-3/5 dark:invert" />
               </div>
             </div>
-            <div className="2xl:ml-5 ml-3 2xl:text-2xl lg:text-xl text-lg Montserrat">
+            <div className="2xl:ml-5 ml-3 2xl:text-2xl xl:text-xl text-lg Montserrat">
               {item.title}
             </div>
           </div>

@@ -32,14 +32,14 @@ const AboutContact = ({entry}:{entry: IntersectionObserverEntry | null}) => {
   ];
 
   const AboutContactSection = ({children, last}:{children?:any, last?:boolean}) => {
-    return <div className="relative w-1/3 h-full flex items-center justify-center">
+    return <div className="relative w-full h-full flex items-center justify-center md:mb-0 mb-3 last:mb-0 md:p-0 py-2 px-3 md:bg-transparent bg-blue-1 bg-opacity-30 rounded-[20px]">
       {children}
-      {!last && <div className="w-[1px] h-full bg-blue-1 blue-shadow-1 absolute right-0"/>}
+      <div className={`${last ? "w-0" : "md:w-[1px] w-0"} h-full bg-blue-1 blue-shadow-1 absolute right-0`}/>
     </div>
   }
 
   return <div 
-    className={`w-full h-28 flex items-center justify-between relative mb-16 border-[1px] border-blue-1 blue-shadow-2 rounded-[30px] px-6 py-4 ${entry?.intersectionRatio ? "fade-in" : "opacity-0"}`}
+    className={`w-full md:h-28 h-auto flex md:flex-row flex-col items-center justify-between relative mb-16 border-[1px] border-blue-1 blue-shadow-2 rounded-[30px] lg:px-6 px-4 py-4 ${entry?.intersectionRatio ? "fade-in" : "opacity-0"}`}
     style={{animationDelay: "1s"}}
   >
     <AboutContactSection>
@@ -50,7 +50,7 @@ const AboutContact = ({entry}:{entry: IntersectionObserverEntry | null}) => {
             className="flex items-center w-fit rounded-lg px-2 py-1 mb-1 last:mb-0 hover:bg-blue-4 hover:bg-opacity-20 cursor-pointer transition-[background-color]"
             onClick={()=>copyToClipboard(info.label)}
           >
-            <i className={`${info.icon} mr-3 2xl:text-xl xl:text-lg text-base`}></i>
+            <i className={`${info.icon} lg:mr-3 mr-2 2xl:text-xl xl:text-lg text-base`}></i>
             <span className="2xl:text-lg xl:text-base text-sm tracking-wide Montserrat">
               {info.label}
             </span>
@@ -59,7 +59,7 @@ const AboutContact = ({entry}:{entry: IntersectionObserverEntry | null}) => {
       </div>
     </AboutContactSection>
     <AboutContactSection>
-      <div className="flex justify-between w-1/2 ">
+      <div className="flex justify-between lg:w-1/2 w-2/3 ">
         {contactLinkList.map((link, index) => {
           return <IconButton key={`info-link-${index}`}>
             <a href={link.link} target="_blank">
@@ -70,11 +70,11 @@ const AboutContact = ({entry}:{entry: IntersectionObserverEntry | null}) => {
       </div>
     </AboutContactSection>
     <AboutContactSection last>
-      <div className="flex items-center justify-between w-full pl-12 pr-6">
+      <div className="flex items-center justify-evenly w-full pl-3">
         <div className="2xl:text-xl lg:text-lg text-base tracking-tighter Montserrat">
           RESUME
         </div>
-        <div className="w-[100px] flex justify-between">
+        <div className="xl:w-[100px] lg:w-[90px] w-[80px] flex justify-between">
           {resumeButtons.map((button, index) => (
             <a 
               key={`resume-button-${index}`}
