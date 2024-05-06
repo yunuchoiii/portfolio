@@ -30,7 +30,7 @@ export default function Main() {
   return (
     <div 
       className="relative scroll-container-y h-screen overflow-x-hidden"
-      style={{paddingLeft: isMobile ? 0 : SIDEBAR_WIDTH}}
+      style={{paddingLeft: !isMobile ? SIDEBAR_WIDTH : 0 }}
     >
       <FullPage id="Home">
         <Home/>

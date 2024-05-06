@@ -29,7 +29,7 @@ const Sidebar = () => {
       <img src="/images/main/logo_white.png" className="w-2/5 hidden dark:block"/>
       <img src="/images/main/logo_black.png" className="w-2/5 block dark:hidden"/>
     </div>
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center backdrop-blur-md px-1.5 py-2.5 rounded-xl box-shadow-2">
       {MENU_MAP.map((menu, index) => (
         <button
           key={`side-menu-${index}`}
