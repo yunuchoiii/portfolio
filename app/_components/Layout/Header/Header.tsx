@@ -6,8 +6,8 @@ import { MENU_MAP } from "@/app/_constants/menu";
 import { activeSectionAtom } from "@/app/_store/activeSection";
 import { useWindowSize } from "@uidotdev/usehooks";
 import { useRouter } from "next/navigation";
-import { useCallback, useEffect, useState } from "react";
-import { useRecoilState } from "recoil";
+import { useCallback, useState } from "react";
+import { useRecoilValue } from "recoil";
 import IconButton from "../../Button/IconButton";
 import DarkMode from "./DarkMode";
 
@@ -17,29 +17,8 @@ const Header = () => {
   const windowSize = useWindowSize()
   const isMobile = windowSize.width! <= 768
 
-  const [activeSection, setActiveSection] = useRecoilState(activeSectionAtom);
+  const activeSection = useRecoilValue(activeSectionAtom);
   const [showMenu, setShowMenu] = useState(false)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: "0px", threshold: 0.5 }
-    );
-
-    document.querySelectorAll(".scroll-area").forEach((section) => {
-      observer.observe(section);
-    });
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
 
   const handleMenuClick = (sectionId: string) => {
     const section = document.getElementById(sectionId);
@@ -78,7 +57,7 @@ const Header = () => {
         />
       </button>
       <div 
-        className={`sm:w-[250px] w-[calc(100vw-120px)] absolute flex flex-col right-[37.5px] top-16 transition-opacity text-right bg-white bg-opacity-40 dark:bg-opacity-15 backdrop-blur-lg px-9 pt-6 pb-7 rounded-3xl box-shadow-1 ${showMenu ? 'fade-in-right' : 'fade-out-right'}`}
+        className={`sm:w-[250px] w-[calc(100vw-120px)] absolute flex flex-col right-[37.5px] top-16 transition-opacity text-right bg-white bg-opacity-40 dark:bg-opacity-15 backdrop-blur-lg px-9 pt-6 pb-4 rounded-3xl box-shadow-1 ${showMenu ? 'fade-in-right' : 'fade-out-right'}`}
       >
         {MENU_MAP.map(i => {
           return <button
@@ -117,7 +96,7 @@ const Header = () => {
         &nbsp;.
       </span>
     </button>
-    <div className="hidden md:flex w-1/3 min-w-96 items-center justify-between 2xl:text-lg text-base">
+    <div className="hidden md:flex w-1/3 min-w-96 max-w-[426px] items-center justify-between 2xl:text-lg text-base">
       {MENU_MAP.map(i => {
         return <button
           key={`menu-item-${i.index}`}
