@@ -30,7 +30,10 @@ const Skills = ({handleWorkButton}:SkillsProps) => {
   const { data: projectList } = useFirestore('project');
 
   const projectListBySkillId = (skillId:number) => {
-    return (projectList as IProject[]).filter(i => i.skill_id_list.includes(skillId)).sort((a,b) => a.id - b.id)
+    return (projectList as IProject[])
+      .filter(p => p.show_yn != false)
+      .filter(i => i.skill_id_list.includes(skillId))
+      .sort((a,b) => a.id - b.id)
   }
 
   const handleSkill = (skill: ISkill) => {
@@ -99,11 +102,11 @@ const Skills = ({handleWorkButton}:SkillsProps) => {
                     />
                   </div>
                   <div 
-                  className={`
-                    Montserrat 2xl:text-xl xl:text-lg lg:text-md md:text-base relative xl:left-[70px] left-[60px]
-                    ${lightTitleList.includes(i.title) && 'skill-light'} 
-                    ${darkTitleList.includes(i.title) && 'skill-dark'}
-                  `}
+                    className={`
+                      Montserrat 2xl:text-xl xl:text-lg lg:text-md md:text-base relative xl:left-[70px] left-[60px]
+                      ${lightTitleList.includes(i.title) && 'skill-light'} 
+                      ${darkTitleList.includes(i.title) && 'skill-dark'}
+                    `}
                   >
                     {i.title}
                   </div>
@@ -132,7 +135,7 @@ const Skills = ({handleWorkButton}:SkillsProps) => {
       style={{height: `calc(100vh - ${HEADER_HEIGHT * 2}px)`}}
     >
       <div 
-        className="w-full h-full bg-blue-4 bg-opacity-15 xl:rounded-[20px] rounded-[15px] overflow-hidden transition-[width] duration-500 overflow-y-scroll hide-scroll-bar"
+        className="w-full h-full bg-blue-1 bg-opacity-20 xl:rounded-[20px] rounded-[15px] overflow-hidden transition-[width] duration-500 overflow-y-scroll hide-scroll-bar"
         style={{width: isAnimating || !selectedSkill ? 0 : '100%'}}
       >
         <SkillProjectBox 

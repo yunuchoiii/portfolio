@@ -106,7 +106,7 @@ const WorkDetail = ({item, setSelectedWorkId, show}:WorkDetailProps) => {
         <div className="text-lg font-bold mb-5 Montserrat flex items-center">
           {item.kor_name || item.eng_name}
           {item.deployed_link && <a href={item.deployed_link} target="_blank">
-            <img src="/images/icons/link.png" className="w-5 ml-2.5 dark:invert transition-all duration-1000"/>
+            <i className="fa-solid fa-link ml-2.5"></i>
           </a>
           }
         </div>

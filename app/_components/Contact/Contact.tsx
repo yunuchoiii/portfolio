@@ -62,7 +62,7 @@ const Contact = () => {
                   className="flex items-center 2xl:mb-4 xl:mb-3 lg:mb-2 md:mb-1 mb-0"
                 >
                   <div className="w-5 text-center mr-2">
-                    <i className={`${info.icon} 2xl:text-2xl xl:text-xl text-lg`}></i>
+                    <i className={`${info.icon} 2xl:text-2xl xl:text-xl text-lg text-white`}></i>
                   </div>
                   <button 
                     className="2xl:text-lg xl:text-base text-sm text-white tracking-wide px-2.5 py-1.5 rounded-md hover:bg-blue-4 hover:bg-opacity-20 transition-all"

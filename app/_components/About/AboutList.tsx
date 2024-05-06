@@ -37,10 +37,10 @@ const AboutList = ({entry}:{entry: IntersectionObserverEntry | null}) => {
           animationDelay: `${2 + 0.3 * item.id}s`
         }}
       >
-        <div className="md:absolute relative w-full h-full rounded-[30px] bg-gradient-to-br from-[rgba(52,194,203,0.2)] to-[rgba(18,151,159,0.2)] from p-6">
+        <div className="md:absolute relative w-full h-full rounded-[30px] bg-blue-1 bg-opacity-20 from p-6">
           <div className="flex items-center">
             <div className="lg:w-1/4 w-[60px] after:pb-[100%] relative after:block flex-shrink-0">
-              <div className="absolute w-full h-full rounded-full bg-blue-1 dark:bg-blue-4 bg-opacity-20 dark:bg-opacity-20 flex items-center justify-center">
+              <div className="absolute w-full h-full rounded-full bg-blue-2 dark:bg-blue-4 bg-opacity-30 dark:bg-opacity-20 flex items-center justify-center">
                 <img src={item.icon} className="w-3/5 dark:invert" />
               </div>
             </div>

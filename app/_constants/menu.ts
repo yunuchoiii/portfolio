@@ -27,7 +27,7 @@ export const MENU_MAP:IMenu[] = [
     title: "Works",
     korName: "프로젝트",
     engName: "Works",
-    iconClassName: "fa-solid fa-layer-group",
+    iconClassName: "fa-solid fa-laptop",
   },
   {
     index: 4,
