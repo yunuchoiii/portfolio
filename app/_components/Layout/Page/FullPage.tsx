@@ -27,7 +27,6 @@ const FullPage = ({id, title, children, longPage, props}:PageProps) => {
   useEffect(() => {
     if (entry?.isIntersecting) {
       setActiveSection(id);
-      console.log("Active Section:", id);
     }
   }, [entry?.isIntersecting, id, setActiveSection]);
   

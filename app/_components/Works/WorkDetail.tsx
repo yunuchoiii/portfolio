@@ -105,10 +105,11 @@ const WorkDetail = ({item, setSelectedWorkId, show}:WorkDetailProps) => {
       <div className="sm:flex-1 sm:h-full flex-shrink-0 overflow-y-scroll hide-scroll-bar scroll-smooth sm:mt-0 mt-5">
         <div className="text-lg font-bold mb-5 Montserrat flex items-center">
           {item.kor_name || item.eng_name}
-          {item.deployed_link && <a href={item.deployed_link} target="_blank">
-            <i className="fa-solid fa-link ml-2.5"></i>
-          </a>
-          }
+          {item.deployed_link && (
+            <a href={item.deployed_link} target="_blank">
+              <i className="fa-solid fa-link ml-2.5"></i>
+            </a>
+          )}
         </div>
         <DetailSection title="요약" content={item.summary} />
         <DetailSection title="기간" content={`${item.start_date} - ${item.end_date}`} />

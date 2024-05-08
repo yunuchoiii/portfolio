@@ -84,7 +84,7 @@ const Contact = () => {
           </div>
         </div>
         <div 
-          className={`md:flex-1 w-[90%] md:h-[90%] bg-blue-3 bg-opacity-90 md:rounded-tr-2xl rounded-br-2xl md:rounded-bl-none rounded-bl-2xl 2xl:p-10 xl:p-9 lg:p-8 sm:p-8 md:p-7 px-6 py-8 ${entry?.intersectionRatio ? (isMobile ? "fade-in-top" : "fade-in-left") : "opacity-0"}`} 
+          className={`md:flex-1 w-[90%] md:h-[90%] bg-blue-3 bg-opacity-90 md:rounded-tr-2xl rounded-br-2xl md:rounded-bl-none rounded-bl-2xl 2xl:p-10 xl:p-9 lg:p-8 sm:p-8 md:p-7 px-6 py-8 backdrop-blur-lg ${entry?.intersectionRatio ? (isMobile ? "fade-in-top" : "fade-in-left") : "opacity-0"}`} 
           style={{animationDelay: "0.5s"}}
         >
           <div className="flex justify-center flex-col h-full">
@@ -122,7 +122,7 @@ const Contact = () => {
               />
               <button
                 type="submit"
-                className={`group 2xl:w-[52px] xl:w-12 lg:w-11 w-10 md:hover:w-[166px] 2xl:h-[52px] xl:h-12 lg:h-11 h-10 bg-blue-2 md:hover:brightness-105 active:brightness-105  transition-all duration-200 rounded-full flex items-center justify-center button-shadow hover:px-0 mt-2`}
+                className={`group 2xl:w-[52px] xl:w-12 lg:w-11 w-10 md:hover:w-[166px] 2xl:h-[52px] xl:h-12 lg:h-11 h-10 bg-blue-2 md:hover:brightness-105 active:brightness-105 transition-all duration-200 rounded-full flex items-center justify-center button-shadow hover:px-0 mt-2`}
               >
                 <i className="fa-solid fa-paper-plane md:text-lg text-base text-white"></i>
                 <span className="md:group-hover:w-28 w-0 overflow-hidden transition-all whitespace-nowrap text-white">이메일 보내기</span>

@@ -115,7 +115,7 @@ const ImageGallery = ({logo, imageList}:ImageGalleryProps) => {
   }, [imageList, selectedIndex])
 
   return <div className="w-full h-full flex flex-col">
-    <div className="flex-1 bg-blue-1 bg-opacity-30 rounded-[10px] flex justify-center items-center p-2.5 min-h-0">
+    <div className="flex-1 bg-blue-1 bg-opacity-25 rounded-[10px] flex justify-center items-center p-2.5 min-h-0">
       {selectedIndex !== -1 ? 
       <button onClick={handleExpand} className="w-full h-full">
         <img src={imageList![selectedIndex]} className="w-full h-full object-contain"/>

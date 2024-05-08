@@ -39,7 +39,7 @@ const SkillProjectBox = ({skillItem, projectList, isAnimating, handleWorkButton}
       {projectList.filter(p => p.show_yn != false).map(p => {
         return <button
           key={`project-item-${p.id}`}
-          className="w-full h-[60px] bg-blue-2 dark:bg-blue-4 bg-opacity-30 dark:bg-opacity-20 hover:bg-opacity-30 active:scale-95 transition-all duration-300 rounded-2xl mb-2.5 px-5 flex items-center justify-between"
+          className="w-full h-[60px] bg-blue-1 dark:bg-blue-4 bg-opacity-20 dark:bg-opacity-20 hover:bg-opacity-30 active:scale-95 transition-all duration-300 rounded-2xl mb-2.5 px-5 flex items-center justify-between"
           style={{opacity: isAnimating ? 0 : 100}}
           onClick={()=>handleProject(p.id)}
         >
