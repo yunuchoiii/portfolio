@@ -26,7 +26,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <Script src="https://kit.fontawesome.com/6ae2024ce6.js" crossOrigin="anonymous"/>
       <body className={inter.className}>
         <Providers>
           <RecoilRootProvider>
@@ -39,6 +38,8 @@ export default function RootLayout({
           </RecoilRootProvider>
         </Providers>
       </body>
+      <Script src="https://kit.fontawesome.com/6ae2024ce6.js" crossOrigin="anonymous"/>
+      <Script data-cfasync="false" type="text/javascript" src="https://cdn.rawgit.com/dwyl/html-form-send-email-via-google-script-without-server/master/form-submission-handler.js"/>
     </html>
   );
 }
