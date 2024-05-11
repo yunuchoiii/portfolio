@@ -3,7 +3,6 @@
 import useFirestore from "@/app/_hooks/useFirestore";
 import { snackbarStateAtom } from "@/app/_store/snackbar";
 import { useIntersectionObserver, useWindowSize } from "@uidotdev/usehooks";
-import { SubmitHandler, useForm } from "react-hook-form";
 import { useSetRecoilState } from "recoil";
 
 interface EmailFormTypes {
@@ -21,12 +20,6 @@ const Contact = () => {
 
   const { data:contactLinkList } = useFirestore('contact_link');
   const { data:contactInfoList } = useFirestore('contact_info');
-
-  const {register, handleSubmit, formState: { errors }} = useForm<EmailFormTypes>()
-
-  const onValid: SubmitHandler<EmailFormTypes> = (data) => {
-    console.log(data);
-  };
 
   const [ref, entry] = useIntersectionObserver({
     threshold: 0.1,
@@ -94,39 +87,63 @@ const Contact = () => {
             <div className="2xl:text-base xl:text-sm text-xs text text-white xl:mb-5 md:mb-4 mb-3">
               궁금한 점이나 제안할 사항이 있다면 메일을 보내주세요!
             </div>
-            <form onSubmit={handleSubmit(onValid)} className="relative flex flex-col items-end">
-              <div className="flex justify-between w-full">
+            <form 
+              method="POST" 
+              data-email="chltjdnjs529@gmail.com" 
+              action="https://script.google.com/macros/s/AKfycbz0gHfepP9cWlpSkXeIuMxqnsD7mg68jyI6m9VKB_rsd6YE_DaZ8NaNURTiWINliFfJmA/exec"
+              className="gform"
+            >
+              <div className="relative flex flex-col">
+                <div className="flex justify-between w-full">
+                  <input 
+                    type="text"
+                    name="name" 
+                    id="name"
+                    placeholder="이름 *"
+                    required
+                    className={`form-input w-[48.5%]`}
+                  />
+                  <input 
+                    type="text" 
+                    name="company"
+                    id="company"
+                    placeholder="회사명"
+                    className={`form-input w-[48.5%]`}
+                  />
+                </div>
                 <input 
                   type="text" 
-                  placeholder="이름 *"
-                  {...register("name", { required: true })} 
-                  className={`form-input w-[48.5%] ${errors.name ? 'error' : ''}`}
+                  name="contact"
+                  id="contact"
+                  placeholder="연락처 *"
+                  required
+                  className={`form-input w-full`}
                 />
-                <input 
-                  type="text" 
-                  placeholder="회사명"
-                  {...register("company")} 
-                  className={`form-input w-[48.5%] ${errors.company ? 'error' : ''}`}
+                <textarea 
+                  placeholder="내용 *"
+                  name="content"
+                  id="content"
+                  required
+                  className={`form-input w-full`}
                 />
+                <div className="flex items-center justify-between mt-2">
+                  <div 
+                    className="thankyou_message text-sm ml-1 text-white"
+                    style={{display:"none"}}
+                  >
+                    성공적으로 전송되었습니다. 감사합니다.
+                  </div>
+                  <div></div>
+                  <button
+                    className={`group 2xl:w-[52px] xl:w-12 lg:w-11 w-10 md:hover:w-[166px] 2xl:h-[52px] xl:h-12 lg:h-11 h-10 bg-blue-2 md:hover:brightness-105 active:brightness-105 transition-all duration-200 rounded-full flex items-center justify-center button-shadow hover:px-0`}
+                  >
+                    <i className="fa-solid fa-paper-plane md:text-lg text-base text-white"></i>
+                    <span className="md:group-hover:w-28 w-0 overflow-hidden transition-all whitespace-nowrap text-white">
+                      이메일 보내기
+                    </span>
+                  </button>
+                </div>
               </div>
-              <input 
-                type="text" 
-                placeholder="연락처 *"
-                {...register("contact", { required: true })} 
-                className={`form-input w-full ${errors.contact ? 'error' : ''}`}
-              />
-              <textarea 
-                placeholder="내용 *"
-                {...register("content", { required: true })} 
-                className={`form-input w-full ${errors.content ? 'error' : ''}`}
-              />
-              <button
-                type="submit"
-                className={`group 2xl:w-[52px] xl:w-12 lg:w-11 w-10 md:hover:w-[166px] 2xl:h-[52px] xl:h-12 lg:h-11 h-10 bg-blue-2 md:hover:brightness-105 active:brightness-105 transition-all duration-200 rounded-full flex items-center justify-center button-shadow hover:px-0 mt-2`}
-              >
-                <i className="fa-solid fa-paper-plane md:text-lg text-base text-white"></i>
-                <span className="md:group-hover:w-28 w-0 overflow-hidden transition-all whitespace-nowrap text-white">이메일 보내기</span>
-              </button>
             </form>
           </div>
         </div>
@@ -210,6 +227,7 @@ const Contact = () => {
         }
       `}
     </style>
+    <script data-cfasync="false" type="text/javascript" src="https://cdn.rawgit.com/dwyl/html-form-send-email-via-google-script-without-server/master/form-submission-handler.js"></script>
   </>
 }
 
