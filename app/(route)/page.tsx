@@ -32,7 +32,7 @@ export default function Main() {
 
   return (
     <div 
-      className={`relative scroll-container-y h-screen overflow-x-hidden bg-white bg-opacity-[0.01] transition-all duration-700 ${activeSection == "Home" || activeSection == "Contact" ? "backdrop-blur-0" :  "2xl:backdrop-blur-[40px] lg:backdrop-blur-[30px] sm:backdrop-blur-[25px] backdrop-blur-[17px] 2xl:dark:backdrop-blur-[50px] lg:dark:backdrop-blur-[40px] sm:dark:backdrop-blur-[25px] dark:backdrop-blur-[20px]"}`}
+      className={`relative scroll-container-y h-screen overflow-x-hidden transition-all duration-700 ${activeSection == "Home" || activeSection == "Contact" ? "backdrop-blur-0" :  "2xl:backdrop-blur-[40px] lg:backdrop-blur-[30px] sm:backdrop-blur-[25px] backdrop-blur-[17px] 2xl:dark:backdrop-blur-[50px] lg:dark:backdrop-blur-[40px] sm:dark:backdrop-blur-[25px] dark:backdrop-blur-[20px]"}`}
       style={{marginLeft: !isMobile ? SIDEBAR_WIDTH : 0 }}
     >
       <FullPage id="Home">

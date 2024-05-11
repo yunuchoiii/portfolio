@@ -4,6 +4,7 @@ import { HEADER_HEIGHT, SIDEBAR_WIDTH } from "@/app/_constants";
 import { CONTACT_INFO } from "@/app/_constants/contact";
 import { MENU_MAP } from "@/app/_constants/menu";
 import { activeSectionAtom } from "@/app/_store/activeSection";
+import { isRenderingStateAtom } from "@/app/_store/isRendering";
 import { useWindowSize } from "@uidotdev/usehooks";
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
@@ -13,6 +14,8 @@ import DarkMode from "./DarkMode";
 
 const Header = () => {
   const router = useRouter()
+
+  const isRendering = useRecoilValue(isRenderingStateAtom)
 
   const windowSize = useWindowSize()
   const isMobile = windowSize.width! <= 768
@@ -58,6 +61,9 @@ const Header = () => {
       </button>
       <div 
         className={`sm:w-[250px] w-[calc(100vw-120px)] absolute flex flex-col right-[37.5px] top-16 transition-opacity text-right bg-white bg-opacity-40 dark:bg-opacity-15 backdrop-blur-lg px-9 pt-6 pb-4 rounded-3xl box-shadow-1 ${showMenu ? 'fade-in-right' : 'fade-out-right'}`}
+        style={{
+          backdropFilter: "blur(16px)"
+        }}
       >
         {MENU_MAP.map(i => {
           return <button
@@ -77,7 +83,7 @@ const Header = () => {
 
   return <div
     id="header"
-    className={`fixed top-0 flex items-center justify-between lg:px-[40px] px-[30px] Montserrat tracking-tighter font-light z-30`}
+    className={`fixed top-0 flex items-center justify-between lg:px-[40px] px-[30px] Montserrat tracking-tighter font-light z-30 ${isRendering ? "opacity-0" : "fade-in"}`}
     style={{
       height: HEADER_HEIGHT,
       width: isMobile ? "100vw" : `calc(100vw - ${SIDEBAR_WIDTH}px)`,
