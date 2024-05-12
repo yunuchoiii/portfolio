@@ -81,11 +81,11 @@ const Contact = () => {
           style={{animationDelay: "0.5s"}}
         >
           <div className="flex justify-center flex-col h-full">
-            <div className="Montserrat text-white 2xl:text-3xl xl:text-2xl text-xl xl:mb-1 md:mb-0.5 mb-0">
+            <div className="Montserrat text-white 2xl:text-3xl xl:text-2xl text-xl xl:mb-1 md:mb-0.5 mb-1">
               Send Email .
             </div>
             <div className="2xl:text-base xl:text-sm text-xs text text-white xl:mb-5 md:mb-4 mb-3">
-              궁금한 점이나 제안할 사항이 있다면 메일을 보내주세요!
+              궁금한 점이나 제안할 사항이 있다면 <br className="sm:hidden"/>메일을 보내주세요!
             </div>
             <form 
               method="POST" 
@@ -131,7 +131,7 @@ const Contact = () => {
                     className="thankyou_message text-sm ml-1 text-white"
                     style={{display:"none"}}
                   >
-                    성공적으로 전송되었습니다. 감사합니다.
+                    성공적으로 전송되었습니다. <br className="sm:hidden"/>감사합니다.
                   </div>
                   <div></div>
                   <button

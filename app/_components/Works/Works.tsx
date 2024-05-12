@@ -4,6 +4,7 @@ import useFirestore from "@/app/_hooks/useFirestore";
 import { IProject } from "@/app/_types/project";
 import { useIntersectionObserver } from "@uidotdev/usehooks";
 import { Dispatch, SetStateAction } from "react";
+import IconButton from "../Button/IconButton";
 import WorkButton from "./WorkButton";
 import WorkDetail from "./WorkDetail";
 
@@ -35,6 +36,11 @@ const Works = ({
       ref={ref} 
       className={`relative w-full h-full flex items-center justify-center 2xl:mt-0 -mt-5 ${entry?.intersectionRatio ? "fade-in" : "opacity-0"}`}
     >
+      <div className={`absolute sm:hidden block -top-[65px] right-0 ${selectedWorkId != -1 ? "fade-in" : "fade-out"}`}>
+        <IconButton onClick={() => {setSelectedWorkId(-1)}}>
+          <i className="fa-solid fa-arrow-left text-2xl invert-0 dark:invert"></i>
+        </IconButton>
+      </div>
       <div 
         className="w-full flex overflow-y-hidden scroll-container-x hide-scroll-bar"
         style={{overflowX: selectedWorkId !== -1 ? "hidden" : "auto"}}

@@ -1,21 +1,16 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 interface IDarkMode {}
 
 function DarkMode({}: IDarkMode) {
-  const [mounted, setMounted] = useState(false);
   const { systemTheme, theme, setTheme } = useTheme();
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
+    // setTheme(systemTheme || "dark")
+  }, [systemTheme]);
 
   const onClick = () => {
     if (theme === "light") {
