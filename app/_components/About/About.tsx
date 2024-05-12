@@ -1,4 +1,5 @@
 import { useIntersectionObserver } from "@uidotdev/usehooks";
+import AboutCareer from "./AboutCareer";
 import AboutContact from "./AboutContact";
 import AboutList from "./AboutList";
 import AboutMe from "./AboutMe";
@@ -13,7 +14,8 @@ const About = () => {
   return <div ref={ref}>
     <AboutMe entry={entry}/>
     <AboutContact entry={entry}/>
-    <AboutList entry={entry}/>
+    <AboutList/>
+    <AboutCareer/>
   </div>
 }
 

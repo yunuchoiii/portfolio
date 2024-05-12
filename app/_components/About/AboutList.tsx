@@ -1,3 +1,5 @@
+import { useIntersectionObserver } from "@uidotdev/usehooks";
+
 interface IAboutListItem {
   id: number;
   icon: string;
@@ -5,7 +7,12 @@ interface IAboutListItem {
   content: string;
 }
 
-const AboutList = ({entry}:{entry: IntersectionObserverEntry | null}) => {
+const AboutList = () => {
+  const [ref, entry] = useIntersectionObserver({
+    threshold: 0.1,
+    root: null,
+    rootMargin: "0px",
+  });
 
   const list:IAboutListItem[] = [
     {
@@ -28,7 +35,7 @@ const AboutList = ({entry}:{entry: IntersectionObserverEntry | null}) => {
     },
   ]
 
-  return <div className="w-full h-full flex lg:flex-row flex-col items-center justify-between relative">
+  return <div ref={ref} className="w-full h-full flex lg:flex-row flex-col items-center justify-between relative mb-12">
     {list.map(item => (
       <div
         key={`about-list-item-${item.id}`}
