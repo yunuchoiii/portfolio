@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 51, 51, 51;
+  --background-rgb: 242, 250, 255;
+  --bg-circle-1-rgb: 4, 191, 157;
+  --bg-circle-2-rgb: 46, 208, 208;
+  --bg-circle-3-rgb: 18, 151, 159;
+}
+
+:root.dark {
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 23, 32, 38;
+}
+
+body {
+  transition: background 0.2s ease, color 0.2s ease;
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+/* #header {
+  background: linear-gradient(to bottom, rgb(var(--background-rgb)), rgba(var(--background-rgb), 0.75), transparent);
+} */
+
+.bg-circle-1, .bg-circle-2, .bg-circle-3 {
+  position: absolute;
+  border-radius: 200px;
+}
+.bg-circle-1 {
+  background: rgb(var(--bg-circle-1-rgb));
+  width: 12vw;
+  height: 12vw;
+  top: 20%;
+  left: 7%;
+  animation: moveCircle1 6s ease-in-out infinite;
+}
+.bg-circle-2 {
+  background: rgb(var(--bg-circle-2-rgb));
+  width: 18vw;
+  height: 18vw;
+  top: 30%;
+  right: 10%;
+  animation: moveCircle2 7s ease-in-out infinite;
+}
+.bg-circle-3 {
+  background: rgb(var(--bg-circle-3-rgb));
+  width: 15vw;
+  height: 15vw;
+  left: 45%;
+  bottom: 3%;
+  animation: moveCircle3 8s ease-in-out infinite;
+}
+
+.scroll-container-y {
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+}
+.scroll-container-x {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+.scroll-area {
+  scroll-snap-align: start;
+}
+
+.hide-scroll-bar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.hide-scroll-bar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}
+
+.box-shadow-1 {
+  box-shadow: 0px 4px 32px -4px rgba(0,0,0,0.15);
+}
+.box-shadow-2 {
+  box-shadow: 0px 4px 16px 8px rgba(0,0,0,0.05);
+}
+.box-shadow-3 {
+  box-shadow: 0px 4px 16px 8px rgba(255,255,255,0.05);
+}
+.blue-shadow-1 {
+  box-shadow: 0px 0px 24px 1px rgba(18, 151, 159, 0.70), 0px 0px 24px 2px rgba(18, 151, 159, 0.70) inset;
+}
+.blue-shadow-2 {
+  box-shadow: 0px 0px 12px 1px rgba(18, 151, 159, 0.30), 0px 0px 12px 2px rgba(18, 151, 159, 0.30) inset;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@media (min-width: 768px) {
+  .button-hover-shadow:hover {
+    box-shadow: 0px 0px 24px 1px rgba(18, 151, 159, 0.70), 0px 0px 24px 2px rgba(18, 151, 159, 0.70) inset;
+  }
+  #Skills .skill-button:hover .skill-logo {
+    width: 100%;
+    transition: width 0.3s ease;
+  }
+  #Skills .skill-button .skill-light, .skill-dark {
+    transition: color 0.1s ease;
+  }
+  #Skills .skill-button:hover .skill-light {
+    color: #333;
+  }
+  #Skills .skill-button:hover .skill-dark {
+    color: #FFF;
+  }
+
+  #Works .detail-button {
+    width: 28px;
+  }
+  #Works .project-button:hover .detail-button {
+    width: calc(100% - 40px);
+  }
+  #Works .project-button span {
+    opacity: 0;
+  }
+  #Works .project-button:hover span {
+    opacity: 1;
+  }
+}
+
+@keyframes moveCircle1 {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(70px, 100px);
+  }
+}
+
+/* Animation */
+
+@keyframes moveCircle2 {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-50px, 130px);
+  }
+}
+@keyframes moveCircle3 {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-160px, -80px);
+  }
+}
