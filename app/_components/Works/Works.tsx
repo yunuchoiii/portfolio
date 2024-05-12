@@ -2,6 +2,7 @@
 
 import useFirestore from "@/app/_hooks/useFirestore";
 import { IProject } from "@/app/_types/project";
+import { useIntersectionObserver } from "@uidotdev/usehooks";
 import { Dispatch, SetStateAction } from "react";
 import WorkButton from "./WorkButton";
 import WorkDetail from "./WorkDetail";
@@ -23,8 +24,17 @@ const Works = ({
 
   const projectList:IProject[] = (data as IProject[]).sort((a,b) => a.id - b.id).filter(i => i.show_yn !== false)
 
+  const [ref, entry] = useIntersectionObserver({
+    threshold: 0.1,
+    root: null,
+    rootMargin: "0px",
+  });
+
   return <>
-    <div className="relative w-full h-full flex items-center justify-center 2xl:mt-0 -mt-5">
+    <div 
+      ref={ref} 
+      className={`relative w-full h-full flex items-center justify-center 2xl:mt-0 -mt-5 ${entry?.intersectionRatio ? "fade-in" : "opacity-0"}`}
+    >
       <div 
         className="w-full flex overflow-y-hidden scroll-container-x hide-scroll-bar"
         style={{overflowX: selectedWorkId !== -1 ? "hidden" : "auto"}}

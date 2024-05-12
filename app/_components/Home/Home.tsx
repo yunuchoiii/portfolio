@@ -1,7 +1,6 @@
 'use client'
 
 import { isRenderingStateAtom } from "@/app/_store/isRendering";
-import { useIntersectionObserver } from "@uidotdev/usehooks";
 import { useRecoilValue } from "recoil";
 
 const Home = () => {
@@ -20,31 +19,12 @@ const Home = () => {
     onClick: () => void
   }
 
-  const buttonList:buttonProps[] = [
-    {
-      title: "more",
-      className: "bg-gradient-to-r from-blue-4 to-blue-2 text-[#F2FAFF] dark:text-[#172026]",
-      onClick: () => handleButton('About')
-    },
-    {
-      title: "contact",
-      className: "text-blue-4 border-2 border-blue-4",
-      onClick: () => handleButton('Contact')
-    },
-  ]
-
-  const [ref, entry] = useIntersectionObserver({
-    threshold: 0.1,
-    root: null,
-    rootMargin: "0px",
-  });
-
-  return <div ref={ref}>
+  return <>
     <div className={`w-full h-[70vh] flex flex-col justify-end relative z-30 Montserrat ${isRendering ? "opacity-0" : "fade-in"}`}>
       <div className="2xl:text-[40px] xl:text-3xl lg:text-2xl text-xl font-bold lg:mb-5 md:mb-4 mb-3">
         Hello. I am <br/>
       </div>
-      <div 
+      <div
         className={`2xl:text-[112px] xl:text-[90px] lg:text-[75px] text-[54px] font-bold leading-[90%] tracking-tight lg:mb-12 md:mb-10 mb-8 -ml-1`}
       >
         <span className="text-blue-1 dark:text-blue-4">Front</span>end<br/>
@@ -64,7 +44,7 @@ const Home = () => {
         </button>
       </div>
     </div>
-  </div>
+  </>
 }
 
 export default Home;
