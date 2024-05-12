@@ -32,7 +32,7 @@ const Header = () => {
   };
 
   const RightButtonsGroup = () => {
-    return <div className="flex items-center justify-center">
+    return <div className="flex items-center justify-center pr-[30px]">
       <IconButton
         props={{
           className: "mr-10"
