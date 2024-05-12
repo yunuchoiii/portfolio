@@ -32,7 +32,7 @@ const AboutContact = ({entry}:{entry: IntersectionObserverEntry | null}) => {
   ];
 
   const AboutContactSection = ({children, last}:{children?:any, last?:boolean}) => {
-    return <div className="relative w-full h-full flex items-center justify-center md:mb-0 mb-3 last:mb-0 md:p-0 py-2 px-3 md:bg-transparent bg-blue-1 bg-opacity-30 rounded-[20px]">
+    return <div className="relative w-full h-full flex items-center justify-center md:mb-0 mb-3 last:mb-0 md:p-0 py-2 px-3 md:bg-transparent bg-blue-1 bg-opacity-20 dark:bg-blue-30 rounded-[20px]">
       {children}
       <div className={`${last ? "w-0" : "md:w-[1px] w-0"} h-full bg-blue-1 blue-shadow-1 absolute right-0`}/>
     </div>

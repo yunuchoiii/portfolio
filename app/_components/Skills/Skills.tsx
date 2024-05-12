@@ -4,7 +4,7 @@ import { HEADER_HEIGHT } from "@/app/_constants";
 import useFirestore from "@/app/_hooks/useFirestore";
 import { IProject } from "@/app/_types/project";
 import { ISkill, ISkillGroup } from "@/app/_types/skills";
-import { useIntersectionObserver } from "@uidotdev/usehooks";
+import { useIntersectionObserver, useWindowSize } from "@uidotdev/usehooks";
 import { useEffect, useState } from "react";
 import SkillProjectBox from "./SkillProjectBox";
 
@@ -13,14 +13,8 @@ interface SkillsProps {
 }
 
 const Skills = ({handleWorkButton}:SkillsProps) => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 640);
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  const windowSize = useWindowSize()
+  const isMobile = windowSize.width! <= 640
 
   const [selectedSkill, setSelectedSkill] = useState<ISkill | null>(null)
   const [isAnimating, setIsAnimating] = useState(false);
@@ -85,7 +79,8 @@ const Skills = ({handleWorkButton}:SkillsProps) => {
                 key={`skill-item-${i.id}`}
               >
                 <button
-                  className="skill-button relative xl:w-[200px] xl:h-[50px] sm:w-[170px] w-[100%] h-[40px] mt-[30px] flex items-center"
+                  className={`skill-button relative xl:w-[200px] sm:w-[170px] w-[100%] flex items-center transition-all duration-500
+                  ${i.id === selectedSkill?.id && isMobile ? "h-0 overflow-hidden mt-0 opacity-0" : "xl:h-[50px] h-[40px] mt-[30px]"}`}
                   onClick={()=>handleSkill(i)}
                 >
                   <div 
@@ -135,7 +130,7 @@ const Skills = ({handleWorkButton}:SkillsProps) => {
       style={{height: `calc(100vh - ${HEADER_HEIGHT * 2}px)`}}
     >
       <div 
-        className="w-full h-full bg-blue-1 bg-opacity-20 xl:rounded-[20px] rounded-[15px] overflow-hidden transition-[width] duration-500 overflow-y-scroll hide-scroll-bar"
+        className="w-full h-full bg-blue-1 dark:bg-blue-4 bg-opacity-25 dark:bg-opacity-20 xl:rounded-[20px] rounded-[15px] overflow-hidden transition-[width] duration-500 overflow-y-scroll hide-scroll-bar"
         style={{width: isAnimating || !selectedSkill ? 0 : '100%'}}
       >
         <SkillProjectBox 

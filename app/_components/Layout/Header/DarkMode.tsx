@@ -1,21 +1,9 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
 
-interface IDarkMode {}
-
-function DarkMode({}: IDarkMode) {
-  const [mounted, setMounted] = useState(false);
+const DarkMode = () => {
   const { systemTheme, theme, setTheme } = useTheme();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) {
-    return null;
-  }
 
   const onClick = () => {
     if (theme === "light") {
@@ -34,7 +22,7 @@ function DarkMode({}: IDarkMode) {
     <div
       className="h-[41px] w-[22px] rounded-full bg-blue-2 absolute z-0 transition-all left-[1.5px]"
       style={{
-        top: theme === "light" ? '1.5px' : '26.5px',
+        top: currentTheme === "light" ? '1.5px' : '26.5px',
       }}
     ></div>
     <div className="w-full flex flex-col items-center justify-between relative z-10">

@@ -32,7 +32,7 @@ const Header = () => {
   };
 
   const RightButtonsGroup = () => {
-    return <div className="flex items-center justify-center">
+    return <div className="flex items-center justify-center pr-[30px]">
       <IconButton
         props={{
           className: "mr-10"
@@ -60,7 +60,7 @@ const Header = () => {
         />
       </button>
       <div 
-        className={`sm:w-[250px] w-[calc(100vw-120px)] absolute flex flex-col right-[37.5px] top-16 transition-opacity text-right bg-white bg-opacity-40 dark:bg-opacity-15 backdrop-blur-lg px-9 pt-6 pb-4 rounded-3xl box-shadow-1 ${showMenu ? 'fade-in-right' : 'fade-out-right'}`}
+        className={`sm:w-[250px] w-[calc(100vw-135px)] absolute flex flex-col right-[37.5px] top-16 transition-opacity text-right bg-white bg-opacity-40 dark:bg-opacity-15 backdrop-blur-lg px-9 pt-6 pb-4 rounded-3xl box-shadow-1 ${showMenu ? 'fade-in-right' : 'fade-out-right'}`}
         style={{
           backdropFilter: "blur(16px)"
         }}

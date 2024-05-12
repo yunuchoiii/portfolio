@@ -1,4 +1,4 @@
-import { useIntersectionObserver } from "@uidotdev/usehooks";
+import { useIntersectionObserver, useWindowSize } from "@uidotdev/usehooks";
 
 interface IAboutListItem {
   id: number;
@@ -8,6 +8,9 @@ interface IAboutListItem {
 }
 
 const AboutList = () => {
+  const windowSize = useWindowSize()
+  const isMobile = windowSize.width! <= 768
+
   const [ref, entry] = useIntersectionObserver({
     threshold: 0.1,
     root: null,
@@ -41,13 +44,13 @@ const AboutList = () => {
         key={`about-list-item-${item.id}`}
         className={`lg:w-[27%] w-full xl:after:pb-[100%] lg:after:pb-[130%] md:after:pb-[27%] relative after:block lg:mb-0 mb-8 ${entry?.intersectionRatio ? "fade-in-bottom" : "opacity-0"}`}
         style={{
-          animationDelay: `${2 + 0.3 * item.id}s`
+          animationDelay: `${(isMobile ? 0 : 2) + 0.3 * item.id}s`
         }}
       >
-        <div className="md:absolute relative w-full h-full rounded-[30px] bg-blue-1 bg-opacity-20 from p-6">
+        <div className="md:absolute relative w-full h-full rounded-[30px] bg-blue-1 bg-opacity-15 dark:bg-opacity-20 from p-6">
           <div className="flex items-center">
             <div className="lg:w-1/4 w-[60px] after:pb-[100%] relative after:block flex-shrink-0">
-              <div className="absolute w-full h-full rounded-full bg-blue-1 dark:bg-blue-4 bg-opacity-20 dark:bg-opacity-20 flex items-center justify-center">
+              <div className="absolute w-full h-full rounded-full bg-blue-1 dark:bg-blue-4 bg-opacity-25 dark:bg-opacity-20 flex items-center justify-center">
                 <img src={item.icon} className="w-3/5 dark:invert" />
               </div>
             </div>

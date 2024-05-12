@@ -88,8 +88,8 @@ const WorkDetail = ({item, setSelectedWorkId, show}:WorkDetailProps) => {
   };
   
 
-  return <div className={`absolute w-full h-full bg-blue-1 bg-opacity-30 overflow-y-scroll hide-scroll-bar ${show ? "fade-in" : "fade-out"}`}>
-    <div className="absolute top-[2vw] right-[2vw]">
+  return <div className={`absolute w-full h-full bg-blue-1 bg-opacity-20 dark:bg-opacity-25 overflow-y-scroll hide-scroll-bar ${show ? "fade-in" : "fade-out"}`}>
+    <div className="absolute sm:block hidden top-[2vw] right-[2vw]">
       <IconButton onClick={handleBack}>
         <i className="fa-solid fa-arrow-left text-2xl invert-0 dark:invert"></i>
       </IconButton>
@@ -97,7 +97,7 @@ const WorkDetail = ({item, setSelectedWorkId, show}:WorkDetailProps) => {
     <div className="w-full h-full 2xl:p-[3vw] p-[4vw] flex sm:flex-row flex-col">
       <div className="lg:w-2/5 sm:w-1/2 sm:h-full h-[300px] flex-shrink-0">
         <ImageGallery 
-          logo={item.logo_img} 
+          logo={item.logo_img}
           imageList={item.img_list}
         />
       </div>
