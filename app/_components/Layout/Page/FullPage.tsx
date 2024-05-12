@@ -30,12 +30,11 @@ const FullPage = ({id, title, children, longPage, props}:PageProps) => {
     }
   }, [entry?.isIntersecting, id, setActiveSection]);
   
-  
   return (
     <div 
       id={id}
       ref={ref}
-      className={`relative min-h-screen scroll-area ${!longPage && 'h-full'}`}
+      className={`relative min-h-screen ${!isMobile && "scroll-area"} ${!longPage && 'h-full'}`}
       style={{
         paddingTop: longPage ? HEADER_HEIGHT + 30 : HEADER_HEIGHT/2, 
         paddingBottom: longPage ? HEADER_HEIGHT : 0
