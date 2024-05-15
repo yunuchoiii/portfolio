@@ -14,14 +14,13 @@ import { activeSectionAtom } from "../_store/activeSection";
 import { isMobileStateAtom } from "../_store/isMobile";
 
 export default function Main() {
-  const activeSection = useRecoilValue(activeSectionAtom)
-  const [isMobile, setIsMobile] = useRecoilState(isMobileStateAtom)
+  const activeSection = useRecoilValue(activeSectionAtom) // 활성화 메뉴 state
+  const [isMobile, setIsMobile] = useRecoilState(isMobileStateAtom) // mobile 여부 state
 
+  // isMobile state control
   const windowSize = useWindowSize()
   useEffect(() => {
-    if(windowSize.width! <= 768) {
-      setIsMobile(true);
-    }
+    setIsMobile(windowSize.width! <= 768);
   }, [windowSize])
 
   const [selectedProjectId, setSelectedProjectId] = useState<number>(-1)
