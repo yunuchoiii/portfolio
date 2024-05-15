@@ -125,14 +125,14 @@ const ImageGallery = ({logo, imageList}:ImageGalleryProps) => {
     {imageList?.length !== 0 && <div className="relative mt-2.5 px-[10%]">
       {imageList!.length > 4 && <>
         <button 
-          className={`absolute -translate-y-1/2 top-[50%] left-0 transition-opacity duration-300 p-2 ${isLeftDisabled && "opacity-30"}`}
+          className={`absolute -translate-y-1/2 top-[50%] left-0 transition-opacity duration-300 p-2 ${isLeftDisabled ? "opacity-30" : ""}`}
           disabled={isLeftDisabled}
           onClick={()=>scrollImages('left')}
         >
           <i className="fa-solid fa-chevron-left"></i>
         </button>
         <button 
-          className={`absolute -translate-y-1/2 top-[50%] right-0 transition-opacity duration-300 p-2 ${isRightDisabled && "opacity-30"}`}
+          className={`absolute -translate-y-1/2 top-[50%] right-0 transition-opacity duration-300 p-2 ${isRightDisabled ? "opacity-30" : ""}`}
           disabled={isRightDisabled}
           onClick={()=>scrollImages('right')}
         >
@@ -141,7 +141,7 @@ const ImageGallery = ({logo, imageList}:ImageGalleryProps) => {
       </>}
       <div 
         ref={scrollContainerRef} 
-        className={`relative flex ${imageList!.length < 4 && "justify-center"} scroll-container-x hide-scroll-bar`}
+        className={`relative flex ${imageList!.length < 4 ? "justify-center" : ""} scroll-container-x hide-scroll-bar`}
       >
         {
           imageList!.map((item, index) => {

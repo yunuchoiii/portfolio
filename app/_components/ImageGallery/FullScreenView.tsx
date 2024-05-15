@@ -23,7 +23,7 @@ const FullScreenView = ({
     <button
       disabled={selectedIndex === 0}
       onClick={minusImageIndex}
-      className={`${selectedIndex === 0 && "opacity-30"} 
+      className={`${selectedIndex === 0 ? "opacity-30" : ""} 
       transition-opacity duration-300  p-5`}
     >
       <i className="fa-solid fa-chevron-left text-2xl"></i>
@@ -32,7 +32,7 @@ const FullScreenView = ({
     <button 
       disabled={selectedIndex + 1 === imageList!.length}
       onClick={plusImageIndex}
-      className={`${selectedIndex + 1 === imageList!.length && "opacity-30"} transition-opacity duration-300 p-5`}
+      className={`${selectedIndex + 1 === imageList!.length ? "opacity-30" : ""} transition-opacity duration-300 p-5`}
     >
       <i className="fa-solid fa-chevron-right text-2xl"></i>
     </button>

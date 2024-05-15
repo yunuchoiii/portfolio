@@ -72,8 +72,8 @@ const ProjectDetail = ({item, setSelectedProjectId, show}:ProjectDetailProps) =>
                   <div 
                     className={`
                       text-sm 
-                      ${lightTitleList.includes(skill.title) && 'text-black'} 
-                      ${darkTitleList.includes(skill.title) && 'text-white'}
+                      ${lightTitleList.includes(skill.title) ? 'text-black' : ''} 
+                      ${darkTitleList.includes(skill.title) ? 'text-white' : ''}
                     `}
                   >
                     {skill.title}

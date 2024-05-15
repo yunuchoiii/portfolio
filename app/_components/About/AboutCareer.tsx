@@ -11,7 +11,7 @@ const AboutCareer = () => {
     rootMargin: "0px",
   });
 
-  return <div ref={ref} className={`w-full h-full mb-12 ${entry?.intersectionRatio ? "fade-in-bottom" : "opacity-0"}`}>
+  return <div ref={ref} className={`w-full h-full mb-20 ${entry?.intersectionRatio ? "fade-in-bottom" : "opacity-0"}`}>
     <div className="2xl:text-3xl xl:text-2xl text-xl font-semibold Montserrat mb-5">
       Career
     </div>

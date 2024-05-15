@@ -34,18 +34,19 @@ const FullPage = ({id, title, children, longPage, props}:PageProps) => {
     <div 
       id={id}
       ref={ref}
-      className={`relative min-h-dvh ${!isMobile && "scroll-area"} ${!longPage && 'h-full'}`}
+      className={`relative min-h-dvh ${!isMobile ? "scroll-area" : ""} ${!longPage ? 'h-full' : ""}`}
       style={{
-        paddingTop: longPage ? HEADER_HEIGHT + 30 : HEADER_HEIGHT/2, 
-        paddingBottom: longPage ? HEADER_HEIGHT : 0
+        paddingTop: isMobile ? HEADER_HEIGHT : (longPage ? HEADER_HEIGHT + 30 : HEADER_HEIGHT/2), 
+        paddingBottom: isMobile ? 0 : (longPage ? HEADER_HEIGHT : 0)
       }}
       {...props}
     >
       <div className="w-full h-full flex items-center justify-center">
         <div className="2xl:w-[1296px] xl:w-[1080px] lg:w-[864px] md:w-[648px] sm:w-[560px] w-[calc(100%-60px)]">
           {title && (
-            <div className="Montserrat 2xl:text-3xl xl:text-2xl text-xl font-semibold mb-[50px]">
+            <div className="relative w-fit Montserrat text-3xl font-semibold mb-[50px]">
               {title}
+              <div className={`absolute bottom-0 -left-[3%] -z-10 ${entry?.intersectionRatio ? "w-[106%]" : "w-0"} h-5 bg-blue-1 bg-opacity-50 dark:bg-opacity-75 transition-all duration-700`}></div>
             </div>
           )}
           {children}
