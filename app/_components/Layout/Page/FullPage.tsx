@@ -34,7 +34,7 @@ const FullPage = ({id, title, children, longPage, props}:PageProps) => {
     <div 
       id={id}
       ref={ref}
-      className={`relative min-h-screen ${!isMobile && "scroll-area"} ${!longPage && 'h-full'}`}
+      className={`relative min-h-dvh ${!isMobile && "scroll-area"} ${!longPage && 'h-full'}`}
       style={{
         paddingTop: longPage ? HEADER_HEIGHT + 30 : HEADER_HEIGHT/2, 
         paddingBottom: longPage ? HEADER_HEIGHT : 0

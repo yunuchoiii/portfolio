@@ -21,7 +21,7 @@ const Sidebar = () => {
   };
 
   return <div 
-    className={`hidden md:flex fixed z-40 h-screen`}
+    className={`hidden md:flex fixed z-40 h-dvh`}
     style={{width:SIDEBAR_WIDTH}}
   >
     <div className={`flex flex-col items-center justify-between h-full border-r border-blue-1 pb-8 ${isRendering ? "opacity-0" : "fade-in"}`}>
