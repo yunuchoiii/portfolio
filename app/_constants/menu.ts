@@ -24,9 +24,9 @@ export const MENU_MAP:IMenu[] = [
   },
   {
     index: 4,
-    title: "Works",
+    title: "Projects",
     korName: "프로젝트",
-    engName: "Works",
+    engName: "Projects",
     iconClassName: "fa-solid fa-laptop",
   },
   {

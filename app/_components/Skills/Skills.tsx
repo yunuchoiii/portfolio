@@ -2,19 +2,20 @@
 
 import { HEADER_HEIGHT } from "@/app/_constants";
 import useFirestore from "@/app/_hooks/useFirestore";
+import { isMobileStateAtom } from "@/app/_store/isMobile";
 import { IProject } from "@/app/_types/project";
 import { ISkill, ISkillGroup } from "@/app/_types/skills";
-import { useIntersectionObserver, useWindowSize } from "@uidotdev/usehooks";
+import { useIntersectionObserver } from "@uidotdev/usehooks";
 import { useEffect, useState } from "react";
+import { useRecoilValue } from "recoil";
 import SkillProjectBox from "./SkillProjectBox";
 
 interface SkillsProps {
-  handleWorkButton: (id: number) => void
+  handleProjectButton: (id: number) => void
 }
 
-const Skills = ({handleWorkButton}:SkillsProps) => {
-  const windowSize = useWindowSize()
-  const isMobile = windowSize.width! <= 640
+const Skills = ({handleProjectButton}:SkillsProps) => {
+  const isMobile = useRecoilValue(isMobileStateAtom)
 
   const [selectedSkill, setSelectedSkill] = useState<ISkill | null>(null)
   const [isAnimating, setIsAnimating] = useState(false);
@@ -116,7 +117,7 @@ const Skills = ({handleWorkButton}:SkillsProps) => {
                   <SkillProjectBox 
                     skillItem={i} 
                     projectList={projectListBySkillId(i.id)}
-                    handleWorkButton={handleWorkButton}
+                    handleProjectButton={handleProjectButton}
                   />
                 </div>
               </div>
@@ -137,7 +138,7 @@ const Skills = ({handleWorkButton}:SkillsProps) => {
           skillItem={selectedSkill as ISkill} 
           projectList={projectListBySkillId(selectedSkill?.id as number)}
           isAnimating={isAnimating}
-          handleWorkButton={handleWorkButton}
+          handleProjectButton={handleProjectButton}
         />
       </div>
     </div>

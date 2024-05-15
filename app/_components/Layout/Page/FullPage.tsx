@@ -1,8 +1,9 @@
 import { HEADER_HEIGHT } from "@/app/_constants"
 import { activeSectionAtom } from "@/app/_store/activeSection"
-import { useIntersectionObserver, useWindowSize } from "@uidotdev/usehooks"
+import { isMobileStateAtom } from "@/app/_store/isMobile"
+import { useIntersectionObserver } from "@uidotdev/usehooks"
 import { DetailedHTMLProps, HTMLAttributes, useEffect } from "react"
-import { useSetRecoilState } from "recoil"
+import { useRecoilValue, useSetRecoilState } from "recoil"
 
 interface PageProps {
   id: string
@@ -13,8 +14,7 @@ interface PageProps {
 }
 
 const FullPage = ({id, title, children, longPage, props}:PageProps) => {
-  const windowSize = useWindowSize()
-  const isMobile = windowSize.width! <= 768
+  const isMobile = useRecoilValue(isMobileStateAtom)
 
   const setActiveSection = useSetRecoilState(activeSectionAtom);
 
@@ -34,7 +34,7 @@ const FullPage = ({id, title, children, longPage, props}:PageProps) => {
     <div 
       id={id}
       ref={ref}
-      className={`relative min-h-screen ${!isMobile && "scroll-area"} ${!longPage && 'h-full'}`}
+      className={`relative min-h-dvh ${!isMobile && "scroll-area"} ${!longPage && 'h-full'}`}
       style={{
         paddingTop: longPage ? HEADER_HEIGHT + 30 : HEADER_HEIGHT/2, 
         paddingBottom: longPage ? HEADER_HEIGHT : 0

@@ -15,7 +15,7 @@ const FullScreenView = ({
 }:FullScreenViewProps) => {
 
   return <div
-    className={`absolute w-screen h-screen top-0 left-0 bg-white dark:bg-black bg-opacity-50 dark:bg-opacity-50 backdrop-blur-lg flex items-center justify-center`}
+    className={`absolute w-screen h-dvh top-0 left-0 bg-white dark:bg-black bg-opacity-50 dark:bg-opacity-50 backdrop-blur-lg flex items-center justify-center`}
   >
     <button onClick={handleExpand}>
       <img src="/images/icons/plus.png" className="w-5 absolute top-8 right-8 rotate-45 dark:invert" />

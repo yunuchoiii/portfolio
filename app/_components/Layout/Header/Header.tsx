@@ -4,8 +4,8 @@ import { HEADER_HEIGHT, SIDEBAR_WIDTH } from "@/app/_constants";
 import { CONTACT_INFO } from "@/app/_constants/contact";
 import { MENU_MAP } from "@/app/_constants/menu";
 import { activeSectionAtom } from "@/app/_store/activeSection";
+import { isMobileStateAtom } from "@/app/_store/isMobile";
 import { isRenderingStateAtom } from "@/app/_store/isRendering";
-import { useWindowSize } from "@uidotdev/usehooks";
 import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 import { useRecoilValue } from "recoil";
@@ -16,9 +16,7 @@ const Header = () => {
   const router = useRouter()
 
   const isRendering = useRecoilValue(isRenderingStateAtom)
-
-  const windowSize = useWindowSize()
-  const isMobile = windowSize.width! <= 768
+  const isMobile = useRecoilValue(isMobileStateAtom)
 
   const activeSection = useRecoilValue(activeSectionAtom);
   const [showMenu, setShowMenu] = useState(false)

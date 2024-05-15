@@ -1,4 +1,6 @@
-import { useIntersectionObserver, useWindowSize } from "@uidotdev/usehooks";
+import { isMobileStateAtom } from "@/app/_store/isMobile";
+import { useIntersectionObserver } from "@uidotdev/usehooks";
+import { useRecoilValue } from "recoil";
 
 interface IAboutListItem {
   id: number;
@@ -8,8 +10,7 @@ interface IAboutListItem {
 }
 
 const AboutList = () => {
-  const windowSize = useWindowSize()
-  const isMobile = windowSize.width! <= 768
+  const isMobile = useRecoilValue(isMobileStateAtom)
 
   const [ref, entry] = useIntersectionObserver({
     threshold: 0.1,

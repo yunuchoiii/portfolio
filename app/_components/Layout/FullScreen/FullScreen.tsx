@@ -9,7 +9,7 @@ const FullScreen = () => {
   const ComponentToRender = fullScreen.component ? fullScreen.component() : null;
 
   return fullScreen.open && (
-    <div className="w-screen h-screen fixed top-0 left-0 z-50">
+    <div className="w-screen h-dvh fixed top-0 left-0 z-50">
       <>
         {ComponentToRender}
       </>

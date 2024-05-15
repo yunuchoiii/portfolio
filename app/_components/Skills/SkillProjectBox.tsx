@@ -6,19 +6,19 @@ interface ProjectBoxProps {
   skillItem: ISkill
   projectList?: IProject[]
   isAnimating?: boolean
-  handleWorkButton: (id: number) => void
+  handleProjectButton: (id: number) => void
 }
 
-const SkillProjectBox = ({skillItem, projectList, isAnimating, handleWorkButton}:ProjectBoxProps) => {
+const SkillProjectBox = ({skillItem, projectList, isAnimating, handleProjectButton}:ProjectBoxProps) => {
   const skill = skillItem
 
   const handleProject = (id:number) => {
-    const section = document.getElementById("Works");
+    const section = document.getElementById("Projects");
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
     }
     setTimeout(()=>{
-      handleWorkButton(id)
+      handleProjectButton(id)
     }, 1000)
   }
 
