@@ -5,13 +5,13 @@ import { Dispatch, SetStateAction } from "react"
 import IconButton from "../Button/IconButton"
 import ImageGallery from "../ImageGallery/ImageGallery"
 
-interface WorkDetailProps {
+interface ProjectDetailProps {
   item: IProject
-  setSelectedWorkId: Dispatch<SetStateAction<number>>
+  setSelectedProjectId: Dispatch<SetStateAction<number>>
   show: boolean
 }
 
-const WorkDetail = ({item, setSelectedWorkId, show}:WorkDetailProps) => {
+const ProjectDetail = ({item, setSelectedProjectId, show}:ProjectDetailProps) => {
 
   const { data: skillList } = useFirestore('skill');
 
@@ -23,7 +23,7 @@ const WorkDetail = ({item, setSelectedWorkId, show}:WorkDetailProps) => {
   const darkTitleList = ["Next.js", "GitHub", "TypeScript", "Recoil"]
 
   const handleBack = () => {
-    setSelectedWorkId(-1)
+    setSelectedProjectId(-1)
   }
 
   const DetailSection = ({ 
@@ -122,4 +122,4 @@ const WorkDetail = ({item, setSelectedWorkId, show}:WorkDetailProps) => {
   </div>
 }
 
-export default WorkDetail
+export default ProjectDetail

@@ -114,16 +114,16 @@ body {
     color: #FFF;
   }
 
-  #Works .detail-button {
+  #Projects .detail-button {
     width: 28px;
   }
-  #Works .project-button:hover .detail-button {
+  #Projects .project-button:hover .detail-button {
     width: calc(100% - 40px);
   }
-  #Works .project-button span {
+  #Projects .project-button span {
     opacity: 0;
   }
-  #Works .project-button:hover span {
+  #Projects .project-button:hover span {
     opacity: 1;
   }
 }

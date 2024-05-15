@@ -7,8 +7,8 @@ import About from "../_components/About/About";
 import Contact from "../_components/Contact/Contact";
 import Home from "../_components/Home/Home";
 import FullPage from "../_components/Layout/Page/FullPage";
+import Projects from "../_components/Projects/Projects";
 import Skills from "../_components/Skills/Skills";
-import Works from "../_components/Works/Works";
 import { SIDEBAR_WIDTH } from "../_constants";
 import { activeSectionAtom } from "../_store/activeSection";
 
@@ -18,15 +18,15 @@ export default function Main() {
   const windowSize = useWindowSize()
   const isMobile = windowSize.width! <= 768
 
-  const [selectedWorkId, setSelectedWorkId] = useState<number>(-1)
-  const [isWorkAnimating, setIsWorkAnimating] = useState<boolean>(false)
+  const [selectedProjectId, setSelectedProjectId] = useState<number>(-1)
+  const [isProjectAnimating, setIsProjectAnimating] = useState<boolean>(false)
 
-  const handleWorkButton = (id:number) => {
-    setSelectedWorkId(id)
-    setIsWorkAnimating(true)
+  const handleProjectButton = (id:number) => {
+    setSelectedProjectId(id)
+    setIsProjectAnimating(true)
 
     setTimeout(()=>{
-      setIsWorkAnimating(false)
+      setIsProjectAnimating(false)
     }, 500)
   }
 
@@ -43,15 +43,15 @@ export default function Main() {
       </FullPage>
       <FullPage id="Skills" title="Skills" longPage>
         <Skills
-          handleWorkButton={handleWorkButton}
+          handleProjectButton={handleProjectButton}
         />
       </FullPage>
-      <FullPage id="Works" title="Works">
-        <Works
-          selectedWorkId={selectedWorkId}
-          setSelectedWorkId={setSelectedWorkId}
-          isWorkAnimating={isWorkAnimating}
-          handleWorkButton={handleWorkButton}
+      <FullPage id="Projects" title="Projects">
+        <Projects
+          selectedProjectId={selectedProjectId}
+          setSelectedProjectId={setSelectedProjectId}
+          isProjectAnimating={isProjectAnimating}
+          handleProjectButton={handleProjectButton}
         />
       </FullPage>
       <FullPage id="Contact" longPage={isMobile}>

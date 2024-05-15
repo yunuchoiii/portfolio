@@ -9,10 +9,10 @@ import { useEffect, useState } from "react";
 import SkillProjectBox from "./SkillProjectBox";
 
 interface SkillsProps {
-  handleWorkButton: (id: number) => void
+  handleProjectButton: (id: number) => void
 }
 
-const Skills = ({handleWorkButton}:SkillsProps) => {
+const Skills = ({handleProjectButton}:SkillsProps) => {
   const windowSize = useWindowSize()
   const isMobile = windowSize.width! <= 640
 
@@ -116,7 +116,7 @@ const Skills = ({handleWorkButton}:SkillsProps) => {
                   <SkillProjectBox 
                     skillItem={i} 
                     projectList={projectListBySkillId(i.id)}
-                    handleWorkButton={handleWorkButton}
+                    handleProjectButton={handleProjectButton}
                   />
                 </div>
               </div>
@@ -137,7 +137,7 @@ const Skills = ({handleWorkButton}:SkillsProps) => {
           skillItem={selectedSkill as ISkill} 
           projectList={projectListBySkillId(selectedSkill?.id as number)}
           isAnimating={isAnimating}
-          handleWorkButton={handleWorkButton}
+          handleProjectButton={handleProjectButton}
         />
       </div>
     </div>
