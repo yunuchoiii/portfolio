@@ -1,9 +1,10 @@
 'use client'
 
 import useFirestore from "@/app/_hooks/useFirestore";
+import { isMobileStateAtom } from "@/app/_store/isMobile";
 import { snackbarStateAtom } from "@/app/_store/snackbar";
-import { useIntersectionObserver, useWindowSize } from "@uidotdev/usehooks";
-import { useSetRecoilState } from "recoil";
+import { useIntersectionObserver } from "@uidotdev/usehooks";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 
 interface EmailFormTypes {
   name: string
@@ -15,8 +16,7 @@ interface EmailFormTypes {
 const Contact = () => {
   const setSnackbarState = useSetRecoilState(snackbarStateAtom)
 
-  const windowSize = useWindowSize()
-  const isMobile = windowSize.width! <= 768
+  const isMobile = useRecoilValue(isMobileStateAtom)
 
   const { data:contactLinkList } = useFirestore('contact_link');
   const { data:contactInfoList } = useFirestore('contact_info');

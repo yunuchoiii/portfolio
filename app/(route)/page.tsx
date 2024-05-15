@@ -1,8 +1,8 @@
 'use client';
 
 import { useWindowSize } from "@uidotdev/usehooks";
-import { useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useEffect, useState } from "react";
+import { useRecoilState, useRecoilValue } from "recoil";
 import About from "../_components/About/About";
 import Contact from "../_components/Contact/Contact";
 import Home from "../_components/Home/Home";
@@ -11,12 +11,18 @@ import Projects from "../_components/Projects/Projects";
 import Skills from "../_components/Skills/Skills";
 import { SIDEBAR_WIDTH } from "../_constants";
 import { activeSectionAtom } from "../_store/activeSection";
+import { isMobileStateAtom } from "../_store/isMobile";
 
 export default function Main() {
   const activeSection = useRecoilValue(activeSectionAtom)
+  const [isMobile, setIsMobile] = useRecoilState(isMobileStateAtom)
 
   const windowSize = useWindowSize()
-  const isMobile = windowSize.width! <= 768
+  useEffect(() => {
+    if(windowSize.width! <= 768) {
+      setIsMobile(true);
+    }
+  }, [windowSize])
 
   const [selectedProjectId, setSelectedProjectId] = useState<number>(-1)
   const [isProjectAnimating, setIsProjectAnimating] = useState<boolean>(false)
