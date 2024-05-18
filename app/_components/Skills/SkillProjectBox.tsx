@@ -29,9 +29,9 @@ const SkillProjectBox = ({skillItem, projectList, isAnimating, handleProjectButt
         {skill?.title}
       </div>
     </div>
-    <div className="w-full h-[5px] rounded-md bg-blue-2 mt-5 mb-[30px] overflow-hidden">
+    <div className="w-full h-[5px] rounded-md bg-blue-3 mt-5 mb-[30px] overflow-hidden">
       <div 
-        className="h-full rounded-md bg-blue-4 bg-opacity-80"
+        className="h-full rounded-md bg-blue-1 bg-opacity-80"
         style={{width: `${skill?.grade}%`}}
       />
     </div>

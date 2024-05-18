@@ -57,7 +57,7 @@ const Skills = ({handleProjectButton}:SkillsProps) => {
     rootMargin: "0px",
   });
 
-  return <div className="w-full h-full flex justify-center">
+  return <div className="w-full h-full flex justify-center md:mb-0 mb-20">
     <div ref={ref} className="flex-1 sm:mr-5 mr-0">
       {(skillGroupList as ISkillGroup[]).sort((a, b) => a.id - b.id).map((group, index) => {
         const children = (skillList as ISkill[])
@@ -100,8 +100,8 @@ const Skills = ({handleProjectButton}:SkillsProps) => {
                   <div 
                     className={`
                       Montserrat 2xl:text-xl xl:text-lg lg:text-md md:text-base relative xl:left-[70px] left-[60px]
-                      ${lightTitleList.includes(i.title) && 'skill-light'} 
-                      ${darkTitleList.includes(i.title) && 'skill-dark'}
+                      ${lightTitleList.includes(i.title) ? 'skill-light' : ''} 
+                      ${darkTitleList.includes(i.title) ? 'skill-dark' : ''}
                     `}
                   >
                     {i.title}
