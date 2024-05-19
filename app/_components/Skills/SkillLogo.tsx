@@ -12,7 +12,7 @@ const SkillLogo = ({skill}:SkillLogoProps) => {
     <img 
       src={skill?.img}
       alt={skill?.title}
-      className="h-full"
+      className="h-full object-cover"
       style={{
         filter: skill?.background === "#000" ? "invert(1)" : "none"
       }}
