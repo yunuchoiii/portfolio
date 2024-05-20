@@ -49,7 +49,7 @@ const Skills = ({handleProjectButton}:SkillsProps) => {
   }, [selectedSkill]);
 
   const lightTitleList = ["JavaScript"]
-  const darkTitleList = ["Next.js", "GitHub", "TypeScript", "Recoil"]
+  const darkTitleList = ["Next.js", "GitHub", "TypeScript", "Recoil", "React", "Tailwind.css"]
 
   const [ref, entry] = useIntersectionObserver({
     threshold: 0.1,
