@@ -28,7 +28,7 @@ const FullScreenView = ({
     >
       <i className="fa-solid fa-chevron-left text-2xl"></i>
     </button>
-    <img src={imageList![selectedIndex]} className="w-10/12 h-5/6 object-contain mx-5"/>
+    <img src={imageList![selectedIndex]} className="sm:w-10/12 w-[calc(100vw-150px)] h-5/6 object-contain mx-5"/>
     <button 
       disabled={selectedIndex + 1 === imageList!.length}
       onClick={plusImageIndex}

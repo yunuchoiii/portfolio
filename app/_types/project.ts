@@ -20,7 +20,19 @@ export interface IProject {
   start_date?: string;
   end_date?: string;
   role_introduction?: string[];
-  features?: string[];
+  features?: IProjectFeature[];
+  troubles?: IProjectTrouble[];
   results?: string[];
   show_yn?: boolean
+}
+
+export interface IProjectFeature {
+  feature: string;
+  description: string[];
+}
+
+export interface IProjectTrouble {
+  trouble: string;
+  solution: string[];
+  comparation: string[];
 }

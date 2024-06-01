@@ -4,6 +4,7 @@ import { ISkill } from "@/app/_types/skills"
 import { Dispatch, SetStateAction } from "react"
 import IconButton from "../Button/IconButton"
 import ImageGallery from "../ImageGallery/ImageGallery"
+import ProjectDetailSection from "./ProjectDetailSection"
 
 interface ProjectDetailProps {
   item: IProject
@@ -19,74 +20,9 @@ const ProjectDetail = ({item, setSelectedProjectId, show}:ProjectDetailProps) =>
     .filter(s => item.skill_id_list.includes(s.id))
     .sort((a,b) => a.id - b.id)
   
-  const lightTitleList = ["JavaScript"]
-  const darkTitleList = ["Next.js", "GitHub", "TypeScript", "Recoil"]
-
   const handleBack = () => {
     setSelectedProjectId(-1)
-  }
-
-  const DetailSection = ({ 
-    title, 
-    content,
-    skills,
-  }: {
-    title: string
-    content?: string | string[] | undefined
-    skills?: ISkill[]
-  }) => {
-    return (content || skills) && (
-      <>
-        <div className="mb-4 last:mb-0">
-          <div className="text-base mb-1 font-bold">{title}</div>
-          {Array.isArray(content) ? (
-            <ul className="list-disc">
-              {content.map((item, index) => (
-                <li 
-                  key={`${title}-${index}`} 
-                  className="text-sm ml-4 leading-relaxed mb-1"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <div className="text-sm">{content}</div>
-          )}
-          {skills && (
-            <div className="flex flex-wrap">
-              {skills.map((skill, i) => (
-                <div
-                  key={`used-skill-${i}`}
-                  className="py-1 px-2 mr-2 mb-2 rounded-md flex items-center relative border-[1px]"
-                  style={{
-                    background: skill.background,
-                    borderColor: skill.background.replace("0.15", "1")
-                  }}
-                >
-                  <img 
-                    src={skill.img} 
-                    className="h-4 mr-2" 
-                    style={{filter: skill?.background === "#000" ? "invert(1)" : "none"}}
-                  />
-                  <div 
-                    className={`
-                      text-sm 
-                      ${lightTitleList.includes(skill.title) ? 'text-black' : ''} 
-                      ${darkTitleList.includes(skill.title) ? 'text-white' : ''}
-                    `}
-                  >
-                    {skill.title}
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </>
-    );
-  };
-  
+  }  
 
   return <div className={`absolute w-full h-full bg-blue-1 bg-opacity-20 dark:bg-opacity-25 overflow-y-scroll hide-scroll-bar ${show ? "fade-in" : "fade-out"}`}>
     <div className="absolute sm:block hidden top-[2vw] right-[2vw]">
@@ -111,12 +47,13 @@ const ProjectDetail = ({item, setSelectedProjectId, show}:ProjectDetailProps) =>
             </a>
           )}
         </div>
-        <DetailSection title="요약" content={item.summary} />
-        <DetailSection title="기간" content={`${item.start_date} - ${item.end_date}`} />
-        <DetailSection title="역할" content={item.role_introduction} />
-        <DetailSection title="구현 기능" content={item.features} />
-        <DetailSection title="성과" content={item.results} />
-        <DetailSection title="사용 기술" skills={usedSkills} />
+        <ProjectDetailSection title="요약" content={item.summary} />
+        <ProjectDetailSection title="기간" content={`${item.start_date} - ${item.end_date}`} />
+        <ProjectDetailSection title="역할" content={item.role_introduction} />
+        {/* <ProjectDetailSection title="구현 기능" content={item.features} /> */}
+        {/* <ProjectDetailSection title="트러블 슈팅" content={item.troubles} /> */}
+        <ProjectDetailSection title="성과" content={item.results} />
+        <ProjectDetailSection title="사용 기술" skills={usedSkills} />
       </div>
     </div>
   </div>

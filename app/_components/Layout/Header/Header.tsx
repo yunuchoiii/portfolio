@@ -90,7 +90,7 @@ const Header = () => {
   >
     <button 
       id="logo" 
-      className="2xl:text-2xl text-xl"
+      className="2xl:text-2xl text-xl px-3 py-1.5 -ml-3 rounded-lg transition-all duration-200 hover:bg-white hover:bg-opacity-15"
       onClick={()=>router.refresh()}
     >
       <span>
