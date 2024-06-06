@@ -1,3 +1,4 @@
+import { IProjectFeature } from "@/app/_types/project";
 import { ISkill } from "@/app/_types/skills";
 
 const ProjectDetailSection = ({ 
@@ -6,59 +7,91 @@ const ProjectDetailSection = ({
   skills,
 }: {
   title: string
-  content?: string | string[] | undefined
+  content?: string | string[] | IProjectFeature[] | undefined
   skills?: ISkill[]
 }) => {
   const lightTitleList = ["JavaScript"]
   const darkTitleList = ["Next.js", "GitHub", "TypeScript", "Recoil", "React", "Tailwind.css"]
 
+
+  const Contents = ({ content }: { content: string }) => {
+    return <div className="text-sm">{content}</div>;
+  };
+
+  const Features = ({ content }: { content: string[] }) => {
+    return (
+      <ul className="list-disc">
+        {content.map((item, index) => (
+          <li key={`content-${index}`} className="text-sm ml-4 leading-relaxed mb-1">
+            {item}
+          </li>
+        ))}
+      </ul>
+    ); 
+  }
+
+  const DetailFeatures = ({ content }: { content: IProjectFeature[] }) => {
+    return (
+      <div>
+        {content.map((item, index) => (
+          <ul key={`feature-${index}`} className="list-disc mb-4 ml-4">
+            <li className="font-bold text-sm mt-2 mb-2">{item.feature}</li>
+            <ul className="list-disc text-sm ml-4">
+              {item.description.map((desc, descIndex) => (
+                <li key={`description-${descIndex}`} className="leading-relaxed mb-1">
+                  {desc}
+                </li>
+              ))}
+            </ul>
+          </ul>
+        ))}
+      </div>
+    );
+  }
+
+  const Skills = ({skills}:{skills: ISkill[]}) => {
+    return <div className="flex flex-wrap">
+      {skills.map((skill, i) => (
+        <div
+          key={`used-skill-${i}`}
+          className="py-1 px-2 mr-2 mb-2 rounded-md flex items-center relative border-[1px]"
+          style={{
+            background: skill.background,
+            borderColor: skill.background.replace("0.15", "1")
+          }}
+        >
+          <img 
+            src={skill.img} 
+            className="h-4 mr-2" 
+            style={{filter: skill?.background === "#000" ? "invert(1)" : "none"}}
+          />
+          <div 
+            className={`
+              text-sm 
+              ${lightTitleList.includes(skill.title) ? 'text-black' : ''} 
+              ${darkTitleList.includes(skill.title) ? 'text-white' : ''}
+            `}
+          >
+            {skill.title}
+          </div>
+        </div>
+      ))}
+    </div>
+  }
+
   return (content || skills) && (
     <>
       <div className="mb-4 last:mb-0">
         <div className="text-base mb-1 font-bold">{title}</div>
-        {Array.isArray(content) ? (
-          <ul className="list-disc">
-            {content.map((item, index) => (
-              <li 
-                key={`${title}-${index}`} 
-                className="text-sm ml-4 leading-relaxed mb-1"
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <div className="text-sm">{content}</div>
+        {content && (
+          typeof content === "string" ? 
+          <Contents content={content} /> : 
+          Array.isArray(content) && typeof content[0] === "string" ? 
+          <Features content={content as string[]} /> : 
+          Array.isArray(content) && typeof content[0] === "object" ? 
+          <DetailFeatures content={content as IProjectFeature[]} /> : null
         )}
-        {skills && (
-          <div className="flex flex-wrap">
-            {skills.map((skill, i) => (
-              <div
-                key={`used-skill-${i}`}
-                className="py-1 px-2 mr-2 mb-2 rounded-md flex items-center relative border-[1px]"
-                style={{
-                  background: skill.background,
-                  borderColor: skill.background.replace("0.15", "1")
-                }}
-              >
-                <img 
-                  src={skill.img} 
-                  className="h-4 mr-2" 
-                  style={{filter: skill?.background === "#000" ? "invert(1)" : "none"}}
-                />
-                <div 
-                  className={`
-                    text-sm 
-                    ${lightTitleList.includes(skill.title) ? 'text-black' : ''} 
-                    ${darkTitleList.includes(skill.title) ? 'text-white' : ''}
-                  `}
-                >
-                  {skill.title}
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
+        {skills && <Skills skills={skills}/>}
       </div>
     </>
   );

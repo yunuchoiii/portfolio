@@ -50,7 +50,9 @@ const ProjectDetail = ({item, setSelectedProjectId, show}:ProjectDetailProps) =>
         <ProjectDetailSection title="요약" content={item.summary} />
         <ProjectDetailSection title="기간" content={`${item.start_date} - ${item.end_date}`} />
         <ProjectDetailSection title="역할" content={item.role_introduction} />
-        {/* <ProjectDetailSection title="구현 기능" content={item.features} /> */}
+        {item.features_detail ? 
+        <ProjectDetailSection title="구현 기능" content={item.features_detail} /> : 
+        <ProjectDetailSection title="구현 기능" content={item.features} />}
         {/* <ProjectDetailSection title="트러블 슈팅" content={item.troubles} /> */}
         <ProjectDetailSection title="성과" content={item.results} />
         <ProjectDetailSection title="사용 기술" skills={usedSkills} />

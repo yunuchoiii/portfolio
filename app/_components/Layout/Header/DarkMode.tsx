@@ -1,9 +1,14 @@
 "use client";
 
 import { useTheme } from "next-themes";
+import { useLayoutEffect } from "react";
 
 const DarkMode = () => {
   const { systemTheme, theme, setTheme } = useTheme();
+
+  useLayoutEffect(() => {
+    setTheme(systemTheme!)
+  }, [systemTheme])
 
   const onClick = () => {
     if (theme === "light") {
@@ -13,8 +18,6 @@ const DarkMode = () => {
     }
   };
 
-  const currentTheme = theme === "system" ? systemTheme : theme;
-
   return <button
     className="relative h-[75px] w-[31px] rounded-full border-[3px] border-blue-1 flex items-center blue-shadow-1"
     onClick={onClick}
@@ -22,7 +25,7 @@ const DarkMode = () => {
     <div
       className="h-[41px] w-[22px] rounded-full bg-blue-2 absolute z-0 transition-all left-[1.5px]"
       style={{
-        top: currentTheme === "light" ? '1.5px' : '26.5px',
+        top: theme === "light" ? '1.5px' : '26.5px',
       }}
     ></div>
     <div className="w-full flex flex-col items-center justify-between relative z-10">
