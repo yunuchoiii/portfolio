@@ -1,7 +1,7 @@
 import useFirestore from "@/app/_hooks/useFirestore"
 import { IProject } from "@/app/_types/project"
 import { ISkill } from "@/app/_types/skills"
-import { Dispatch, SetStateAction } from "react"
+import { Dispatch, SetStateAction, useState } from "react"
 import IconButton from "../Button/IconButton"
 import ImageGallery from "../ImageGallery/ImageGallery"
 import ProjectDetailSection from "./ProjectDetailSection"
@@ -22,7 +22,13 @@ const ProjectDetail = ({item, setSelectedProjectId, show}:ProjectDetailProps) =>
   
   const handleBack = () => {
     setSelectedProjectId(-1)
-  }  
+  }
+
+  const [hideImage, setHideImage] = useState<boolean>(false)
+
+  const handleHideImage = () => {
+    setHideImage(prev => !prev)
+  }
 
   return <div className={`absolute w-full h-full bg-blue-1 bg-opacity-20 dark:bg-opacity-25 overflow-y-scroll hide-scroll-bar ${show ? "fade-in" : "fade-out"}`}>
     <div className="absolute sm:block hidden top-[2vw] right-[2vw]">
@@ -31,13 +37,20 @@ const ProjectDetail = ({item, setSelectedProjectId, show}:ProjectDetailProps) =>
       </IconButton>
     </div>
     <div className="w-full h-full 2xl:p-[3vw] p-[4vw] flex sm:flex-row flex-col">
-      <div className="lg:w-2/5 sm:w-1/2 sm:h-full h-[300px] flex-shrink-0">
+      <div className={`${hideImage ? "w-0 overflow-hidden" : "lg:w-2/5 sm:w-1/2 sm:h-full"} h-[300px] flex-shrink-0 transition-all duration-300`}>
         <ImageGallery 
           logo={item.logo_img}
           imageList={item.img_list}
         />
       </div>
-      <div className="h-full w-[1px] bg-[#333] dark:bg-white bg-opacity-30 dark:bg-opacity-30 mx-10 sm:block hidden"></div>
+      <div className={`group relative h-full w-[1px] flex-col items-center ${hideImage ? "pr-10" : "px-10"} sm:flex hidden transition-all`}>
+        <div className="group-hover:h-10 lg:h-0 h-10 overflow-hidden transition-all duration-300">
+          <IconButton onClick={handleHideImage}>
+            <i className={`fa-solid ${hideImage ? "fa-angles-right" : "fa-angles-left"} invert-0 dark:invert opacity-85`}></i>
+          </IconButton>
+        </div>
+        <div className="w-[1px] flex-1 bg-blue-1 dark:bg-blue-4 bg-opacity-30 dark:bg-opacity-30"></div>
+      </div>
       <div className="sm:flex-1 sm:h-full flex-shrink-0 overflow-y-scroll hide-scroll-bar scroll-smooth sm:mt-0 mt-5">
         <div className="text-lg font-bold mb-5 Montserrat flex items-center">
           {item.kor_name || item.eng_name}
