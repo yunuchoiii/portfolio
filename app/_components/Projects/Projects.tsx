@@ -49,7 +49,7 @@ const Projects = ({
           const isSelected = selectedProjectId === item.id;
           return <div 
             key={`project-item-${item.id}`}
-            className={`project-button relative ${isSelected ? "w-full" : (selectedProjectId == -1 ? "lg:w-1/6 sm:w-1/4 w-1/2" : "w-0")} 2xl:h-[588px] xl:h-[488px] lg:h-[388px] md:h-[436px] sm:h-[400px] h-[calc((50vw-30px)*2.8)] flex-shrink-0 flex justify-center scroll-area transition-all duration-1000`}
+            className={`project-button relative ${isSelected ? "w-full" : (selectedProjectId == -1 ? "xl:w-1/6 lg:w-1/5 sm:w-1/4 w-1/2" : "w-0")} 2xl:h-[588px] xl:h-[488px] lg:h-[468px] md:h-[436px] sm:h-[400px] h-[calc((50vw-30px)*2.8)] flex-shrink-0 flex justify-center scroll-area transition-all duration-1000`}
           >
             <ProjectButton 
               item={item} 
