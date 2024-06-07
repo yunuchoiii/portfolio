@@ -111,9 +111,6 @@ const Header = () => {
         </button>
       })}
     </div>
-    {/* <div className="md:flex hidden">
-      <RightButtonsGroup/>
-    </div> */}
     <div className="md:hidden flex relative">
       <MobileMenu/>
     </div>
