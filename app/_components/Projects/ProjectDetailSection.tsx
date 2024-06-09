@@ -1,21 +1,35 @@
-import { IProjectFeature } from "@/app/_types/project";
+import { IProjectFeature, IProjectTrouble } from "@/app/_types/project";
 import { ISkill } from "@/app/_types/skills";
+
+export interface ProjectDetailSectionProps {
+  title: string
+  content?: string | string[] | IProjectFeature[] | IProjectTrouble[] | undefined
+  skills?: ISkill[]
+  type?: "features" | "features_detail" | "troubles"
+}
 
 const ProjectDetailSection = ({ 
   title, 
   content,
   skills,
-}: {
-  title: string
-  content?: string | string[] | IProjectFeature[] | undefined
-  skills?: ISkill[]
-}) => {
+  type,
+}: ProjectDetailSectionProps) => {
+  
   const lightTitleList = ["JavaScript"]
   const darkTitleList = ["Next.js", "GitHub", "TypeScript", "Recoil", "React", "Tailwind.css"]
 
-
-  const Contents = ({ content }: { content: string }) => {
-    return <div className="text-sm">{content}</div>;
+  const Contents = ({ content }: { content: string | string[] }) => {
+    return (
+      typeof content === "string" ? 
+      <div className="text-sm">{content}</div> :
+      <ul className="list-disc">
+        {content.map((item, index) => (
+          <li key={`content-${index}`} className="text-sm ml-4 leading-relaxed mb-1">
+            {item}
+          </li>
+        ))}
+      </ul>
+    )
   };
 
   const Features = ({ content }: { content: string[] }) => {
@@ -84,12 +98,11 @@ const ProjectDetailSection = ({
       <div className="mb-4 last:mb-0">
         <div className="text-base mb-1 font-bold">{title}</div>
         {content && (
-          typeof content === "string" ? 
-          <Contents content={content} /> : 
-          Array.isArray(content) && typeof content[0] === "string" ? 
-          <Features content={content as string[]} /> : 
-          Array.isArray(content) && typeof content[0] === "object" ? 
-          <DetailFeatures content={content as IProjectFeature[]} /> : null
+          type === "features" ?
+            <Features content={content as string[]} /> : 
+          type === "features_detail" ? 
+            <DetailFeatures content={content as IProjectFeature[]} /> : 
+          <Contents content={content as string | string[]} />
         )}
         {skills && <Skills skills={skills}/>}
       </div>
