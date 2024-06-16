@@ -26,7 +26,7 @@ const AboutContact = ({entry}:{entry: IntersectionObserverEntry | null}) => {
       icon: "fa-link",
     },
     {
-      href: "https://1drv.ms/b/s!AvXh3xzvn6bxjfMDyo3W14z2cZcRJw?e=9T4pWm",
+      href: "https://1drv.ms/b/s!AvXh3xzvn6bxjfxleKHf8jxJtztVwg?e=LQWjgY",
       icon: "fa-cloud-arrow-down",
     }
   ];
