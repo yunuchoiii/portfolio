@@ -37,7 +37,9 @@ export default function Main() {
 
   return (
     <div 
-      className={`relative scroll-container-y ${isMobile ? "" : "h-dvh"} overflow-x-hidden transition-all duration-700 ${activeSection == "Home" || activeSection == "Contact" ? "backdrop-blur-0" :  "2xl:backdrop-blur-[75px] lg:backdrop-blur-[55px] sm:backdrop-blur-[45px] backdrop-blur-[35px] 2xl:dark:backdrop-blur-[100px] lg:dark:backdrop-blur-[75px] sm:dark:backdrop-blur-[57px] dark:backdrop-blur-[40px]"}`}
+      className={`relative scroll-container-y ${isMobile ? "" : "h-dvh"} overflow-x-hidden transition-all duration-700 
+      ${{/*activeSection == "Home" || activeSection == "Contact" ? "backdrop-blur-0" :  "2xl:backdrop-blur-[75px] lg:backdrop-blur-[55px] sm:backdrop-blur-[45px] backdrop-blur-[35px] 2xl:dark:backdrop-blur-[100px] lg:dark:backdrop-blur-[75px] sm:dark:backdrop-blur-[57px] dark:backdrop-blur-[40px]"*/}}
+      `}
       style={{marginLeft: !isMobile ? SIDEBAR_WIDTH : 0 }}
     >
       <FullPage id="Home">
