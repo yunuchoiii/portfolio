@@ -1,0 +1,81 @@
+import { CONTACT_INFO } from "@/app/_constants/contact"
+import { MENU_MAP } from "@/app/_constants/menu"
+import { activeSectionAtom } from "@/app/_store/activeSection"
+import { useState } from "react"
+import { useRecoilValue } from "recoil"
+import IconButton from "../../Button/IconButton"
+import DarkMode from "./DarkMode"
+
+interface MobileMenuProps {
+  handleMenuClick: (sectionId: string) => void
+} 
+
+const MobileMenu = ({handleMenuClick}:MobileMenuProps) => {
+  const [showMenu, setShowMenu] = useState(true)
+  const [showButtonsGroup, setShowButtonsGroup] = useState<boolean>(false);
+
+  const activeSection = useRecoilValue(activeSectionAtom)
+
+  const mobileMenuMap = [
+    ...MENU_MAP,
+    {
+      index: 6,
+      title: "ButtonsGroup",
+      iconClassName: "fa-solid fa-ellipsis"
+    }
+  ]
+
+  return <div className="md:hidden flex">
+    {/* 메뉴 열기 버튼 */}
+    <button
+      className="p-5 -mr-5"
+      onClick={()=>setShowMenu(!showMenu)}
+    >
+      <img
+        src="/images/icons/plus.png" 
+        className={`w-4 dark:invert transition-transform ${showMenu ? 'rotate-45' : 'rotate-0'}`}
+      />
+    </button>
+    {/* 메뉴 컴포넌트 */}
+    <div 
+      className={`w-[calc(100vw-40px)] h-[60px] px-2 py-1.5 fixed flex justify-between items-center left-[20px] bottom-5 transition-opacity text-right bg-white dark:bg-black rounded-full box-shadow-1 overflow-x-scroll ${showMenu ? 'fade-in-bottom' : 'fade-out-bottom'}`}
+      style={{
+        animationDuration: "0.3s"
+      }}
+    >
+      {mobileMenuMap.map(i => {
+        const isSelected = i.title === activeSection;
+        return <button
+          key={`mobile-menu-item-${i.index}`}
+          className={`w-12 h-12 bg-transparent active:scale-90 active:bg-black dark:active:bg-white active:bg-opacity-10 dark:active:bg-opacity-15 rounded-full transition-all tracking-tighter text-lg ${isSelected ? "text-blue-1 dark:text-blue-4" : ""}`}
+          onClick={()=>{
+            if (i.title !== "ButtonsGroup") {
+              handleMenuClick(i.title)
+            } else {
+              setShowButtonsGroup(!showButtonsGroup)
+            }
+          }}
+        >
+          <i className={`${i.iconClassName} opacity-85`}></i>
+        </button>
+      })}
+    </div>
+    {/* ButtonsGroup */}
+    <div className={`fixed bottom-[84px] right-10 flex items-center justify-center pr-2 transition-all duration-300 ${showButtonsGroup && showMenu ? "opacity-100" : "opacity-0"}`}>
+      <IconButton
+        props={{
+          className: "mr-10"
+        }}
+      >
+        <a href={CONTACT_INFO.github.src} target="_blank">
+          <img src="/images/icons/github.png"/>
+        </a>
+      </IconButton>
+      <div className="-rotate-90">
+        <DarkMode/>
+      </div>
+    </div>
+  </div>
+}
+
+export default MobileMenu;
