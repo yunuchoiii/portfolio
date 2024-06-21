@@ -29,7 +29,7 @@ const Home = () => {
   
   return <>
     <div 
-      className={`relative md:w-[110%] w-[105%] h-[78vh] md:-ml-[5%] -ml-[2.5%] md:mt-0 mt-5 px-[5%] flex flex-col justify-end Montserrat rounded-3xl overflow-hidden box-shadow-1 ${isRendering ? "opacity-0" : "fade-in"}`}
+      className={`relative md:w-[110%] w-[105%] md:h-[78vh] h-[calc(100vh-180px)] md:-ml-[5%] -ml-[2.5%] px-[5%] flex flex-col justify-end Montserrat rounded-3xl overflow-hidden box-shadow-1 ${isRendering ? "opacity-0" : "fade-in"}`}
     >
       {themeState && <Image
         src={`/images/main/home-bg-${themeState}.png`}
