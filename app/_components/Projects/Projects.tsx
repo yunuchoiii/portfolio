@@ -83,7 +83,7 @@ const Projects = ({
             className: `${isScrolledToLeft ? "opacity-0" : ""} transition-opacity`
           }}
         >
-          <i className="fa-solid fa-chevron-left text-lg"></i>
+          <i className="fa-solid fa-chevron-left text-lg dark:invert"></i>
         </IconButton>
       </div>
       <div className={`absolute -right-16 ${isMobile && "hidden"}`}>
@@ -93,7 +93,7 @@ const Projects = ({
             className: `${isScrolledToRight ? "opacity-0" : ""} transition-opacity`
           }}
         >
-          <i className="fa-solid fa-chevron-right text-lg"></i>
+          <i className="fa-solid fa-chevron-right text-lg dark:invert"></i>
         </IconButton>
       </div>
       <div className={`absolute sm:hidden block -top-[65px] right-0 ${selectedProjectId != -1 ? "fade-in" : "fade-out"}`}>
