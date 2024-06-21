@@ -25,7 +25,7 @@ const MobileMenu = ({handleMenuClick}:MobileMenuProps) => {
     }
   ]
 
-  return <div className="md:hidden flex">
+  return <>
     {/* 메뉴 열기 버튼 */}
     <button
       className="p-5 -mr-5"
@@ -37,8 +37,8 @@ const MobileMenu = ({handleMenuClick}:MobileMenuProps) => {
       />
     </button>
     {/* 메뉴 컴포넌트 */}
-    <div 
-      className={`w-[calc(100vw-40px)] h-[60px] px-2 py-1.5 fixed flex justify-between items-center left-[20px] bottom-5 transition-opacity text-right bg-white dark:bg-black rounded-full box-shadow-1 overflow-x-scroll ${showMenu ? 'fade-in-bottom' : 'fade-out-bottom'}`}
+    <div
+      className={`w-[calc(100vw-40px)] h-[60px] px-2 py-1.5 fixed z-50 flex justify-between items-center left-[20px] bottom-5 transition-opacity text-right bg-white dark:bg-black rounded-full box-shadow-1 overflow-x-scroll ${showMenu ? 'fade-in-bottom' : 'fade-out-bottom'}`}
       style={{
         animationDuration: "0.3s"
       }}
@@ -61,7 +61,7 @@ const MobileMenu = ({handleMenuClick}:MobileMenuProps) => {
       })}
     </div>
     {/* ButtonsGroup */}
-    <div className={`fixed bottom-[84px] right-10 flex items-center justify-center pr-2 transition-all duration-300 ${showButtonsGroup && showMenu ? "opacity-100" : "opacity-0"}`}>
+    <div className={`fixed h-[60px] z-40 right-10 flex items-center justify-center pr-2 transition-all duration-300 ${showButtonsGroup && showMenu ? "opacity-100 bottom-[84px]" : "opacity-0 bottom-5"}`}>
       <IconButton
         props={{
           className: "mr-10"
@@ -75,7 +75,7 @@ const MobileMenu = ({handleMenuClick}:MobileMenuProps) => {
         <DarkMode/>
       </div>
     </div>
-  </div>
+  </>
 }
 
 export default MobileMenu;
