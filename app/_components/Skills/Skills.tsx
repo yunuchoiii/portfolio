@@ -2,12 +2,10 @@
 
 import { HEADER_HEIGHT } from "@/app/_constants";
 import useFirestore from "@/app/_hooks/useFirestore";
-import { isMobileStateAtom } from "@/app/_store/isMobile";
 import { IProject } from "@/app/_types/project";
 import { ISkill, ISkillGroup } from "@/app/_types/skills";
-import { useIntersectionObserver } from "@uidotdev/usehooks";
+import { useIntersectionObserver, useWindowSize } from "@uidotdev/usehooks";
 import { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
 import SkillProjectBox from "./SkillProjectBox";
 
 interface SkillsProps {
@@ -15,7 +13,12 @@ interface SkillsProps {
 }
 
 const Skills = ({handleProjectButton}:SkillsProps) => {
-  const isMobile = useRecoilValue(isMobileStateAtom)
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  const windowSize = useWindowSize()
+  useEffect(() => {
+    setIsMobile(windowSize.width! < 640);
+  }, [windowSize])
 
   const [selectedSkill, setSelectedSkill] = useState<ISkill | null>(null)
   const [isAnimating, setIsAnimating] = useState(false);

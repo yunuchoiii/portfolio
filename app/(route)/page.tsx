@@ -20,7 +20,7 @@ export default function Main() {
   // isMobile state control
   const windowSize = useWindowSize()
   useEffect(() => {
-    setIsMobile(windowSize.width! <= 768);
+    setIsMobile(windowSize.width! < 768);
   }, [windowSize])
 
   const [selectedProjectId, setSelectedProjectId] = useState<number>(-1)
