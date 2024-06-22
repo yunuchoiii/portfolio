@@ -1,5 +1,6 @@
 'use client'
 
+import { isMobileStateAtom } from "@/app/_store/isMobile";
 import { isRenderingStateAtom } from "@/app/_store/isRendering";
 import { useTheme } from "next-themes";
 import Image from "next/image";
@@ -8,6 +9,7 @@ import { useRecoilValue } from "recoil";
 
 const Home = () => {
   const isRendering = useRecoilValue(isRenderingStateAtom)
+  const isMobile = useRecoilValue(isMobileStateAtom)
 
   const {theme, systemTheme} = useTheme()
   const [themeState, setThemeState] = useState<string>()
@@ -26,23 +28,36 @@ const Home = () => {
       section.scrollIntoView({ behavior: 'smooth' });
     }
   }
+
+  const buttons = [
+    {
+      title: "more",
+      section: "About",
+      icon: "fa-solid fa-arrow-down"
+    },
+    {
+      title: "contact",
+      section: "Contact",
+      icon: "fa-solid fa-paper-plane"
+    },
+  ]
   
   return <>
     <div 
-      className={`relative md:w-[110%] w-[105%] md:h-[78vh] h-[calc(100vh-180px)] md:-ml-[5%] -ml-[2.5%] px-[5%] flex flex-col justify-end Montserrat rounded-3xl overflow-hidden box-shadow-1 ${isRendering ? "opacity-0" : "fade-in"}`}
+      className={`relative md:w-full w-[105%] md:h-[64vh] h-[calc(100vh-260px)] md:-ml-0 -ml-[2.5%] md:px-[5%] px-[7.5%] pb-8 flex flex-col justify-end Montserrat md:rounded-3xl rounded-2xl border-[1px] border-blue-1 border-opacity-50 overflow-hidden box-shadow-1 ${isRendering ? "opacity-0" : "fade-in"}`}
     >
       {themeState && <Image
         src={`/images/main/home-bg-${themeState}.png`}
         alt="home-background"
         fill
         objectFit="cover"
-        className="-z-10 opacity-70"
+        className={`-z-10 opacity-70 ${isRendering ? "scale-150" : "scale-100"} transition-all duration-[5s]`}
       />}
-      <div className="2xl:text-[40px] xl:text-3xl lg:text-2xl text-xl font-bold lg:mb-5 md:mb-4 mb-3">
+      <div className="2xl:text-[40px] xl:text-3xl lg:text-2xl text-lg font-bold lg:mb-5 md:mb-4 mb-3">
         Hello. I am <br/>
       </div>
       <div
-        className={`2xl:text-[112px] xl:text-[90px] lg:text-[75px] text-[50px] font-bold leading-[90%] tracking-tight lg:mb-12 md:mb-10 mb-8 -ml-1 ${isRendering ? "opacity-0" : "fade-in"}`}
+        className={`2xl:text-[112px] xl:text-[90px] lg:text-[75px] text-[46px] font-bold leading-[90%] tracking-tight lg:mb-12 md:mb-10 mb-8 -ml-1 ${isRendering ? "opacity-0" : "fade-in"}`}
         style={{animationDelay: "1s"}}
       >
         <span className="text-blue-1 dark:text-blue-4">Front</span>end<br/>
@@ -55,18 +70,24 @@ const Home = () => {
       >
         안녕하세요. 트렌디한 개발자, 최서원입니다.
       </div>
-      <div 
-        className={`w-full flex flex-col items-center ${isRendering ? "opacity-0" : "fade-in-bottom"}`}
-        style={{animationDelay: "3s"}}
-      >
+    </div>
+    <div 
+      className={`md:w-full w-[105%] md:h-[10vh] h-[60px] md:-ml-0 -ml-[2.5%] mt-5 grid grid-cols-2 gap-5 ${isRendering ? "opacity-0" : "fade-in"}`}
+      style={{
+        animationDelay: "3s"
+      }}
+    >
+      {buttons.map((b, i) => (
         <button 
-          className="group relative flex flex-col items-center mt-5 mb-8"
-          onClick={()=>handleButton("About")}
+          key={`home-button-${i}`}
+          className={`group relative h-full bg-blue-2 dark:bg-blue-4 bg-opacity-5 dark:bg-opacity-5 Montserrat md:rounded-3xl rounded-2xl border-[1px] border-blue-1 border-opacity-50 box-shadow-1 uppercase active:scale-95 transition-all duration-300 overflow-hidden`}
+          onClick={()=>handleButton(b.section)}
         >
-          <span className="Montserrat mb-2.5">MORE</span>
-          <i className="fa-solid fa-chevron-down text-lg relative top-0 group-hover:top-3 transition-all duration-300"></i>
+          <span>{b.title}</span>
+          {!isMobile && <i className={`${b.icon} text-xl absolute right-10 -top-1/2 -translate-y-1/2 group-hover:top-1/2 transition-all`}></i>}
+          <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-0 h-0 group-hover:w-[50vw] group-hover:h-[50vw] rounded-full bg-blue-3 bg-opacity-15 transition-all duration-500"></div>
         </button>
-      </div>
+      ))}
     </div>
   </>
 }
