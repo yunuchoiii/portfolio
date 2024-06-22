@@ -1,5 +1,6 @@
 import { isMobileStateAtom } from "@/app/_store/isMobile";
 import { useIntersectionObserver } from "@uidotdev/usehooks";
+import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 
 interface IAboutListItem {
@@ -17,6 +18,14 @@ const AboutList = () => {
     root: null,
     rootMargin: "0px",
   });
+
+  const [isRendered, setIsRendered] = useState<boolean>(false)
+
+  useEffect(() => {
+    if (!isRendered && entry?.intersectionRatio) {
+      setIsRendered(true);
+    }
+  }, [entry?.intersectionRatio])
 
   const list:IAboutListItem[] = [
     {
@@ -43,7 +52,7 @@ const AboutList = () => {
     {list.map(item => (
       <div
         key={`about-list-item-${item.id}`}
-        className={`lg:w-[27%] w-full xl:after:pb-[100%] lg:after:pb-[130%] md:after:pb-[27%] relative after:block lg:mb-0 mb-8 ${entry?.intersectionRatio ? "fade-in-bottom" : "opacity-0"}`}
+        className={`lg:w-[27%] w-full xl:after:pb-[100%] lg:after:pb-[130%] md:after:pb-[27%] relative after:block lg:mb-0 mb-8 ${isRendered ? "fade-in-bottom" : "opacity-0"}`}
         style={{
           animationDelay: `${(isMobile ? 0 : 2) + 0.3 * item.id}s`
         }}
