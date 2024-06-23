@@ -44,7 +44,7 @@ const Home = () => {
   
   return <>
     <div 
-      className={`relative md:w-full w-[105%] md:h-[64vh] h-[calc(100vh-260px)] md:-ml-0 -ml-[2.5%] md:px-[5%] px-[7.5%] pb-8 flex flex-col justify-end Montserrat md:rounded-3xl rounded-2xl border-[1px] border-blue-1 border-opacity-50 overflow-hidden box-shadow-1 ${isRendering ? "opacity-0" : "fade-in"}`}
+      className={`relative md:w-full w-[105%] md:h-[64vh] h-[calc(100dvh-260px)] md:-ml-0 -ml-[2.5%] md:px-[5%] px-[7.5%] pb-8 flex flex-col justify-end Montserrat md:rounded-3xl rounded-2xl border-[1px] border-blue-1 border-opacity-50 overflow-hidden box-shadow-1 transition-[height] duration-300 ${isRendering ? "opacity-0" : "fade-in"}`}
     >
       {themeState && <Image
         src={`/images/main/home-bg-${themeState}.png`}
@@ -84,8 +84,10 @@ const Home = () => {
           onClick={()=>handleButton(b.section)}
         >
           <span>{b.title}</span>
-          {!isMobile && <i className={`${b.icon} text-xl absolute right-10 -top-1/2 -translate-y-1/2 group-hover:top-1/2 transition-all`}></i>}
-          <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-0 h-0 group-hover:w-[50vw] group-hover:h-[50vw] rounded-full bg-blue-3 bg-opacity-15 transition-all duration-500"></div>
+          {!isMobile && (
+            <i className={`${b.icon} text-xl absolute right-10 -top-1/2 -translate-y-1/2 group-hover:top-1/2 transition-all opacity-75 text-blue-2 dark:text-blue-4`}></i>
+          )}
+          <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-0 h-0 group-hover:w-[50vw] group-hover:h-[50vw] rounded-full bg-blue-1 dark:bg-blue-4 bg-opacity-10 dark:bg-opacity-10 transition-all duration-500"></div>
         </button>
       ))}
     </div>
