@@ -44,7 +44,7 @@ const Home = () => {
   
   return <>
     <div 
-      className={`relative md:w-full w-[105%] md:h-[64vh] h-[calc(100dvh-260px)] md:-ml-0 -ml-[2.5%] md:px-[5%] px-[7.5%] pb-8 flex flex-col justify-end Montserrat md:rounded-3xl rounded-2xl border-[1px] border-blue-1 border-opacity-50 overflow-hidden box-shadow-1 transition-[height] duration-300 ${isRendering ? "opacity-0" : "fade-in"}`}
+      className={`relative md:w-full w-[105%] md:h-[64vh] h-[calc(100vh-340px)] md:-ml-0 -ml-[2.5%] md:px-[5%] px-[7.5%] pb-8 flex flex-col justify-end Montserrat md:rounded-3xl rounded-2xl border-[1px] border-blue-1 border-opacity-50 overflow-hidden box-shadow-1 transition-[height] duration-300 ${isRendering ? "opacity-0" : "fade-in"}`}
     >
       {themeState && <Image
         src={`/images/main/home-bg-${themeState}.png`}
