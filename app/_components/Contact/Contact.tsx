@@ -39,7 +39,7 @@ const Contact = () => {
   };
 
   return <>
-    <div ref={ref} className="flex justify-center">
+    <div ref={ref} className={`flex justify-center ${isMobile ? "mt-20" : ""}`}>
       <div className="flex items-center md:flex-row flex-col md:h-[70vh] md:max-h-[628px] h-auto sm:w-[90%] w-full md:mb-0 mb-20">
         <div className="relative z-10 md:w-[37%] w-full min-w-[260px] md:h-full rounded-[20px] bg-gradient-to-br from-[#77C9CE] to-[#326366] overflow-hidden flex-shrink-0">
           <div className="w-[14vw] min-w-32 h-[14vw] min-h-32 rounded-full bg-blue-2 absolute top-5 left-[10%]"/>
