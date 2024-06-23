@@ -38,10 +38,8 @@ const MobileMenu = ({handleMenuClick}:MobileMenuProps) => {
     </button>
     {/* 메뉴 컴포넌트 */}
     <div
-      className={`w-[calc(100vw-40px)] h-[60px] px-2 py-1.5 fixed z-50 flex justify-between items-center left-[20px] bottom-5 transition-opacity text-right bg-[#e8f3f6] dark:bg-[#172026] border-[1px] border-blue-1 border-opacity-50 rounded-full box-shadow-1 overflow-x-scroll ${showMenu ? 'fade-in-bottom' : 'fade-out-bottom'}`}
-      style={{
-        animationDuration: "0.3s"
-      }}
+      className={`w-[calc(100vw-40px)] h-[60px] px-2 py-1.5 fixed z-50 flex justify-between items-center left-[20px] bottom-5 text-right bg-[#e8f3f6] dark:bg-[#172026] border-[1px] border-blue-1 border-opacity-50 rounded-full box-shadow-1 overflow-x-scroll ${showMenu ? 'fade-in-bottom' : 'fade-out-bottom'}`}
+      style={{animationDuration: "0.3s"}}
     >
       {mobileMenuMap.map(i => {
         const isSelected = i.title === activeSection;
