@@ -44,7 +44,7 @@ const Home = () => {
   
   return <>
     <div 
-      className={`relative md:w-full w-[105%] md:h-[64vh] h-[calc(100vh-340px)] md:-ml-0 -ml-[2.5%] md:px-[5%] px-[7.5%] pb-8 flex flex-col justify-end Montserrat md:rounded-3xl rounded-2xl border-[1px] border-blue-1 border-opacity-50 overflow-hidden box-shadow-1 transition-[height] duration-300 ${isRendering ? "opacity-0" : "fade-in"}`}
+      className={`relative md:w-full w-[105%] md:h-[64vh] h-[calc(100vh-340px)] md:-ml-0 -ml-[2.5%] md:px-[5%] px-[7.5%] pb-8 flex flex-col justify-end Montserrat md:rounded-3xl rounded-2xl overflow-hidden box-shadow-1 transition-[height] duration-300 ${isRendering ? "opacity-0" : "fade-in"}`}
     >
       {themeState && <Image
         src={`/images/main/home-bg-${themeState}.png`}
@@ -80,14 +80,14 @@ const Home = () => {
       {buttons.map((b, i) => (
         <button 
           key={`home-button-${i}`}
-          className={`group relative h-full bg-blue-2 dark:bg-blue-4 bg-opacity-5 dark:bg-opacity-5 Montserrat md:rounded-3xl rounded-2xl border-[1px] border-blue-1 border-opacity-50 box-shadow-1 uppercase active:scale-95 transition-all duration-300 overflow-hidden`}
+          className={`group relative h-full bg-blue-2 dark:bg-blue-4 bg-opacity-5 dark:bg-opacity-5 Montserrat md:rounded-3xl rounded-2xl border-2 border-blue-1 border-opacity-30 box-shadow-1 uppercase active:scale-95 transition-all duration-300 overflow-hidden`}
           onClick={()=>handleButton(b.section)}
         >
           <span>{b.title}</span>
           {!isMobile && (
-            <i className={`${b.icon} text-xl absolute right-10 -top-1/2 -translate-y-1/2 group-hover:top-1/2 transition-all opacity-75 text-blue-2 dark:text-blue-4`}></i>
+            <i className={`${b.icon} text-xl absolute right-10 -top-1/2 -translate-y-1/2 group-hover:top-1/2 transition-all duration-500 opacity-50 text-blue-2 dark:text-blue-4`}></i>
           )}
-          <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-0 h-0 group-hover:w-[50vw] group-hover:h-[50vw] rounded-full bg-blue-1 dark:bg-blue-4 bg-opacity-10 dark:bg-opacity-10 transition-all duration-500"></div>
+          <div className="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-0 h-0 group-hover:w-[50vw] group-hover:h-[50vw] rounded-full bg-blue-1 dark:bg-blue-4 bg-opacity-10 dark:bg-opacity-10 transition-all duration-700"></div>
         </button>
       ))}
     </div>
