@@ -51,7 +51,7 @@ const Home = () => {
         alt="home-background"
         fill
         objectFit="cover"
-        className={`-z-10 opacity-70 ${isRendering ? "scale-150" : "scale-100"} transition-all duration-[5s]`}
+        className={`-z-10 opacity-50 dark:opacity-70 brightness-90 ${isRendering ? "scale-150" : "scale-100"} transition-all duration-[5s]`}
       />}
       <div className="2xl:text-[40px] xl:text-3xl lg:text-2xl text-lg font-bold lg:mb-5 md:mb-4 mb-3">
         Hello. I am <br/>
@@ -80,7 +80,7 @@ const Home = () => {
       {buttons.map((b, i) => (
         <button 
           key={`home-button-${i}`}
-          className={`group relative h-full bg-blue-2 dark:bg-blue-4 bg-opacity-5 dark:bg-opacity-5 Montserrat md:rounded-3xl rounded-2xl border-2 border-blue-1 border-opacity-30 box-shadow-1 uppercase active:scale-95 transition-all duration-300 overflow-hidden`}
+          className={`group relative h-full bg-blue-2 dark:bg-blue-4 bg-opacity-5 dark:bg-opacity-5 Montserrat md:rounded-3xl rounded-2xl border-2 border-blue-1 border-opacity-30 box-shadow-1 uppercase active:scale-95 transition-all duration-100 overflow-hidden`}
           onClick={()=>handleButton(b.section)}
         >
           <span>{b.title}</span>
