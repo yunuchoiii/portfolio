@@ -19,10 +19,10 @@ const AboutCareer = () => {
       {(careerList as ICareer[]).map((c, i) => {
         return <div 
           key={`career-${i}`} 
-          className={`relative px-8 py-6 ${c.workingNow ? "bg-blue-1 bg-opacity-15" : "bg-white bg-opacity-25 opacity-85"} rounded-[30px] md:flex`}
+          className={`relative px-8 py-6 ${c.workingNow ? "bg-blue-1 bg-opacity-15" : "bg-black bg-opacity-10 dark:bg-white dark:bg-opacity-10 opacity-85"} rounded-[30px] md:flex`}
         >
           <img src={c.logo} className="h-[120px] absolute grayscale opacity-20 dark:opacity-30 right-10 bottom-10 dark:invert" />
-          <div className="Montserrat xl:w-1/6 md:w-1/4 md:border-b-0 border-b pb-3 mb-3 border-blue-1 leading-none">
+          <div className="Montserrat xl:w-1/5 md:w-1/4 md:border-b-0 border-b pb-3 mb-3 border-blue-1 leading-none">
             <div className="text-lg font-semibold">
               {c.companyName}
             </div>
