@@ -9,10 +9,10 @@ interface IconButtonProps {
 const IconButton = ({children, props, onClick}:IconButtonProps) => {
   return <button
     {...props}
-    className={`w-10 h-10 p-2 rounded-full hover:bg-blue-1 hover:bg-opacity-30 transition-all ${props?.className}`}
+    className={`md:w-10 w-7 md:h-10 h-7 flex justify-center items-center rounded-full hover:bg-blue-1 hover:bg-opacity-30 transition-all ${props?.className}`}
     onClick={onClick}
   >
-    <div className="dark:invert">
+    <div className="dark:invert flex">
       {children}
     </div>
   </button>
