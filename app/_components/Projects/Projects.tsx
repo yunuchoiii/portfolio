@@ -76,24 +76,24 @@ const Projects = ({
       ref={ref} 
       className={`relative w-full h-full flex items-center justify-center 2xl:mt-0 -mt-5 ${entry?.intersectionRatio ? "fade-in" : "opacity-0"}`}
     >
-      <div className={`absolute -left-16 ${isMobile && "hidden"}`}>
+      <div className={`absolute -left-16 ${isMobile && "-left-7"}`}>
         <IconButton 
           onClick={()=>scrollProjects("left")} 
           props={{
-            className: `${isScrolledToLeft ? "opacity-0" : ""} transition-opacity`
+            className: `${isScrolledToLeft || selectedProjectId != -1 ? "opacity-0" : ""} transition-opacity`
           }}
         >
-          <i className="fa-solid fa-chevron-left text-lg dark:invert"></i>
+          <i className={`fa-solid fa-chevron-left dark:invert ${isMobile ? "text-sm" : "text-lg"}`}></i>
         </IconButton>
       </div>
-      <div className={`absolute -right-16 ${isMobile && "hidden"}`}>
+      <div className={`absolute -right-16 ${isMobile && "-right-7"}`}>
         <IconButton 
           onClick={()=>scrollProjects("right")} 
           props={{
-            className: `${isScrolledToRight ? "opacity-0" : ""} transition-opacity`
+            className: `${isScrolledToRight || selectedProjectId != -1 ? "opacity-0" : ""} transition-opacity`
           }}
         >
-          <i className="fa-solid fa-chevron-right text-lg dark:invert"></i>
+          <i className={`fa-solid fa-chevron-right dark:invert ${isMobile ? "text-sm" : "text-lg"}`}></i>
         </IconButton>
       </div>
       <div className={`absolute sm:hidden block -top-[65px] right-0 ${selectedProjectId != -1 ? "fade-in" : "fade-out"}`}>

@@ -11,7 +11,7 @@ interface MobileMenuProps {
 } 
 
 const MobileMenu = ({handleMenuClick}:MobileMenuProps) => {
-  const [showMenu, setShowMenu] = useState(true)
+  const [showMenu, setShowMenu] = useState(false)
   const [showButtonsGroup, setShowButtonsGroup] = useState<boolean>(false);
 
   const activeSection = useRecoilValue(activeSectionAtom)
