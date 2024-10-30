@@ -76,7 +76,7 @@ const Projects = ({
       ref={ref} 
       className={`relative w-full h-full flex items-center justify-center 2xl:mt-0 -mt-5 ${entry?.intersectionRatio ? "fade-in" : "opacity-0"}`}
     >
-      <div className={`absolute -left-16 ${isMobile && "-left-7"}`}>
+      <div className={`absolute ${isMobile ? "-left-7" : "-left-[calc(40px+0.8%)]"}`}>
         <IconButton 
           onClick={()=>scrollProjects("left")} 
           props={{
@@ -86,7 +86,7 @@ const Projects = ({
           <i className={`fa-solid fa-chevron-left dark:invert ${isMobile ? "text-sm" : "text-lg"}`}></i>
         </IconButton>
       </div>
-      <div className={`absolute -right-16 ${isMobile && "-right-7"}`}>
+      <div className={`absolute ${isMobile ? "-right-7" : "-right-[calc(40px+0.8%)]"}`}>
         <IconButton 
           onClick={()=>scrollProjects("right")} 
           props={{
