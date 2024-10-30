@@ -62,8 +62,8 @@ const AboutContact = ({entry}:{entry: IntersectionObserverEntry | null}) => {
       <div className="flex justify-between lg:w-1/2 w-2/3 ">
         {contactLinkList.map((link, index) => {
           return <IconButton key={`info-link-${index}`}>
-            <a href={link.link} target="_blank">
-              <img src={link.icon} />
+            <a href={link.link} target="_blank" className="flex justify-center">
+              <img src={link.icon} className="w-2/3"/>
             </a>
           </IconButton>
         })}
