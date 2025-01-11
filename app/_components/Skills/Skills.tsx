@@ -12,6 +12,9 @@ interface SkillsProps {
   handleProjectButton: (id: number) => void
 }
 
+export const LightTitleSkillList = ["JavaScript"]
+export const DarkTitleSkillList = ["Next.js", "GitHub", "TypeScript", "Recoil", "React", "Tailwind.css", "Node.js"]
+
 const Skills = ({handleProjectButton}:SkillsProps) => {
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
@@ -50,9 +53,6 @@ const Skills = ({handleProjectButton}:SkillsProps) => {
       }, 100);
     }
   }, [selectedSkill]);
-
-  const lightTitleList = ["JavaScript"]
-  const darkTitleList = ["Next.js", "GitHub", "TypeScript", "Recoil", "React", "Tailwind.css"]
 
   const [ref, entry] = useIntersectionObserver({
     threshold: 0.1,
@@ -103,8 +103,8 @@ const Skills = ({handleProjectButton}:SkillsProps) => {
                   <div 
                     className={`
                       Montserrat 2xl:text-xl xl:text-lg lg:text-md md:text-base relative xl:left-[70px] left-[60px]
-                      ${lightTitleList.includes(i.title) ? 'skill-light' : ''} 
-                      ${darkTitleList.includes(i.title) ? 'skill-dark' : ''}
+                      ${LightTitleSkillList.includes(i.title) ? 'skill-light' : ''} 
+                      ${DarkTitleSkillList.includes(i.title) ? 'skill-dark' : ''}
                     `}
                   >
                     {i.title}
