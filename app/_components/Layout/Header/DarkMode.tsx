@@ -33,7 +33,7 @@ const DarkMode = () => {
         <div
           className="h-[41px] w-[22px] rounded-full bg-blue-2 absolute z-0 transition-all left-[1.5px]"
           style={{
-            top: theme === "light" ? "1.5px" : "26.5px",
+            top: (theme === "light" || (theme === "system" && systemTheme === "light")) ? "1.5px" : "26.5px",
           }}
         ></div>
       )}
