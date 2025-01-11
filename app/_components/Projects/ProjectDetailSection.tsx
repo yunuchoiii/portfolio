@@ -1,5 +1,6 @@
 import { IProjectFeature, IProjectTrouble } from "@/app/_types/project";
 import { ISkill } from "@/app/_types/skills";
+import { DarkTitleSkillList, LightTitleSkillList } from "../Skills/Skills";
 
 export interface ProjectDetailSectionProps {
   title: string
@@ -14,9 +15,6 @@ const ProjectDetailSection = ({
   skills,
   type,
 }: ProjectDetailSectionProps) => {
-  
-  const lightTitleList = ["JavaScript"]
-  const darkTitleList = ["Next.js", "GitHub", "TypeScript", "Recoil", "React", "Tailwind.css"]
 
   const Contents = ({ content }: { content: string | string[] }) => {
     return (
@@ -82,8 +80,8 @@ const ProjectDetailSection = ({
           <div 
             className={`
               text-sm 
-              ${lightTitleList.includes(skill.title) ? 'text-black' : ''} 
-              ${darkTitleList.includes(skill.title) ? 'text-white' : ''}
+              ${LightTitleSkillList.includes(skill.title) ? 'text-black' : ''} 
+              ${DarkTitleSkillList.includes(skill.title) ? 'text-white' : ''}
             `}
           >
             {skill.title}
