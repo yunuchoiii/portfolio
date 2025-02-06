@@ -39,15 +39,15 @@ const Contact = () => {
   };
 
   return <>
-    <div ref={ref} className={`flex justify-center ${isMobile ? "mt-20" : ""}`}>
+    <section ref={ref} className={`flex justify-center ${isMobile ? "mt-20" : ""}`}>
       <div className="flex items-center md:flex-row flex-col md:h-[70vh] md:max-h-[628px] h-auto sm:w-[90%] w-full md:mb-0 mb-20">
         <div className="relative z-10 md:w-[37%] w-full min-w-[260px] md:h-full rounded-[20px] bg-gradient-to-br from-[#77C9CE] to-[#326366] overflow-hidden flex-shrink-0">
           <div className="w-[14vw] min-w-32 h-[14vw] min-h-32 rounded-full bg-blue-2 absolute top-5 left-[10%]"/>
           <div className="w-[17vw] h-[17vw] rounded-full bg-blue-2 absolute top-[30%] right-[10%]"/>
           <div className="w-full h-full relative top-0 left-0 bg-white bg-opacity-5 backdrop-blur-[60px] px-[14%] py-[10%]">
-            <div className="2xl:text-5xl xl:text-4xl text-3xl font-semibold Montserrat tracking-tighter text-white 2xl:mb-[74px] xl:mb-16 lg:mb-14 md:mb-12 mb-10">
+            <h1 className="2xl:text-5xl xl:text-4xl text-3xl font-semibold Montserrat tracking-tighter text-white 2xl:mb-[74px] xl:mb-16 lg:mb-14 md:mb-12 mb-10">
               Contact .
-            </div>
+            </h1>
             <div>
               {contactInfoList.sort((a,b) => a.sort - b.sort).map((info, index) => (
                 <div 
@@ -148,7 +148,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </div> 
+    </section> 
     <style jsx>
       {`
         .form-input {

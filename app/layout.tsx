@@ -26,6 +26,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="최서원의 포트폴리오 입니다." />
+        <meta name="keywords" content="포트폴리오, 웹 개발, 최서원, 프론트엔드, 프론트엔드 포트폴리오, 프론트엔드 개발자, 프론트엔드 개발자 최서원, 프론트엔드 개발자 최서원 포트폴리오, 프론트엔드 개발자 최서원 포트폴리오 최서원" />
+        <meta name="author" content="Seowon Choi" />
+        <title>Seowon Choi's Portfolio</title>
+        <link rel="canonical" href="https://seowonchoiii.vercel.app/" />
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body className={inter.className}>
         <Providers>
           <RecoilRootProvider>
