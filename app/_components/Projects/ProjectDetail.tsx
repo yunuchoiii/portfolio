@@ -44,7 +44,7 @@ const ProjectDetail = ({item, setSelectedProjectId, show}:ProjectDetailProps) =>
     { title: "사용 기술", skills: usedSkills },
   ];
 
-  return <div className={`absolute w-full h-full bg-blue-1 bg-opacity-20 dark:bg-opacity-25 overflow-y-scroll hide-scroll-bar ${show ? "fade-in" : "fade-out"}`}>
+  return <article className={`absolute w-full h-full bg-blue-1 bg-opacity-20 dark:bg-opacity-25 overflow-y-scroll hide-scroll-bar ${show ? "fade-in" : "fade-out"}`}>
     <div className="absolute sm:block hidden top-[2vw] right-[2vw]">
       <IconButton onClick={handleBack}>
         <i className="fa-solid fa-arrow-left text-2xl invert-0 dark:invert"></i>
@@ -85,7 +85,7 @@ const ProjectDetail = ({item, setSelectedProjectId, show}:ProjectDetailProps) =>
         }) }
       </div>
     </div>
-  </div>
+  </article>
 }
 
 export default ProjectDetail

@@ -11,12 +11,12 @@ const AboutMe = ({entry}:{entry: IntersectionObserverEntry | null}) => {
 
   return <div className="w-full h-full flex lg:flex-row flex-col justify-between relative mb-16">
     <div className="lg:w-3/12">
-      <div 
+      <h1 
         className={`Montserrat font-bold tracking-tight 2xl:text-7xl xl:text-6xl text-5xl ${entry?.intersectionRatio ? "tracking-in-expand" : "opacity-0"}`}
       >
         About <br/>
         Me <b className="text-blue-1">.</b>
-      </div>
+      </h1>
     </div>
     <div 
       className={`

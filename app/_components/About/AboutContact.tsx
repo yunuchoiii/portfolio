@@ -38,7 +38,7 @@ const AboutContact = ({entry}:{entry: IntersectionObserverEntry | null}) => {
     </div>
   }
 
-  return <div 
+  return <section 
     className={`w-full md:h-28 h-auto flex md:flex-row flex-col items-center justify-between relative mb-16 border-[1px] border-blue-1 blue-shadow-2 rounded-[30px] lg:px-6 px-4 py-4 ${entry?.intersectionRatio ? "fade-in" : "opacity-0"}`}
     style={{animationDelay: "1s"}}
   >
@@ -88,7 +88,7 @@ const AboutContact = ({entry}:{entry: IntersectionObserverEntry | null}) => {
         </div>
       </div>
     </AboutContactSection>
-  </div>
+  </section>
 }
 
 export default AboutContact;

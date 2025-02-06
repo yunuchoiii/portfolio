@@ -72,7 +72,7 @@ const Projects = ({
   };
 
   return <>
-    <div 
+    <section 
       ref={ref} 
       className={`relative w-full h-full flex items-center justify-center 2xl:mt-0 -mt-5 ${entry?.intersectionRatio ? "fade-in" : "opacity-0"}`}
     >
@@ -126,7 +126,7 @@ const Projects = ({
           </div>
         })}
       </div>
-    </div>
+    </section>
   </>
 }
 

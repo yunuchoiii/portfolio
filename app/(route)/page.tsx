@@ -2,7 +2,7 @@
 
 import { useWindowSize } from "@uidotdev/usehooks";
 import { useEffect, useState } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import About from "../_components/About/About";
 import Contact from "../_components/Contact/Contact";
 import Home from "../_components/Home/Home";
@@ -10,11 +10,9 @@ import FullPage from "../_components/Layout/Page/FullPage";
 import Projects from "../_components/Projects/Projects";
 import Skills from "../_components/Skills/Skills";
 import { SIDEBAR_WIDTH } from "../_constants";
-import { activeSectionAtom } from "../_store/activeSection";
 import { isMobileStateAtom } from "../_store/isMobile";
 
 export default function Main() {
-  const activeSection = useRecoilValue(activeSectionAtom) // 활성화 메뉴 state
   const [isMobile, setIsMobile] = useRecoilState(isMobileStateAtom) // mobile 여부 state
 
   // isMobile state control

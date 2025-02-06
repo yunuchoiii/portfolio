@@ -30,7 +30,7 @@ const AboutList = () => {
     }
   }, [entry?.intersectionRatio])
 
-  return <div ref={ref} className="w-full h-full flex lg:flex-row flex-col items-center justify-between relative mb-12">
+  return <section ref={ref} className="w-full h-full flex lg:flex-row flex-col items-center justify-between relative mb-12">
     {(data as IAboutListItem[]).sort((a, b) => a.id - b.id).map(item => (
       <div
         key={`about-list-item-${item.id}`}
@@ -59,7 +59,7 @@ const AboutList = () => {
         </div>
       </div>
     ))}
-  </div>
+  </section>
 }
 
 export default AboutList;

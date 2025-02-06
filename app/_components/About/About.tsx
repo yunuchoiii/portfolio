@@ -15,12 +15,12 @@ const About = () => {
     rootMargin: "0px",
   });
 
-  return <div ref={ref} className={`${isMobile ? "mt-20" : ""}`}>
+  return <section ref={ref} className={`${isMobile ? "mt-20" : ""}`}>
     <AboutMe entry={entry}/>
     <AboutContact entry={entry}/>
     <AboutList/>
     <AboutCareer/>
-  </div>
+  </section>
 }
 
 export default About;
