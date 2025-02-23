@@ -15,9 +15,9 @@ const AboutCareer = () => {
     <div className="2xl:text-3xl xl:text-2xl text-xl font-semibold Montserrat mb-5">
       Career
     </div>
-    <div>
+    <ul>
       {(careerList as ICareer[]).map((c, i) => {
-        return <div 
+        return <li
           key={`career-${i}`} 
           className={`relative px-8 py-6 ${c.workingNow ? "bg-blue-1 bg-opacity-15" : "bg-black bg-opacity-10 dark:bg-white dark:bg-opacity-10 opacity-85"} rounded-[30px] md:flex`}
         >
@@ -42,9 +42,9 @@ const AboutCareer = () => {
               ))}
             </ul>
           </div>
-        </div>
+        </li>
       })}
-    </div>
+    </ul>
   </section>
 }
 

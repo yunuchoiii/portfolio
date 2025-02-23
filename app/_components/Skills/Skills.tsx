@@ -62,12 +62,12 @@ const Skills = ({handleProjectButton}:SkillsProps) => {
 
   return <>
     <section className="w-full h-full flex justify-center md:mb-0 mb-20">
-      <div ref={ref} className="flex-1 sm:mr-5 mr-0">
+      <ul ref={ref} className="flex-1 sm:mr-5 mr-0">
         {(skillGroupList as ISkillGroup[]).sort((a, b) => a.id - b.id).map((group, index) => {
           const children = (skillList as ISkill[])
             .filter(i => i.parent_id === group.id)
             .sort((a, b) => a.id - b.id);
-          return <div 
+          return <li 
             key={`skill-group-${group.id}`} 
             className={`mt-[50px] first:mt-0 ${entry?.intersectionRatio ? "fade-in-right" : "opacity-0"}`}
             style={{
@@ -77,12 +77,11 @@ const Skills = ({handleProjectButton}:SkillsProps) => {
             <div className="Montserrat 2xl:text-xl xl:text-lg lg:text-md md:text-base font-semibold tracking-tighter">
               {group.title}
             </div>
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
+            <ul className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
               {children.map(i => {
                 const project_count = projectListBySkillId(i?.id).length
-                return i.show_yn != false && <div
-                  key={`skill-item-${i.id}`}
-                >
+                if (i.show_yn === false) return null;
+                return <li key={`skill-item-${i.id}`}>
                   <button
                     className={`skill-button relative xl:w-[200px] sm:w-[170px] w-[100%] flex items-center transition-all duration-500
                     ${i.id === selectedSkill?.id && isMobile ? "h-0 overflow-hidden mt-0 opacity-0" : "xl:h-[50px] h-[40px] mt-[30px]"}`}
@@ -124,12 +123,12 @@ const Skills = ({handleProjectButton}:SkillsProps) => {
                       handleProjectButton={handleProjectButton}
                     />
                   </div>
-                </div>
+                </li>
               })}
-            </div>
-          </div>
+            </ul>
+          </li>
         })}
-      </div>
+      </ul>
       <div 
         className="w-[30%] min-w-[270px] max-w-[330px] max-h-[580px] sticky top-24 sm:block hidden"
         style={{height: `calc(100vh - ${HEADER_HEIGHT * 2}px)`}}

@@ -47,13 +47,14 @@ const Header = () => {
     </button>
     <div className="hidden md:flex w-1/3 min-w-96 max-w-[426px] items-center justify-between 2xl:text-lg text-base">
       {MENU_MAP.map(i => {
-        return <button
-          key={`menu-item-${i.index}`}
-          className={`${i.title == activeSection ? 'opacity-100 border-blue-1' : 'opacity-50 border-transparent'} hover:opacity-100 transition-all tracking-tighter h-10 px-1 border-b-2`}
-          onClick={()=>handleMenuClick(i.title)}
-        >
-          {i.title}
-        </button>
+        return <nav key={`menu-item-${i.index}`}>
+          <button
+            className={`${i.title == activeSection ? 'opacity-100 border-blue-1' : 'opacity-50 border-transparent'} hover:opacity-100 transition-all tracking-tighter h-10 px-1 border-b-2`}
+            onClick={()=>handleMenuClick(i.title)}
+          >
+            {i.title}
+          </button>
+        </nav>
       })}
     </div>
     <div className="md:hidden flex">

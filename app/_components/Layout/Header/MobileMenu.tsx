@@ -43,19 +43,20 @@ const MobileMenu = ({handleMenuClick}:MobileMenuProps) => {
     >
       {mobileMenuMap.map(i => {
         const isSelected = i.title === activeSection;
-        return <button
-          key={`mobile-menu-item-${i.index}`}
-          className={`w-[46px] h-[46px] bg-transparent active:scale-90 active:bg-black dark:active:bg-white active:bg-opacity-10 dark:active:bg-opacity-15 rounded-full transition-all tracking-tighter text-lg ${isSelected ? "text-blue-1 dark:text-blue-4" : ""}`}
-          onClick={()=>{
-            if (i.title !== "ButtonsGroup") {
-              handleMenuClick(i.title)
-            } else {
-              setShowButtonsGroup(!showButtonsGroup)
-            }
-          }}
-        >
-          <i className={`${i.iconClassName} opacity-85`}></i>
-        </button>
+        return <nav key={`mobile-menu-item-${i.index}`}>
+          <button
+            className={`w-[46px] h-[46px] bg-transparent active:scale-90 active:bg-black dark:active:bg-white active:bg-opacity-10 dark:active:bg-opacity-15 rounded-full transition-all tracking-tighter text-lg ${isSelected ? "text-blue-1 dark:text-blue-4" : ""}`}
+            onClick={()=>{
+              if (i.title !== "ButtonsGroup") {
+                handleMenuClick(i.title)
+              } else {
+                setShowButtonsGroup(!showButtonsGroup)
+              }
+            }}
+          >
+            <i className={`${i.iconClassName} opacity-85`}></i>
+          </button>
+        </nav>
       })}
     </div>
     {/* ButtonsGroup */}

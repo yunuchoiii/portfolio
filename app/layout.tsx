@@ -16,7 +16,12 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Seowon Choi's Portfolio",
-  description: "최서원의 포트폴리오 입니다.",
+  description: "트렌디한 프론트엔드 개발자, 최서원의 포트폴리오 입니다.",
+  keywords: ["포트폴리오", "웹 개발", "최서원", "프론트엔드", "프론트엔드 포트폴리오", "프론트엔드 개발자", "최신 웹 기술", "트렌디한 웹 디자인"],
+  authors: [{ name: "Seowon Choi", url: "https://seowonchoiii.vercel.app/" }],
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
@@ -29,10 +34,6 @@ export default function RootLayout({
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="최서원의 포트폴리오 입니다." />
-        <meta name="keywords" content="포트폴리오, 웹 개발, 최서원, 프론트엔드, 프론트엔드 포트폴리오, 프론트엔드 개발자, 프론트엔드 개발자 최서원, 프론트엔드 개발자 최서원 포트폴리오, 프론트엔드 개발자 최서원 포트폴리오 최서원" />
-        <meta name="author" content="Seowon Choi" />
-        <title>Seowon Choi's Portfolio</title>
         <link rel="canonical" href="https://seowonchoiii.vercel.app/" />
         <link rel="icon" href="/favicon.ico" />
       </head>
