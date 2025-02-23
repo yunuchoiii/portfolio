@@ -34,7 +34,7 @@ export default function Main() {
   }
 
   return (
-    <div 
+    <main 
       className={`relative scroll-container-y ${isMobile ? "pb-10" : "h-dvh"} overflow-x-hidden transition-all duration-700`}
       style={{marginLeft: !isMobile ? SIDEBAR_WIDTH : 0 }}
     >
@@ -60,6 +60,6 @@ export default function Main() {
       <FullPage id="Contact" longPage={isMobile}>
         <Contact/>
       </FullPage>
-    </div>
+    </main>
   );
 }

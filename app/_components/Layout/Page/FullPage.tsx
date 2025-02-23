@@ -31,7 +31,7 @@ const FullPage = ({id, title, children, longPage, props}:PageProps) => {
   }, [entry?.isIntersecting, id, setActiveSection]);
   
   return (
-    <div 
+    <section 
       id={id}
       ref={ref}
       className={`relative ${!isMobile ? "scroll-area min-h-dvh" : ""} ${!longPage ? 'h-full ' : ""}`}
@@ -44,15 +44,15 @@ const FullPage = ({id, title, children, longPage, props}:PageProps) => {
       <div className="w-full h-full flex items-center justify-center">
         <div className="2xl:w-[1296px] xl:w-[1080px] lg:w-[864px] md:w-[648px] sm:w-[560px] w-[calc(100%-60px)]">
           {title && (
-            <div className="relative w-fit Montserrat text-3xl font-semibold mb-[50px]">
+            <h1 className="relative w-fit Montserrat text-3xl font-semibold mb-[50px]">
               {title}
               <div className={`absolute bottom-0 -left-[3%] -z-10 ${entry?.intersectionRatio ? "w-[106%]" : "w-0"} h-5 bg-blue-1 bg-opacity-50 dark:bg-opacity-75 transition-all duration-700`}></div>
-            </div>
+            </h1>
           )}
           {children}
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

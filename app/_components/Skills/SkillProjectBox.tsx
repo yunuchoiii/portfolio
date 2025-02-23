@@ -35,19 +35,20 @@ const SkillProjectBox = ({skillItem, projectList, isAnimating, handleProjectButt
         style={{width: `${skill?.grade}%`}}
       />
     </div>
-    {projectList && <div>
+    {projectList && <ul>
       {projectList.filter(p => p.show_yn != false).map(p => {
-        return <button
-          key={`project-item-${p.id}`}
-          className="w-full h-[60px] bg-blue-1 dark:bg-blue-4 bg-opacity-20 dark:bg-opacity-20 hover:bg-opacity-30 active:scale-95 transition-all duration-300 rounded-2xl mb-2.5 px-5 flex items-center justify-between"
-          style={{opacity: isAnimating ? 0 : 100}}
-          onClick={()=>handleProject(p.id)}
-        >
-          <span className="xl:text-base text-sm whitespace-nowrap">{p.kor_name}</span>
-          <i className="fa-solid fa-arrow-right"></i>
-        </button>
+        return <li key={`project-item-${p.id}`}>
+          <button
+            className="w-full h-[60px] bg-blue-1 dark:bg-blue-4 bg-opacity-20 dark:bg-opacity-20 hover:bg-opacity-30 active:scale-95 transition-all duration-300 rounded-2xl mb-2.5 px-5 flex items-center justify-between"
+            style={{opacity: isAnimating ? 0 : 100}}
+            onClick={()=>handleProject(p.id)}
+          >
+            <span className="xl:text-base text-sm whitespace-nowrap">{p.kor_name}</span>
+            <i className="fa-solid fa-arrow-right"></i>
+          </button>
+        </li>
       })}
-    </div>}
+    </ul>}
   </div>
 }
 

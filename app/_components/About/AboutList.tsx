@@ -30,9 +30,9 @@ const AboutList = () => {
     }
   }, [entry?.intersectionRatio])
 
-  return <section ref={ref} className="w-full h-full flex lg:flex-row flex-col items-center justify-between relative mb-12">
+  return <ul ref={ref} className="w-full h-full flex lg:flex-row flex-col items-center justify-between relative mb-12">
     {(data as IAboutListItem[]).sort((a, b) => a.id - b.id).map(item => (
-      <div
+      <li
         key={`about-list-item-${item.id}`}
         className={`lg:w-[27%] w-full xl:after:pb-[100%] lg:after:pb-[130%] md:after:pb-[27%] relative after:block lg:mb-0 mb-8 ${isRendered ? "fade-in-bottom" : "opacity-0"}`}
         style={{
@@ -57,9 +57,9 @@ const AboutList = () => {
             <div dangerouslySetInnerHTML={{__html: item.content}} />
           </div>
         </div>
-      </div>
+      </li>
     ))}
-  </section>
+  </ul>
 }
 
 export default AboutList;
