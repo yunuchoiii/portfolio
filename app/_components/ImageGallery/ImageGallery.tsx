@@ -1,4 +1,5 @@
 import { fullScreenState } from "@/app/_store/fullScreen";
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useSetRecoilState } from "recoil";
 import FullScreenView from "./FullScreenView";
@@ -114,17 +115,36 @@ const ImageGallery = ({logo, imageList}:ImageGalleryProps) => {
     }))
   }, [imageList, selectedIndex])
 
-  return <div className="w-full h-full flex flex-col">
-    <div className="flex-1 bg-blue-1 bg-opacity-25 rounded-[10px] flex justify-center items-center p-2.5 min-h-0">
+  return <article className="w-full h-full flex flex-col">
+    <section className="flex-1 bg-blue-1 bg-opacity-25 rounded-[10px] flex justify-center items-center p-2.5 min-h-0">
       {selectedIndex !== -1 ? 
-      <button onClick={handleExpand} className="w-full h-full">
-        <img src={imageList![selectedIndex]} className="w-full h-full object-contain"/>
+      <button 
+        title="전체 화면"
+        onClick={handleExpand} 
+        className="relative w-full h-full"
+      >
+        <Image 
+          src={imageList![selectedIndex]} 
+          alt={`main-image-${selectedIndex}`}
+          fill
+          className="object-contain"
+          quality={85}
+          priority={true}
+        />
       </button> :
-      <img src={logo} className="max-h-[20%] max-w-[80%]"/>}
-    </div>
-    {imageList?.length !== 0 && <div className="relative mt-2.5 px-[10%]">
+      <Image 
+        src={logo || ''} 
+        alt="logo"
+        width={300}
+        height={200}
+        className="max-h-[20%] max-w-[80%] object-contain"
+      />}
+    </section>
+    {imageList?.length !== 0 && 
+    <section className="relative mt-2.5 px-[10%]">
       {imageList!.length > 4 && <>
         <button 
+          title="이전 스크롤"
           className={`absolute -translate-y-1/2 top-[50%] left-0 transition-opacity duration-300 p-2 ${isLeftDisabled ? "opacity-30" : ""}`}
           disabled={isLeftDisabled}
           onClick={()=>scrollImages('left')}
@@ -132,6 +152,7 @@ const ImageGallery = ({logo, imageList}:ImageGalleryProps) => {
           <i className="fa-solid fa-chevron-left"></i>
         </button>
         <button 
+          title="다음 스크롤"
           className={`absolute -translate-y-1/2 top-[50%] right-0 transition-opacity duration-300 p-2 ${isRightDisabled ? "opacity-30" : ""}`}
           disabled={isRightDisabled}
           onClick={()=>scrollImages('right')}
@@ -148,16 +169,27 @@ const ImageGallery = ({logo, imageList}:ImageGalleryProps) => {
             const isSelected = (imageList![selectedIndex] === item)
             return <button 
               key={`img-preview-${index}`} 
+              title={`이미지 보기`}
               className={`w-[24%] mr-[1%] last:mr-0 flex-shrink-0 scroll-area rounded-[5px] after:pb-[100%] relative after:block overflow-hidden hover:brightness-90 transition-all border-2 ${isSelected ? "border-blue-1" : "border-transparent"}`}
               onClick={()=>setSelectedIndex(index)}
             >
-              <img src={item} className="w-full h-full object-cover absolute" />
+              <Image 
+                src={item} 
+                alt={`image-${index}`} 
+                fill 
+                className="object-cover absolute" 
+                loading="lazy"
+                quality={60}
+                sizes="(max-width: 768px) 25vw, 20vw"
+                placeholder="blur"
+                blurDataURL="data:image/jpeg;base64,/9j..."
+              />
             </button>
           })
         }
       </div>
-    </div>}
-  </div>
+    </section>}
+  </article>
 }
 
 export default ImageGallery
