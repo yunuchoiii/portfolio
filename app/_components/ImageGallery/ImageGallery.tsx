@@ -14,6 +14,7 @@ const ImageGallery = ({logo, imageList}:ImageGalleryProps) => {
 
   const [selectedIndex, setSelectedIndex] = useState<number>(-1);
 
+  // 풀스크린 모드 확장
   const handleExpand = () => {
     setFullScreen(prev => ({
       ...prev,
@@ -26,6 +27,7 @@ const ImageGallery = ({logo, imageList}:ImageGalleryProps) => {
   const [isLeftDisabled, setIsLeftDisabled] = useState(true);
   const [isRightDisabled, setIsRightDisabled] = useState(false);
 
+  // 스크롤 버튼 활성화/비활성화 체크
   const checkScrollButtons = () => {
     if (scrollContainerRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
@@ -35,6 +37,7 @@ const ImageGallery = ({logo, imageList}:ImageGalleryProps) => {
   };
 
   useEffect(() => {
+    // 스크롤 버튼 활성화/비활성화 체크
     const scrollContainer = scrollContainerRef.current;
     if (scrollContainer) {
       scrollContainer.addEventListener("scroll", checkScrollButtons, { passive: true });
@@ -49,6 +52,7 @@ const ImageGallery = ({logo, imageList}:ImageGalleryProps) => {
     };
   }, []);
 
+  // 이미지 스크롤 (왼쪽 또는 오른쪽)
   const scrollImages = (direction:string) => {
     if (scrollContainerRef.current) {
       const { scrollLeft, clientWidth } = scrollContainerRef.current;
@@ -61,12 +65,14 @@ const ImageGallery = ({logo, imageList}:ImageGalleryProps) => {
     }
   };
 
+  // 이미지 인덱스 증가 (다음 이미지 보기)
   const plusImageIndex = () => {
     if (selectedIndex + 1 < imageList!.length) {
       setSelectedIndex(prev => prev + 1)
     }
   }
 
+  // 이미지 인덱스 감소 (이전 이미지 보기)
   const minusImageIndex = () => {
     if (selectedIndex - 1 >= 0) {
       setSelectedIndex(prev => prev - 1)
@@ -74,6 +80,7 @@ const ImageGallery = ({logo, imageList}:ImageGalleryProps) => {
   }
 
   useEffect(() => {
+    // 키보드 이벤트 핸들러(<-, ->, esc)
     const handleKeyDown = (event:KeyboardEvent) => {
       switch(event.key) {
         case "ArrowRight":
