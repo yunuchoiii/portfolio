@@ -31,10 +31,10 @@ const FullScreenView = ({
   }, []);
 
   return <div
-    className={`absolute w-screen h-dvh top-0 left-0 bg-white dark:bg-black bg-opacity-50 dark:bg-opacity-50 backdrop-blur-lg flex sm:flex-col items-center justify-center gap-5`}
+    className={`absolute w-screen h-dvh top-0 left-0 bg-white dark:bg-black bg-opacity-50 dark:bg-opacity-50 backdrop-blur-lg flex sm:flex-col items-center justify-center sm:gap-5`}
   >
-    <button title="닫기" onClick={handleExpand}>
-      <img src="/images/icons/plus.png" className="w-5 absolute top-8 right-8 rotate-45 dark:invert" />
+    <button title="닫기" onClick={handleExpand} className="absolute top-5 right-5 p-2.5">
+      <img src="/images/icons/plus.png" className="w-5 rotate-45 dark:invert"/>
     </button>
     <button
       title="이전 이미지"
@@ -44,7 +44,7 @@ const FullScreenView = ({
     >
       <i className="fa-solid fa-chevron-left text-xl"></i>
     </button>
-    <div className="relative sm:w-10/12 w-[calc(100vw-60px)] h-3/4 overflow-y-auto">
+    <div className="relative sm:w-10/12 w-[calc(100vw-80px)] h-3/4 overflow-y-auto">
       <img src={imageList![selectedIndex]} className={`w-full object-contain ${isExpanded ? "" : "h-full"}`}/>
     </div>
     <button 
