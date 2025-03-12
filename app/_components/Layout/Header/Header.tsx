@@ -26,7 +26,7 @@ const Header = () => {
 
   return <div
     id="header"
-    className={`fixed top-0 flex items-center justify-between lg:px-[40px] px-[30px] Montserrat tracking-tighter font-light z-30 ${isRendering ? "opacity-0" : "fade-in"}`}
+    className={`fixed top-0 flex items-center justify-between lg:px-[40px] px-[30px] Montserrat tracking-tighter font-light z-30 bg-white/0 dark:bg-black/0 backdrop-blur-sm ${isRendering ? "opacity-0" : "fade-in"}`}
     style={{
       height: HEADER_HEIGHT,
       width: isMobile ? "100vw" : `calc(100vw - ${SIDEBAR_WIDTH}px)`,
