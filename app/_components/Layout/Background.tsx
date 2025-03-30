@@ -31,13 +31,6 @@ const Background = () => {
       <BarLoader/>
     </div>}
   </div>
-  // return <div ref={ref} className={`fixed w-screen h-screen ${isRendering ? "z-50" : "-z-10"}`}>
-  //   <img src="/images/main/home-bg-light.png" className={`block dark:hidden w-full h-full object-top object-cover transition-all duration-[2s] ${entry?.intersectionRatio ? "scale-100" : "scale-[2]"}`}/>
-  //   <img src="/images/main/home-bg-dark.png" className={`hidden dark:block w-full h-full object-top object-cover transition-all duration-[2s] ${entry?.intersectionRatio ? "scale-100" : "scale-[2]"}`}/>
-  //   {isRendering && <div className="absolute top-0 left-0 z-[60] w-full h-full flex items-center justify-center">
-  //     <BarLoader/>
-  //   </div>}
-  // </div>
 }
 
 export default Background;

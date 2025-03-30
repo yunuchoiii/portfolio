@@ -8,6 +8,9 @@
   --bg-circle-1-rgb: 104, 178, 165;
   --bg-circle-2-rgb: 66, 155, 155;
   --bg-circle-3-rgb: 47, 100, 103;
+  --bg-circle-1-size: 15vw;
+  --bg-circle-2-size: 20vw;
+  --bg-circle-3-size: 18vw;
 }
 
 :root.dark {
@@ -16,6 +19,9 @@
   --bg-circle-1-rgb: 4, 191, 157;
   --bg-circle-2-rgb: 46, 208, 208;
   --bg-circle-3-rgb: 18, 151, 159;
+  --bg-circle-1-size: 12vw;
+  --bg-circle-2-size: 18vw;
+  --bg-circle-3-size: 15vw;
 }
 
 body {
@@ -34,27 +40,27 @@ body {
 }
 .bg-circle-1 {
   background: rgb(var(--bg-circle-1-rgb));
-  width: 12vw;
-  height: 12vw;
+  width: var(--bg-circle-1-size);
+  height: var(--bg-circle-1-size);
   top: 20%;
   left: 7%;
-  animation: moveCircle1 8s ease-in-out infinite;
+  animation: moveCircle1 4s ease-in-out infinite;
 }
 .bg-circle-2 {
   background: rgb(var(--bg-circle-2-rgb));
-  width: 18vw;
-  height: 18vw;
+  width: var(--bg-circle-2-size);
+  height: var(--bg-circle-2-size);
   top: 30%;
   right: 10%;
-  animation: moveCircle2 9s ease-in-out infinite;
+  animation: moveCircle2 6s ease-in-out infinite;
 }
 .bg-circle-3 {
   background: rgb(var(--bg-circle-3-rgb));
-  width: 15vw;
-  height: 15vw;
+  width: var(--bg-circle-3-size);
+  height: var(--bg-circle-3-size);
   left: 45%;
   bottom: 3%;
-  animation: moveCircle3 10s ease-in-out infinite;
+  animation: moveCircle3 8s ease-in-out infinite;
 }
 
 .scroll-container-y {
