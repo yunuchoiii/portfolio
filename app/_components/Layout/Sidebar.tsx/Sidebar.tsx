@@ -50,7 +50,7 @@ const Sidebar = () => {
               <i className={`${menu.iconClassName} text-xl`}></i>
             </button>
             {!isMobile && <div 
-              className={`absolute top-1/2 -translate-y-1/2 left-[54px] px-2 py-1 bg-[#ddecee] dark:bg-[#1c4b50] bg-opacity-75 dark:bg-opacity-75 rounded-md backdrop-blur-sm shadow-lg Montserrat text-sm ${tooltip ? "fade-in" : "fade-out"}`}
+              className={`absolute top-1/2 -translate-y-1/2 left-[54px] px-2 py-1 bg-[#ddecee] dark:bg-[#1c4b50] rounded-md shadow-lg Montserrat text-sm ${tooltip ? "fade-in" : "fade-out"}`}
               style={{animationDuration: "0.2s"}}
             >
               {menu.title}
