@@ -80,12 +80,14 @@ const Home = () => {
           />
         </nav>
       </div>
-      <div className="relative md:w-[28vw] w-[280px] md:h-[28vw] h-[280px] md:min-w-[300px] md:min-h-[300px] max-w-[450px] max-h-[450px] md:p-5 p-3 border border-blue-4 rounded-full">
+      <div className="relative md:w-[28vw] w-[280px] md:h-[28vw] h-[280px] md:min-w-[300px] md:min-h-[300px] max-w-[450px] max-h-[450px] xl:p-5 md:p-3.5 p-2.5 border border-blue-4 rounded-full">
         <div className="relative w-full h-full overflow-hidden rounded-full">
           <Image
             src={"/images/main/home-ide-shot.png"}
             alt="Home"
             fill
+            priority
+            sizes="100%"
             className={`object-cover rounded-full hover:scale-110 transition-all duration-[2s] ${isRendering ? "scale-150" : "scale-100"}`}
           />
         </div>
