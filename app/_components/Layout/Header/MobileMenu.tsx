@@ -1,9 +1,10 @@
+"use client"
+
 import { CONTACT_INFO } from "@/app/_constants/contact"
 import { MENU_MAP } from "@/app/_constants/menu"
 import { activeSectionAtom } from "@/app/_store/activeSection"
 import { isRenderingStateAtom } from "@/app/_store/isRendering"
-import { useMediaQuery } from "@uidotdev/usehooks"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { createPortal } from 'react-dom'
 import { useRecoilValue } from "recoil"
 import IconButton from "../../Button/IconButton"
@@ -15,7 +16,8 @@ interface MobileMenuProps {
 
 const MobileMenu = ({handleMenuClick}:MobileMenuProps) => {
   const isRendering = useRecoilValue(isRenderingStateAtom)
-  const isMobile = useMediaQuery("(max-width: 768px)")
+  const [isMounted, setIsMounted] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   const [showMenu, setShowMenu] = useState(true)
   const [showButtonsGroup, setShowButtonsGroup] = useState<boolean>(false);
@@ -31,6 +33,19 @@ const MobileMenu = ({handleMenuClick}:MobileMenuProps) => {
     }
   ]
 
+  useEffect(() => {
+    setIsMounted(true)
+    const checkMobile = () => {
+      setIsMobile(window.matchMedia("(max-width: 768px)").matches)
+    }
+    
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  if (!isMounted) return null
   if (!isMobile) return null
 
   return <>
