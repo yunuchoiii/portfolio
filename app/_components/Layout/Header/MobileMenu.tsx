@@ -2,6 +2,7 @@ import { CONTACT_INFO } from "@/app/_constants/contact"
 import { MENU_MAP } from "@/app/_constants/menu"
 import { activeSectionAtom } from "@/app/_store/activeSection"
 import { isRenderingStateAtom } from "@/app/_store/isRendering"
+import { useMediaQuery } from "@uidotdev/usehooks"
 import { useState } from "react"
 import { createPortal } from 'react-dom'
 import { useRecoilValue } from "recoil"
@@ -14,6 +15,7 @@ interface MobileMenuProps {
 
 const MobileMenu = ({handleMenuClick}:MobileMenuProps) => {
   const isRendering = useRecoilValue(isRenderingStateAtom)
+  const isMobile = useMediaQuery("(max-width: 768px)")
 
   const [showMenu, setShowMenu] = useState(true)
   const [showButtonsGroup, setShowButtonsGroup] = useState<boolean>(false);
@@ -28,6 +30,8 @@ const MobileMenu = ({handleMenuClick}:MobileMenuProps) => {
       iconClassName: "fa-solid fa-ellipsis"
     }
   ]
+
+  if (!isMobile) return null
 
   return <>
     {/* 메뉴 열기 버튼 */}
