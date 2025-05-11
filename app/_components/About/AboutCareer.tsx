@@ -15,13 +15,13 @@ const AboutCareer = () => {
     <div className="2xl:text-3xl xl:text-2xl text-xl font-semibold Montserrat mb-5">
       Career
     </div>
-    <ul>
+    <ul className="space-y-5">
       {(careerList as ICareer[]).map((c, i) => {
         return <li
           key={`career-${i}`} 
           className={`relative px-8 py-6 ${c.workingNow ? "bg-blue-1 bg-opacity-15" : "bg-black bg-opacity-10 dark:bg-white dark:bg-opacity-10 opacity-85"} rounded-[30px] md:flex`}
         >
-          <img src={c.logo} className="h-[120px] absolute grayscale opacity-20 dark:opacity-30 right-10 bottom-10 dark:invert" />
+          <img src={c.logo} className={`h-[120px] absolute right-10 bottom-10 rounded-2xl ${c.workingNow ? "opacity-50 dark:opacity-60" : "opacity-20 dark:opacity-30 dark:invert grayscale"}`} />
           <div className="Montserrat xl:w-1/5 md:w-1/4 md:border-b-0 border-b pb-3 mb-3 border-blue-1 leading-none">
             <div className="text-lg font-semibold">
               {c.companyName}
